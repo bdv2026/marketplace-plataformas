@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.D.V. Shopping Virtual</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('fachada.png') no-repeat center top;
+      background-size: contain; /* mostra a imagem inteira sem cortar */
+      background-color: #000;   /* laterais e parte de baixo escuras */
+    }
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    .logos {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .logos img {
+      height: 60px;
+    }
+    .buttons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: space-between;
+      width: 60%; /* ajustado para aproximar ao centro */
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .buttons a {
+      padding: 8px 12px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .mercado-livre { background-color: #ffcc00; color: #000; }
+    .magalu { background-color: #007bff; }
+    .amazon { background-color: #000; }
+    .jequiti { background-color: #e91e63; }
+    .shopee { background-color: #ff5722; }
+    .shein { background-color: #111; }
+    .buttons a:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logos na lateral esquerda -->
+    <div class="logos">
+      <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+      <img src="logomarca-magalu.png" alt="Magalu">
+      <img src="logomarca-amazon.jpg" alt="Amazon">
+    </div>
+
+    <!-- Logos na lateral direita -->
+    <div class="logos">
+      <img src="logomarca-jequiti.png" alt="Jequiti">
+      <img src="logomarca-Shopee.jpg" alt="Shopee">
+      <img src="logomarca-shein.png" alt="SHEIN">
+    </div>
+
+    <!-- Botões preservados dentro da fachada -->
+    <div class="buttons">
+      <div class="col">
+        <!-- Link do Mercado Livre corrigido -->
+        <a class="mercado-livre" href="https://meli.la/1qinjc3" target="_blank">Clique Aqui</a>
+        <a class="magalu" href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">Clique Aqui</a>
+        <a class="amazon" href="SEU-LINK-AMAZON" target="_blank">Clique Aqui</a>
+      </div>
+      <div class="col">
+        <a class="jequiti" href="SEU-LINK-JEQUITI" target="_blank">Clique Aqui</a>
+        <a class="shopee" href="SEU-LINK-SHOPEE" target="_blank">Clique Aqui</a>
+        <a class="shein" href="SEU-LINK-SHEIN" target="_blank">Clique Aqui</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
