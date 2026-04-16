@@ -15,7 +15,6 @@
       overflow: hidden;
     }
 
-    /* METAL CROMADO MAIS FORTE */
     body::after {
       content: "";
       position: fixed;
@@ -25,14 +24,9 @@
       height: 100%;
 
       background:
-        /* brilho principal (bem intenso) */
         radial-gradient(circle at 50% 45%, rgba(255,255,255,0.95), transparent 25%),
-
-        /* reflexos secundários mais fortes */
         radial-gradient(circle at 30% 70%, rgba(220,230,255,0.35), transparent 50%),
         radial-gradient(circle at 75% 30%, rgba(200,210,230,0.3), transparent 50%),
-
-        /* linhas de reflexão (efeito cromado) */
         linear-gradient(
           90deg,
           #020203 0%,
@@ -45,8 +39,6 @@
           #0f1116 85%,
           #020203 100%
         ),
-
-        /* micro textura de brilho */
         repeating-linear-gradient(
           90deg,
           rgba(255,255,255,0.02) 0px,
@@ -61,7 +53,6 @@
       z-index: -2;
     }
 
-    /* FACHADA CENTRAL */
     body::before {
       content: "";
       position: fixed;
@@ -101,6 +92,11 @@
 
     .logos img {
       height: 90px;
+    }
+
+    /* AUMENTO APENAS DO MERCADO LIVRE */
+    .logos img[alt="Mercado Livre"] {
+      height: 120px;
     }
 
     .logos img[alt="Jequiti"],
