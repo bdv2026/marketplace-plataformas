@@ -8,51 +8,14 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-
       background: #050608;
-
       position: relative;
       overflow: hidden;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    /* REMOVIDO METAL */
 
-      background:
-        radial-gradient(circle at 50% 45%, rgba(255,255,255,0.95), transparent 25%),
-        radial-gradient(circle at 30% 70%, rgba(220,230,255,0.35), transparent 50%),
-        radial-gradient(circle at 75% 30%, rgba(200,210,230,0.3), transparent 50%),
-        linear-gradient(
-          90deg,
-          #020203 0%,
-          #0f1116 15%,
-          #3a404c 30%,
-          #dfe6ef 45%,
-          #ffffff 50%,
-          #dfe6ef 55%,
-          #3a404c 70%,
-          #0f1116 85%,
-          #020203 100%
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.02) 0px,
-          rgba(255,255,255,0.05) 1px,
-          rgba(0,0,0,0.02) 3px
-        );
-
-      mix-blend-mode: screen;
-      opacity: 0.95;
-
-      pointer-events: none;
-      z-index: -2;
-    }
-
+    /* FACHADA CENTRAL */
     body::before {
       content: "";
       position: fixed;
@@ -61,10 +24,8 @@
       transform: translateX(-50%);
       width: 100%;
       height: 100%;
-
       background: url('fachada.png') no-repeat center top;
       background-size: contain;
-
       pointer-events: none;
       z-index: -1;
     }
@@ -88,15 +49,21 @@
       background-size: cover;
       margin: 0;
       padding: 20px;
+      z-index: 2;
+    }
+
+    .logos a {
+      display: block;
+      text-align: center;
     }
 
     .logos img {
       height: 90px;
+      transition: 0.2s;
     }
 
-    /* AUMENTO APENAS DO MERCADO LIVRE */
     .logos img[alt="Mercado Livre"] {
-      height: 120px;
+      height: 160px;
     }
 
     .logos img[alt="Jequiti"],
@@ -105,75 +72,95 @@
       height: 110px;
     }
 
-    .buttons {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: space-between;
-      width: 60%;
-      height: 100%;
+    .logos a:hover img {
+      transform: scale(1.05);
     }
 
-    .col {
+    /* 🔥 NOVO: COLUNAS DE PRODUTOS (ESPAÇO METÁLICO) */
+
+    .produtos-esquerda,
+    .produtos-direita {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      width: 180px;
+      z-index: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      flex: 0 0 220px;
-      padding: 20px 0;
+      justify-content: space-around;
+      align-items: center;
+      pointer-events: none;
     }
 
-    .buttons a {
-      padding: 12px 16px;
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
+    /* posição entre fachada e tijolo */
+    .produtos-esquerda {
+      left: calc(50% - 400px);
     }
 
-    .mercado-livre { background-color: #ffcc00; color: #000; }
-    .magalu { background-color: #007bff; }
-    .amazon { background-color: #000; }
-    .jequiti { background-color: #e91e63; }
-    .shopee { background-color: #ff5722; }
-    .shein { background-color: #111; }
-
-    .buttons a:hover {
-      opacity: 0.8;
+    .produtos-direita {
+      right: calc(50% - 400px);
     }
+
+    .produtos-esquerda img,
+    .produtos-direita img {
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      opacity: 0.95;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- 🔥 PRODUTOS LADO ESQUERDO -->
+  <div class="produtos-esquerda">
+    <img src="decora.webp">
+    <img src="eletrodomestico.jpg">
+    <img src="eletroeletronico.jpg">
+    <img src="jardinagem.jpg">
+  </div>
+
+  <!-- 🔥 PRODUTOS LADO DIREITO -->
+  <div class="produtos-direita">
+    <img src="ferramentas.webp">
+    <img src="suplemento.jpg">
+    <img src="roupa-acessorio.jpg">
+  </div>
+
   <div class="container">
 
+    <!-- ESQUERDA -->
     <div class="logos">
-      <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-      <img src="logomarca-magalu.png" alt="Magalu">
-      <img src="logomarca-amazon.jpg" alt="Amazon">
+      <a href="https://meli.la/2qu3xa4" target="_blank">
+        <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+      </a>
+
+      <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
+        <img src="logomarca-magalu.png" alt="Magalu">
+      </a>
+
+      <a href="SEU-LINK-AMAZON" target="_blank">
+        <img src="logomarca-amazon.jpg" alt="Amazon">
+      </a>
     </div>
 
+    <!-- DIREITA -->
     <div class="logos">
-      <img src="logomarca-jequiti.png" alt="Jequiti">
-      <img src="logomarca-Shopee.jpg" alt="Shopee">
-      <img src="logomarca-shein.png" alt="SHEIN">
-    </div>
+      <a href="SEU-LINK-JEQUITI" target="_blank">
+        <img src="logomarca-jequiti.png" alt="Jequiti">
+      </a>
 
-    <div class="buttons">
-      <div class="col">
-        <a class="mercado-livre" href="https://meli.la/1qinjc3" target="_blank">Clique Aqui</a>
-        <a class="magalu" href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">Clique Aqui</a>
-        <a class="amazon" href="SEU-LINK-AMAZON" target="_blank">Clique Aqui</a>
-      </div>
-      <div class="col">
-        <a class="jequiti" href="SEU-LINK-JEQUITI" target="_blank">Clique Aqui</a>
-        <a class="shopee" href="SEU-LINK-SHOPEE" target="_blank">Clique Aqui</a>
-        <a class="shein" href="SEU-LINK-SHEIN" target="_blank">Clique Aqui</a>
-      </div>
+      <a href="SEU-LINK-SHOPEE" target="_blank">
+        <img src="logomarca-Shopee.jpg" alt="Shopee">
+      </a>
+
+      <a href="SEU-LINK-SHEIN" target="_blank">
+        <img src="logomarca-shein.png" alt="SHEIN">
+      </a>
     </div>
 
   </div>
+
 </body>
 </html>
