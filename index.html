@@ -14,30 +14,34 @@ html, body {
   height: 100%;
 }
 
-/* 🔥 CÂMERA CORRIGIDA */
-#scene {
-  width: 1160px;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform-origin: top center;
-}
-
-/* FUNDO PRESERVADO */
+/* 🔥 FUNDO FIXO (SEM MUDANÇA) */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: url('fachada.png') no-repeat center top;
   background-size: contain;
   pointer-events: none;
   z-index: -1;
 }
+
+/* 🔥 FIX REAL DA CÂMERA (CORREÇÃO PRINCIPAL) */
+#viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 🔥 CENA NÃO USA MAIS LEFT 50% */
+#scene {
+  width: 1160px;
+  height: 100vh;
+  transform-origin: top center;
+}
+
+/* --- SEU LAYOUT ORIGINAL ABAIXO --- */
 
 .container {
   position: relative;
@@ -72,10 +76,9 @@ body::before {
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { height: 110px; }
 
-/* 🔥 SUBIR LOGOS DA DIREITA (SHEIN / AMAZON / SHOPEE) */
 .logos:last-child {
   justify-content: flex-start;
-  padding-top: 40px; /* antes estava mais baixo */
+  padding-top: 30px;
   gap: 35px;
 }
 
@@ -106,49 +109,51 @@ body::before {
 
 <body>
 
-<div id="scene">
+<div id="viewport">
+  <div id="scene">
 
-  <div class="produtos-esquerda">
-    <img src="decora.webp">
-    <img src="eletrodomestico.jpg">
-    <img src="eletroeletronico.jpg">
-    <img src="jardinagem.jpg">
-  </div>
-
-  <div class="produtos-direita">
-    <img src="ferramentas.webp">
-    <img src="suplemento.jpg">
-    <img src="roupa-acessorio.jpg">
-  </div>
-
-  <div class="container">
-
-    <div class="logos">
-      <a href="https://meli.la/2qu3xa4" target="_blank">
-        <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-      </a>
-      <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
-        <img src="logomarca-magalu.png" alt="Magalu">
-      </a>
-      <a href="SEU-LINK-AMAZON" target="_blank">
-        <img src="logomarca-amazon.jpg" alt="Amazon">
-      </a>
+    <div class="produtos-esquerda">
+      <img src="decora.webp">
+      <img src="eletrodomestico.jpg">
+      <img src="eletroeletronico.jpg">
+      <img src="jardinagem.jpg">
     </div>
 
-    <div class="logos">
-      <a href="SEU-LINK-JEQUITI" target="_blank">
-        <img src="logomarca-jequiti.png" alt="Jequiti">
-      </a>
-      <a href="SEU-LINK-SHOPEE" target="_blank">
-        <img src="logomarca-Shopee.jpg" alt="Shopee">
-      </a>
-      <a href="SEU-LINK-SHEIN" target="_blank">
-        <img src="logomarca-shein.png" alt="SHEIN">
-      </a>
+    <div class="produtos-direita">
+      <img src="ferramentas.webp">
+      <img src="suplemento.jpg">
+      <img src="roupa-acessorio.jpg">
+    </div>
+
+    <div class="container">
+
+      <div class="logos">
+        <a href="https://meli.la/2qu3xa4" target="_blank">
+          <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+        </a>
+        <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
+          <img src="logomarca-magalu.png" alt="Magalu">
+        </a>
+        <a href="SEU-LINK-AMAZON" target="_blank">
+          <img src="logomarca-amazon.jpg" alt="Amazon">
+        </a>
+      </div>
+
+      <div class="logos">
+        <a href="SEU-LINK-JEQUITI" target="_blank">
+          <img src="logomarca-jequiti.png" alt="Jequiti">
+        </a>
+        <a href="SEU-LINK-SHOPEE" target="_blank">
+          <img src="logomarca-Shopee.jpg" alt="Shopee">
+        </a>
+        <a href="SEU-LINK-SHEIN" target="_blank">
+          <img src="logomarca-shein.png" alt="SHEIN">
+        </a>
+      </div>
+
     </div>
 
   </div>
-
 </div>
 
 <script>
@@ -163,8 +168,7 @@ function fitScene() {
     window.innerHeight / baseH
   );
 
-  /* 🔥 CENTRALIZAÇÃO CORRETA */
-  scene.style.transform = `translateX(-50%) scale(${scale})`;
+  scene.style.transform = `scale(${scale})`;
 }
 
 window.addEventListener("resize", fitScene);
