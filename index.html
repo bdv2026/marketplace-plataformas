@@ -14,17 +14,18 @@
     height: 100%;
   }
 
-  /* 🔥 CENA FIXA (CAMPO DE VISÃO ÚNICO) */
+  /* 🔥 FIXA O “QUADRO” DA CENA SEM MEXER NO LAYOUT */
   #scene {
     width: 1160px;
     height: 100vh;
     position: absolute;
-    top: 0;
+
+    /* 🔴 FIXA REAL DA CÂMERA */
     left: 50%;
-    transform-origin: top center;
+    top: 0;
+    transform-origin: 0 0;
   }
 
-  /* FUNDO FACHADA (FIXO E SEM SUMIR) */
   body::before {
     content: "";
     position: fixed;
@@ -146,7 +147,7 @@
 </div>
 
 <script>
-function fitScene() {
+function fixCamera() {
   const scene = document.getElementById("scene");
 
   const baseW = 1160;
@@ -157,11 +158,12 @@ function fitScene() {
     window.innerHeight / baseH
   );
 
-  scene.style.transform = `translateX(-50%) scale(${scale})`;
+  /* 🔥 CÂMERA FIXA REAL (SEM DESLOCAMENTO) */
+  scene.style.transform = `translate(-50%, 0) scale(${scale})`;
 }
 
-window.addEventListener("resize", fitScene);
-window.addEventListener("load", fitScene);
+window.addEventListener("resize", fixCamera);
+window.addEventListener("load", fixCamera);
 </script>
 
 </body>
