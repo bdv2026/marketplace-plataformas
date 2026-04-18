@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.D.V. Mobile</title>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #050608;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('fachada.png') no-repeat center top;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.9;
+  }
+
+  .mobile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    background: url('tijolo-fundo.png') center/cover;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .logos img {
+    height: 60px;
+  }
+
+  .produtos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .produtos img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="mobile-container">
+
+  <div class="logos">
+    <img src="logomarca-mercadolivre.png">
+    <img src="logomarca-magalu.png">
+    <img src="logomarca-amazon.jpg">
+    <img src="logomarca-jequiti.png">
+    <img src="logomarca-Shopee.jpg">
+    <img src="logomarca-shein.png">
+  </div>
+
+  <div class="produtos">
+    <img src="decora.webp">
+    <img src="eletrodomestico.jpg">
+    <img src="eletroeletronico.jpg">
+    <img src="jardinagem.jpg">
+    <img src="ferramentas.webp">
+    <img src="suplemento.jpg">
+    <img src="roupa-acessorio.jpg">
+  </div>
+
+</div>
+
+</body>
+</html>
