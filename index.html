@@ -5,18 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
-  function isMobile() {
-    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-  }
-
-  if (isMobile()) {
-    window.location.href = "index-mobile.html";
-  } else {
-    window.location.href = "index-desktop.html";
-  }
+if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  location.href = "index-mobile.html";
+} else {
+  location.href = "index-desktop.html";
+}
 </script>
 
 </head>
-<body>
-</body>
+<body></body>
 </html>
