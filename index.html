@@ -1,118 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B.D.V. Shopping Virtual</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.D.V. Shopping Virtual</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #050608;
-  overflow: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #050608;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* FACHADA (INTACTA) */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  background: url('fachada.png') no-repeat center top;
-  background-size: contain;
-  pointer-events: none;
-  z-index: -1;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      background: url('fachada.png') no-repeat center top;
+      background-size: contain;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-/* CONTAINER */
-#scene {
-  width: 1160px;
-  height: 100vh;
-  margin: 0 auto;
-  position: relative;
-}
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 0;
+    }
 
-/* LOGOS */
-.container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-}
+    .logos {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 0 0 220px;
+      height: 100%;
+      background: url('tijolo-fundo.png') no-repeat center;
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+      z-index: 2;
+    }
 
-.logos {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 0 0 220px;
-  height: 100%;
-  background: url('tijolo-fundo.png') no-repeat center;
-  background-size: cover;
-  padding: 20px;
-}
+    .logos a {
+      display: block;
+      text-align: center;
+    }
 
-.logos a {
-  display: block;
-  text-align: center;
-}
+    .logos img {
+      height: 90px;
+      transition: 0.2s;
+    }
 
-.logos img {
-  height: 90px;
-  transition: 0.2s;
-}
+    .logos img[alt="Mercado Livre"] {
+      height: 160px;
+    }
 
-.logos img[alt="Mercado Livre"] {
-  height: 160px;
-}
+    .logos img[alt="Jequiti"],
+    .logos img[alt="Shopee"],
+    .logos img[alt="SHEIN"] {
+      height: 110px;
+    }
 
-.logos img[alt="Jequiti"],
-.logos img[alt="Shopee"],
-.logos img[alt="SHEIN"] {
-  height: 110px;
-}
+    .logos a:hover img {
+      transform: scale(1.05);
+    }
 
-/* 🔥 PRODUTOS NAS EXTREMIDADES DA TELA (CORRIGIDO) */
-.produtos-esquerda,
-.produtos-direita {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  pointer-events: none;
-}
+    /* PRODUTOS LATERAIS */
+    .produtos-esquerda,
+    .produtos-direita {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      width: 180px;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      pointer-events: none;
+    }
 
-.produtos-esquerda {
-  left: 0;
-}
+    .produtos-esquerda {
+      left: calc(50% - 400px);
+    }
 
-.produtos-direita {
-  right: 0;
-}
+    .produtos-direita {
+      right: calc(50% - 400px);
+    }
 
-.produtos-esquerda img,
-.produtos-direita img {
-  width: 100%;
-  max-height: 120px;
-  object-fit: contain;
-  opacity: 0.95;
-}
-</style>
+    .produtos-esquerda img,
+    .produtos-direita img {
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      opacity: 0.95;
+    }
+
+    /* ✔ ZOOM GLOBAL (SÓ MOBILE) */
+    @media (max-width: 768px) {
+      body {
+        transform-origin: top center;
+        transform: scale(calc(min(100vw / 1160, 100vh / 720)));
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-<div id="scene">
-
-  <!-- ESQUERDA -->
+  <!-- PRODUTOS ESQUERDA -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -120,7 +126,7 @@ body::before {
     <img src="jardinagem.jpg">
   </div>
 
-  <!-- DIREITA -->
+  <!-- PRODUTOS DIREITA -->
   <div class="produtos-direita">
     <img src="ferramentas.webp">
     <img src="suplemento.jpg">
@@ -133,9 +139,11 @@ body::before {
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
       </a>
+
       <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
         <img src="logomarca-magalu.png" alt="Magalu">
       </a>
+
       <a href="SEU-LINK-AMAZON" target="_blank">
         <img src="logomarca-amazon.jpg" alt="Amazon">
       </a>
@@ -145,17 +153,17 @@ body::before {
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
       </a>
+
       <a href="SEU-LINK-SHOPEE" target="_blank">
         <img src="logomarca-Shopee.jpg" alt="Shopee">
       </a>
+
       <a href="SEU-LINK-SHEIN" target="_blank">
         <img src="logomarca-shein.png" alt="SHEIN">
       </a>
     </div>
 
   </div>
-
-</div>
 
 </body>
 </html>
