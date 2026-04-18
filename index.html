@@ -38,7 +38,7 @@
       padding: 0;
     }
 
-    /* TIJOLO + LOGOS */
+    /* TIJOLO + LOGOS (DESKTOP MANTIDO) */
     .logos {
       display: flex;
       flex-direction: column;
@@ -46,7 +46,7 @@
       flex: 0 0 220px;
       height: 100%;
       background: url('tijolo-fundo.png') no-repeat center;
-      background-size: cover;
+      background-size: cover; /* NÃO ALTERADO (desktop) */
       margin: 0;
       padding: 20px;
       z-index: 2;
@@ -107,7 +107,7 @@
       opacity: 0.95;
     }
 
-    /* 🔥 MOBILE AJUSTADO CORRETAMENTE */
+    /* 🔥 MOBILE - CORREÇÃO REAL */
     @media (max-width: 768px) {
 
       body {
@@ -120,14 +120,16 @@
         background-position: center top;
       }
 
-      /* 🔥 REDUZ LATERAIS DE TIJOLO (ESSENCIAL) */
+      /* 🔥 CORREÇÃO DO TIJOLO */
       .logos {
-        flex: 0 0 60px; /* antes 220px → agora bem menor */
+        flex: 0 0 60px;
         padding: 10px 2px;
-        background-size: cover;
+
+        background-size: contain;    /* mantém proporção */
+        background-repeat: repeat-y; /* repete vertical */
       }
 
-      /* logos menores mas visíveis */
+      /* logos proporcionais */
       .logos img {
         height: 40px;
       }
@@ -136,7 +138,7 @@
         height: 55px;
       }
 
-      /* produtos menores e mais próximos */
+      /* produtos ajustados */
       .produtos-esquerda,
       .produtos-direita {
         width: 50px;
