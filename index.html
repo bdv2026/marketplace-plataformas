@@ -11,7 +11,8 @@
       font-family: Arial, sans-serif;
       background: #050608;
       position: relative;
-      overflow: hidden;
+      overflow: hidden; /* 🔥 trava rolagem */
+      height: 100vh;
     }
 
     /* FACHADA */
@@ -96,54 +97,54 @@
       object-fit: contain;
     }
 
-    /* 🔥 MOBILE FINAL CORRIGIDO */
+    /* 🔥 MOBILE AJUSTADO CORRETAMENTE */
     @media (max-width: 768px) {
 
       body {
         overflow: hidden;
+        height: 100vh;
       }
 
-      /* 🔥 TRAVA TOTAL DAS LATERAIS */
+      /* 🔥 LARGURA REAL DO TIJOLO (NÃO MINÚSCULA) */
       .logos {
         flex: none;
-        width: 22px;
-        min-width: 22px;
-        max-width: 22px;
+        width: 90px; /* 👉 largura real visível e equilibrada */
+        min-width: 90px;
+        max-width: 90px;
 
-        height: 60%;
-        margin: auto 0;
-        padding: 4px 1px;
+        height: 100%;
+        padding: 10px 5px;
 
         background-size: contain;
         background-repeat: repeat-y;
       }
 
-      /* 🔥 LOGOS PADRONIZADOS E MAIORES */
+      /* 🔥 TODOS OS LOGOS PADRONIZADOS (PELO MAIOR) */
       .logos img {
-        height: 42px;
+        height: 65px;
       }
 
       .logos img[alt="Mercado Livre"] {
-        height: 50px;
+        height: 75px;
       }
 
-      /* 🔥 PRODUTOS MESMO TAMANHO DOS LOGOS */
+      /* 🔥 PRODUTOS GRANDES (MESMO NÍVEL DOS LOGOS) */
       .produtos-esquerda,
       .produtos-direita {
-        width: 60px;
+        width: 80px;
       }
 
       .produtos-esquerda {
-        left: calc(50% - 110px);
+        left: calc(50% - 180px);
       }
 
       .produtos-direita {
-        right: calc(50% - 110px);
+        right: calc(50% - 180px);
       }
 
       .produtos-esquerda img,
       .produtos-direita img {
-        max-height: 42px;
+        max-height: 65px;
       }
 
     }
