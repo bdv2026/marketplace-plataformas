@@ -6,94 +6,90 @@
 <title>B.D.V. Shopping Virtual</title>
 
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #050608;
-    overflow: hidden;
-    height: 100%;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #050608;
+  overflow: hidden;
+  height: 100%;
+}
 
-  /* 🔥 ÚNICA CORREÇÃO */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0; /* corrigido */
-    width: 100vw;
-    height: 100vh;
-    background: url('fachada.png') no-repeat center top;
-    background-size: contain;
-    pointer-events: none;
-    z-index: -1;
-  }
+/* 🔥 FUNDO REAL (SEM BUG) */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100vh;
+  width: auto;
+  z-index: -1;
+}
 
-  #scene {
-    width: 1160px;
-    height: 720px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform-origin: top center;
-  }
+/* SEU LAYOUT (INTACTO) */
+#scene {
+  width: 1160px;
+  height: 720px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: top center;
+}
 
-  .container {
-    position: relative;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
+.container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
-  .logos {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 0 0 220px;
-    background: url('tijolo-fundo.png') no-repeat center;
-    background-size: cover;
-    padding: 20px;
-  }
+.logos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 0 220px;
+  background: url('tijolo-fundo.png') no-repeat center;
+  background-size: cover;
+  padding: 20px;
+}
 
-  .logos a {
-    text-align: center;
-  }
+.logos img {
+  height: 90px;
+}
 
-  .logos img {
-    height: 90px;
-  }
+.logos img[alt="Mercado Livre"] { height: 160px; }
+.logos img[alt="Jequiti"],
+.logos img[alt="Shopee"],
+.logos img[alt="SHEIN"] { height: 110px; }
 
-  .logos img[alt="Mercado Livre"] { height: 160px; }
-  .logos img[alt="Jequiti"],
-  .logos img[alt="Shopee"],
-  .logos img[alt="SHEIN"] { height: 110px; }
+.produtos-esquerda,
+.produtos-direita {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+}
 
-  .produtos-esquerda,
-  .produtos-direita {
-    position: fixed;
-    top: 0;
-    height: 100%;
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    pointer-events: none;
-  }
+.produtos-esquerda { left: calc(50% - 400px); }
+.produtos-direita { right: calc(50% - 400px); }
 
-  .produtos-esquerda { left: calc(50% - 400px); }
-  .produtos-direita { right: calc(50% - 400px); }
-
-  .produtos-esquerda img,
-  .produtos-direita img {
-    width: 100%;
-    max-height: 120px;
-    object-fit: contain;
-  }
-
+.produtos-esquerda img,
+.produtos-direita img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+}
 </style>
 </head>
 
 <body>
+
+<!-- 🔥 FUNDO DIRETO -->
+<img src="fachada.png" id="bg">
 
 <div id="scene">
 
@@ -113,27 +109,15 @@
   <div class="container">
 
     <div class="logos">
-      <a href="https://meli.la/2qu3xa4" target="_blank">
-        <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-      </a>
-      <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
-        <img src="logomarca-magalu.png" alt="Magalu">
-      </a>
-      <a href="#">
-        <img src="logomarca-amazon.jpg" alt="Amazon">
-      </a>
+      <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+      <img src="logomarca-magalu.png" alt="Magalu">
+      <img src="logomarca-amazon.jpg" alt="Amazon">
     </div>
 
     <div class="logos">
-      <a href="#">
-        <img src="logomarca-jequiti.png" alt="Jequiti">
-      </a>
-      <a href="#">
-        <img src="logomarca-Shopee.jpg" alt="Shopee">
-      </a>
-      <a href="#">
-        <img src="logomarca-shein.png" alt="SHEIN">
-      </a>
+      <img src="logomarca-jequiti.png" alt="Jequiti">
+      <img src="logomarca-Shopee.jpg" alt="Shopee">
+      <img src="logomarca-shein.png" alt="SHEIN">
     </div>
 
   </div>
