@@ -62,7 +62,6 @@
       transition: 0.2s;
     }
 
-    /* destaque Mercado Livre */
     .logos img[alt="Mercado Livre"] {
       height: 160px;
     }
@@ -108,53 +107,52 @@
       opacity: 0.95;
     }
 
-    /* 🔥 MOBILE AJUSTADO (SEM REMOVER NADA) */
+    /* 🔥 MOBILE AJUSTADO CORRETAMENTE */
     @media (max-width: 768px) {
 
       body {
         overflow: hidden;
       }
 
+      /* mantém fachada inteira */
       body::before {
         background-size: contain;
         background-position: center top;
       }
 
-      .container {
-        height: 100vh;
-        padding: 0 5px;
-      }
-
+      /* 🔥 REDUZ LATERAIS DE TIJOLO (ESSENCIAL) */
       .logos {
-        flex: 0 0 90px;
-        padding: 10px 5px;
+        flex: 0 0 60px; /* antes 220px → agora bem menor */
+        padding: 10px 2px;
         background-size: cover;
       }
 
+      /* logos menores mas visíveis */
       .logos img {
-        height: 45px;
+        height: 40px;
       }
 
       .logos img[alt="Mercado Livre"] {
-        height: 70px;
+        height: 55px;
       }
 
+      /* produtos menores e mais próximos */
       .produtos-esquerda,
       .produtos-direita {
-        width: 70px;
+        width: 50px;
       }
 
       .produtos-esquerda {
-        left: calc(50% - 160px);
+        left: calc(50% - 130px);
       }
 
       .produtos-direita {
-        right: calc(50% - 160px);
+        right: calc(50% - 130px);
       }
 
       .produtos-esquerda img,
       .produtos-direita img {
-        max-height: 60px;
+        max-height: 45px;
       }
 
     }
