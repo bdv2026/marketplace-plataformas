@@ -13,7 +13,7 @@ body {
   overflow: hidden;
 }
 
-/* 🔥 FACHADA CENTRAL (INTACTA) */
+/* FUNDO FACHADA (INTACTO) */
 body::before {
   content: "";
   position: fixed;
@@ -28,26 +28,24 @@ body::before {
   z-index: -1;
 }
 
-/* 🔥 CENA BASE */
+/* CENA */
 #scene {
   width: 1160px;
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  transform-origin: top center;
 }
 
-/* CONTAINER ORIGINAL */
+/* CONTAINER */
 .container {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  padding: 0;
 }
 
-/* LOGOS (SEM ALTERAÇÃO) */
+/* LOGOS (INALTERADO) */
 .logos {
   display: flex;
   flex-direction: column;
@@ -56,9 +54,7 @@ body::before {
   height: 100%;
   background: url('tijolo-fundo.png') no-repeat center;
   background-size: cover;
-  margin: 0;
   padding: 20px;
-  z-index: 2;
 }
 
 .logos a {
@@ -81,18 +77,13 @@ body::before {
   height: 110px;
 }
 
-.logos a:hover img {
-  transform: scale(1.05);
-}
-
-/* 🔥 PRODUTOS NAS LATERAIS (CORRIGIDO) */
+/* 🔥 CORREÇÃO REAL DAS LATERAIS (COMO NO ORIGINAL) */
 .produtos-esquerda,
 .produtos-direita {
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 100%;
   width: 180px;
-  z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -101,11 +92,11 @@ body::before {
 }
 
 .produtos-esquerda {
-  left: -180px;
+  left: calc(50% - 400px);
 }
 
 .produtos-direita {
-  right: -180px;
+  right: calc(50% - 400px);
 }
 
 .produtos-esquerda img,
@@ -122,7 +113,7 @@ body::before {
 
 <div id="scene">
 
-  <!-- PRODUTOS ESQUERDA -->
+  <!-- PRODUTOS ESQUERDA (RESTAURADO ORIGINAL) -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -130,7 +121,7 @@ body::before {
     <img src="jardinagem.jpg">
   </div>
 
-  <!-- PRODUTOS DIREITA -->
+  <!-- PRODUTOS DIREITA (RESTAURADO ORIGINAL) -->
   <div class="produtos-direita">
     <img src="ferramentas.webp">
     <img src="suplemento.jpg">
@@ -143,11 +134,9 @@ body::before {
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
       </a>
-
       <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
         <img src="logomarca-magalu.png" alt="Magalu">
       </a>
-
       <a href="SEU-LINK-AMAZON" target="_blank">
         <img src="logomarca-amazon.jpg" alt="Amazon">
       </a>
@@ -157,11 +146,9 @@ body::before {
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
       </a>
-
       <a href="SEU-LINK-SHOPEE" target="_blank">
         <img src="logomarca-Shopee.jpg" alt="Shopee">
       </a>
-
       <a href="SEU-LINK-SHEIN" target="_blank">
         <img src="logomarca-shein.png" alt="SHEIN">
       </a>
@@ -170,23 +157,6 @@ body::before {
   </div>
 
 </div>
-
-<!-- 📱 CAMADA MOBILE (ESCALA GLOBAL DA CENA) -->
-<script>
-function aplicarEscala() {
-  const scene = document.getElementById("scene");
-
-  const scale = Math.min(
-    window.innerWidth / 1160,
-    window.innerHeight / 720
-  );
-
-  scene.style.transform = `scale(${scale})`;
-}
-
-window.addEventListener("resize", aplicarEscala);
-window.addEventListener("load", aplicarEscala);
-</script>
 
 </body>
 </html>
