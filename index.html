@@ -10,10 +10,10 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #050608;
-  position: relative;
   overflow: hidden;
 }
 
+/* 🔥 FACHADA CENTRAL (INTACTA) */
 body::before {
   content: "";
   position: fixed;
@@ -28,6 +28,16 @@ body::before {
   z-index: -1;
 }
 
+/* 🔥 CENA BASE */
+#scene {
+  width: 1160px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  transform-origin: top center;
+}
+
+/* CONTAINER ORIGINAL */
 .container {
   position: relative;
   height: 100vh;
@@ -37,6 +47,7 @@ body::before {
   padding: 0;
 }
 
+/* LOGOS (SEM ALTERAÇÃO) */
 .logos {
   display: flex;
   flex-direction: column;
@@ -74,9 +85,10 @@ body::before {
   transform: scale(1.05);
 }
 
+/* 🔥 PRODUTOS NAS LATERAIS (CORRIGIDO) */
 .produtos-esquerda,
 .produtos-direita {
-  position: fixed;
+  position: absolute;
   top: 0;
   height: 100%;
   width: 180px;
@@ -89,11 +101,11 @@ body::before {
 }
 
 .produtos-esquerda {
-  left: calc(50% - 400px);
+  left: -180px;
 }
 
 .produtos-direita {
-  right: calc(50% - 400px);
+  right: -180px;
 }
 
 .produtos-esquerda img,
@@ -108,73 +120,68 @@ body::before {
 
 <body>
 
-<!-- ========================= -->
-<!-- 🔵 BASE (SEU CÓDIGO INTACTO) -->
-<!-- ========================= -->
+<div id="scene">
 
-<div class="produtos-esquerda">
-  <img src="decora.webp">
-  <img src="eletrodomestico.jpg">
-  <img src="eletroeletronico.jpg">
-  <img src="jardinagem.jpg">
-</div>
-
-<div class="produtos-direita">
-  <img src="ferramentas.webp">
-  <img src="suplemento.jpg">
-  <img src="roupa-acessorio.jpg">
-</div>
-
-<div class="container">
-
-  <div class="logos">
-    <a href="https://meli.la/2qu3xa4" target="_blank">
-      <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-    </a>
-
-    <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
-      <img src="logomarca-magalu.png" alt="Magalu">
-    </a>
-
-    <a href="SEU-LINK-AMAZON" target="_blank">
-      <img src="logomarca-amazon.jpg" alt="Amazon">
-    </a>
+  <!-- PRODUTOS ESQUERDA -->
+  <div class="produtos-esquerda">
+    <img src="decora.webp">
+    <img src="eletrodomestico.jpg">
+    <img src="eletroeletronico.jpg">
+    <img src="jardinagem.jpg">
   </div>
 
-  <div class="logos">
-    <a href="SEU-LINK-JEQUITI" target="_blank">
-      <img src="logomarca-jequiti.png" alt="Jequiti">
-    </a>
+  <!-- PRODUTOS DIREITA -->
+  <div class="produtos-direita">
+    <img src="ferramentas.webp">
+    <img src="suplemento.jpg">
+    <img src="roupa-acessorio.jpg">
+  </div>
 
-    <a href="SEU-LINK-SHOPEE" target="_blank">
-      <img src="logomarca-Shopee.jpg" alt="Shopee">
-    </a>
+  <div class="container">
 
-    <a href="SEU-LINK-SHEIN" target="_blank">
-      <img src="logomarca-shein.png" alt="SHEIN">
-    </a>
+    <div class="logos">
+      <a href="https://meli.la/2qu3xa4" target="_blank">
+        <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+      </a>
+
+      <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
+        <img src="logomarca-magalu.png" alt="Magalu">
+      </a>
+
+      <a href="SEU-LINK-AMAZON" target="_blank">
+        <img src="logomarca-amazon.jpg" alt="Amazon">
+      </a>
+    </div>
+
+    <div class="logos">
+      <a href="SEU-LINK-JEQUITI" target="_blank">
+        <img src="logomarca-jequiti.png" alt="Jequiti">
+      </a>
+
+      <a href="SEU-LINK-SHOPEE" target="_blank">
+        <img src="logomarca-Shopee.jpg" alt="Shopee">
+      </a>
+
+      <a href="SEU-LINK-SHEIN" target="_blank">
+        <img src="logomarca-shein.png" alt="SHEIN">
+      </a>
+    </div>
+
   </div>
 
 </div>
 
-<!-- ========================= -->
-<!-- 📱 MOBILE (SÓ CAMADA DE ESCALA) -->
-<!-- ========================= -->
-
+<!-- 📱 CAMADA MOBILE (ESCALA GLOBAL DA CENA) -->
 <script>
 function aplicarEscala() {
-  const body = document.body;
-
-  const baseW = 1160;
-  const baseH = 720;
+  const scene = document.getElementById("scene");
 
   const scale = Math.min(
-    window.innerWidth / baseW,
-    window.innerHeight / baseH
+    window.innerWidth / 1160,
+    window.innerHeight / 720
   );
 
-  body.style.transformOrigin = "top center";
-  body.style.transform = `scale(${scale})`;
+  scene.style.transform = `scale(${scale})`;
 }
 
 window.addEventListener("resize", aplicarEscala);
