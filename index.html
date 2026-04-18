@@ -1,121 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B.D.V. Shopping Virtual</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.D.V. Shopping Virtual</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #050608;
-      overflow: hidden;
-    }
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #050608;
+    overflow: hidden;
+    height: 100%;
+  }
 
-    /* 🔥 CAMADA DE CÂMERA (ESCALA TUDO JUNTO) */
-    #stage {
-      width: 1160px;
-      height: 100vh;
-      position: relative;
-      transform-origin: top center;
-      margin: 0 auto;
-    }
+  /* 🔥 CENA FIXA (CAMPO DE VISÃO ÚNICO) */
+  #scene {
+    width: 1160px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: top center;
+  }
 
-    /* FUNDO (MANTIDO COMO VOCÊ TINHA) */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      height: 100%;
-      background: url('fachada.png') no-repeat center top;
-      background-size: contain;
-      pointer-events: none;
-      z-index: -1;
-    }
+  /* FUNDO FACHADA (FIXO E SEM SUMIR) */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background: url('fachada.png') no-repeat center top;
+    background-size: contain;
+    pointer-events: none;
+    z-index: -1;
+  }
 
-    .container {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-    }
+  .container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
 
-    .logos {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 0 0 220px;
-      height: 100%;
-      background: url('tijolo-fundo.png') no-repeat center;
-      background-size: cover;
-      padding: 20px;
-    }
+  .logos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 220px;
+    height: 100%;
+    background: url('tijolo-fundo.png') no-repeat center;
+    background-size: cover;
+    padding: 20px;
+  }
 
-    .logos a {
-      display: block;
-      text-align: center;
-    }
+  .logos a {
+    display: block;
+    text-align: center;
+  }
 
-    .logos img {
-      height: 90px;
-      transition: 0.2s;
-    }
+  .logos img {
+    height: 90px;
+  }
 
-    .logos img[alt="Mercado Livre"] { height: 160px; }
+  .logos img[alt="Mercado Livre"] { height: 160px; }
+  .logos img[alt="Jequiti"],
+  .logos img[alt="Shopee"],
+  .logos img[alt="SHEIN"] { height: 110px; }
 
-    .logos img[alt="Jequiti"],
-    .logos img[alt="Shopee"],
-    .logos img[alt="SHEIN"] {
-      height: 110px;
-    }
+  .produtos-esquerda,
+  .produtos-direita {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    pointer-events: none;
+  }
 
-    .logos a:hover img {
-      transform: scale(1.05);
-    }
+  .produtos-esquerda { left: calc(50% - 400px); }
+  .produtos-direita { right: calc(50% - 400px); }
 
-    /* PRODUTOS (MESMA LÓGICA VISUAL, SEM REPOSICIONAR) */
-    .produtos-esquerda,
-    .produtos-direita {
-      position: fixed;
-      top: 0;
-      height: 100%;
-      width: 180px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      pointer-events: none;
-    }
+  .produtos-esquerda img,
+  .produtos-direita img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+  }
 
-    .produtos-esquerda {
-      left: calc(50% - 400px);
-    }
-
-    .produtos-direita {
-      right: calc(50% - 400px);
-    }
-
-    .produtos-esquerda img,
-    .produtos-direita img {
-      width: 100%;
-      max-height: 120px;
-      object-fit: contain;
-      opacity: 0.95;
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-<div id="stage">
+<div id="scene">
 
-  <!-- PRODUTOS ESQUERDA -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -123,7 +109,6 @@
     <img src="jardinagem.jpg">
   </div>
 
-  <!-- PRODUTOS DIREITA -->
   <div class="produtos-direita">
     <img src="ferramentas.webp">
     <img src="suplemento.jpg">
@@ -136,11 +121,9 @@
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
       </a>
-
       <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
         <img src="logomarca-magalu.png" alt="Magalu">
       </a>
-
       <a href="SEU-LINK-AMAZON" target="_blank">
         <img src="logomarca-amazon.jpg" alt="Amazon">
       </a>
@@ -150,11 +133,9 @@
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
       </a>
-
       <a href="SEU-LINK-SHOPEE" target="_blank">
         <img src="logomarca-Shopee.jpg" alt="Shopee">
       </a>
-
       <a href="SEU-LINK-SHEIN" target="_blank">
         <img src="logomarca-shein.png" alt="SHEIN">
       </a>
@@ -165,23 +146,22 @@
 </div>
 
 <script>
-  function scaleStage() {
-    const stage = document.getElementById("stage");
+function fitScene() {
+  const scene = document.getElementById("scene");
 
-    const baseW = 1160;
-    const baseH = window.innerHeight;
+  const baseW = 1160;
+  const baseH = 720;
 
-    const scaleX = window.innerWidth / baseW;
-    const scaleY = window.innerHeight / baseH;
+  const scale = Math.min(
+    window.innerWidth / baseW,
+    window.innerHeight / baseH
+  );
 
-    // 🔥 CAMPO DE VISÃO IDÊNTICO (SEM DISTORÇÃO)
-    const scale = Math.min(scaleX, scaleY);
+  scene.style.transform = `translateX(-50%) scale(${scale})`;
+}
 
-    stage.style.transform = `scale(${scale})`;
-  }
-
-  window.addEventListener("resize", scaleStage);
-  window.addEventListener("load", scaleStage);
+window.addEventListener("resize", fitScene);
+window.addEventListener("load", fitScene);
 </script>
 
 </body>
