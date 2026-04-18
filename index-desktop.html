@@ -14,7 +14,7 @@
     height: 100%;
   }
 
-  /* 🔥 CENA BASE FIXA (REFERÊNCIA PC) */
+  /* 🔥 CENA BASE FIXA */
   #scene {
     width: 1160px;
     height: 720px;
@@ -24,7 +24,7 @@
     transform-origin: top center;
   }
 
-  /* FUNDO FACHADA */
+  /* 🔥 FUNDO CORRIGIDO (ALINHAMENTO MELHOR) */
   body::before {
     content: "";
     position: fixed;
@@ -157,8 +157,10 @@ function scaleScene() {
   scene.style.transform = `translateX(-50%) scale(${scale})`;
 }
 
+/* 🔥 GARANTE QUE SEMPRE APLICA */
 window.addEventListener("resize", scaleScene);
 window.addEventListener("load", scaleScene);
+window.addEventListener("orientationchange", scaleScene);
 </script>
 
 </body>
