@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>B.D.V. Shopping Virtual</title>
+
   <style>
     body {
       margin: 0;
@@ -13,6 +14,7 @@
       overflow: hidden;
     }
 
+    /* FACHADA CENTRAL */
     body::before {
       content: "";
       position: fixed;
@@ -36,6 +38,7 @@
       padding: 0;
     }
 
+    /* TIJOLO + LOGOS */
     .logos {
       display: flex;
       flex-direction: column;
@@ -59,6 +62,7 @@
       transition: 0.2s;
     }
 
+    /* destaque Mercado Livre */
     .logos img[alt="Mercado Livre"] {
       height: 160px;
     }
@@ -104,46 +108,60 @@
       opacity: 0.95;
     }
 
-    /* 🔥 AJUSTE MOBILE (SEM QUEBRAR NADA) */
+    /* 🔥 MOBILE AJUSTADO (SEM REMOVER NADA) */
     @media (max-width: 768px) {
 
       body {
         overflow: hidden;
       }
 
-      .produtos-esquerda,
-      .produtos-direita {
-        display: none;
+      body::before {
+        background-size: contain;
+        background-position: center top;
       }
 
       .container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         height: 100vh;
+        padding: 0 5px;
       }
 
       .logos {
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%;
-        height: auto;
-        padding: 10px;
+        flex: 0 0 90px;
+        padding: 10px 5px;
+        background-size: cover;
       }
 
       .logos img {
-        height: 60px;
+        height: 45px;
       }
 
-      body::before {
-        background-size: cover;
-        background-position: center;
+      .logos img[alt="Mercado Livre"] {
+        height: 70px;
+      }
+
+      .produtos-esquerda,
+      .produtos-direita {
+        width: 70px;
+      }
+
+      .produtos-esquerda {
+        left: calc(50% - 160px);
+      }
+
+      .produtos-direita {
+        right: calc(50% - 160px);
+      }
+
+      .produtos-esquerda img,
+      .produtos-direita img {
+        max-height: 60px;
       }
 
     }
 
   </style>
 </head>
+
 <body>
 
   <!-- PRODUTOS ESQUERDA -->
@@ -163,6 +181,7 @@
 
   <div class="container">
 
+    <!-- ESQUERDA -->
     <div class="logos">
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
@@ -177,6 +196,7 @@
       </a>
     </div>
 
+    <!-- DIREITA -->
     <div class="logos">
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
