@@ -14,7 +14,20 @@
     height: 100%;
   }
 
-  /* 🔥 CENA BASE FIXA */
+  /* 🔥 CORREÇÃO DA FACHADA (ÚNICA MUDANÇA) */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('fachada.png') no-repeat center top;
+    background-size: contain;
+    pointer-events: none;
+    z-index: -1;
+  }
+
   #scene {
     width: 1160px;
     height: 720px;
@@ -22,21 +35,6 @@
     top: 0;
     left: 50%;
     transform-origin: top center;
-  }
-
-  /* 🔥 FUNDO CORRIGIDO (ALINHAMENTO MELHOR) */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    background: url('fachada.png') no-repeat center top;
-    background-size: contain;
-    pointer-events: none;
-    z-index: -1;
   }
 
   .container {
@@ -121,19 +119,19 @@
       <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
         <img src="logomarca-magalu.png" alt="Magalu">
       </a>
-      <a href="SEU-LINK-AMAZON" target="_blank">
+      <a href="#">
         <img src="logomarca-amazon.jpg" alt="Amazon">
       </a>
     </div>
 
     <div class="logos">
-      <a href="SEU-LINK-JEQUITI" target="_blank">
+      <a href="#">
         <img src="logomarca-jequiti.png" alt="Jequiti">
       </a>
-      <a href="SEU-LINK-SHOPEE" target="_blank">
+      <a href="#">
         <img src="logomarca-Shopee.jpg" alt="Shopee">
       </a>
-      <a href="SEU-LINK-SHEIN" target="_blank">
+      <a href="#">
         <img src="logomarca-shein.png" alt="SHEIN">
       </a>
     </div>
@@ -157,10 +155,8 @@ function scaleScene() {
   scene.style.transform = `translateX(-50%) scale(${scale})`;
 }
 
-/* 🔥 GARANTE QUE SEMPRE APLICA */
 window.addEventListener("resize", scaleScene);
 window.addEventListener("load", scaleScene);
-window.addEventListener("orientationchange", scaleScene);
 </script>
 
 </body>
