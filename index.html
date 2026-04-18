@@ -38,7 +38,7 @@
       padding: 0;
     }
 
-    /* TIJOLO + LOGOS (DESKTOP MANTIDO) */
+    /* TIJOLO + LOGOS (DESKTOP PRESERVADO) */
     .logos {
       display: flex;
       flex-direction: column;
@@ -46,7 +46,7 @@
       flex: 0 0 220px;
       height: 100%;
       background: url('tijolo-fundo.png') no-repeat center;
-      background-size: cover; /* NÃO ALTERADO (desktop) */
+      background-size: cover;
       margin: 0;
       padding: 20px;
       z-index: 2;
@@ -107,54 +107,53 @@
       opacity: 0.95;
     }
 
-    /* 🔥 MOBILE - CORREÇÃO REAL */
+    /* 🔥 MOBILE — AJUSTE MAIS FORTE */
     @media (max-width: 768px) {
 
       body {
         overflow: hidden;
       }
 
-      /* mantém fachada inteira */
       body::before {
         background-size: contain;
         background-position: center top;
       }
 
-      /* 🔥 CORREÇÃO DO TIJOLO */
+      /* 🔥 TIJOLO BEM MAIS FINO */
       .logos {
-        flex: 0 0 60px;
-        padding: 10px 2px;
+        flex: 0 0 35px; /* 🔥 ajuste forte aqui */
+        padding: 6px 2px;
 
-        background-size: contain;    /* mantém proporção */
-        background-repeat: repeat-y; /* repete vertical */
+        background-size: contain;
+        background-repeat: repeat-y;
       }
 
-      /* logos proporcionais */
+      /* logos ainda visíveis */
       .logos img {
-        height: 40px;
+        height: 32px;
       }
 
       .logos img[alt="Mercado Livre"] {
-        height: 55px;
+        height: 45px;
       }
 
-      /* produtos ajustados */
+      /* produtos mais compactos */
       .produtos-esquerda,
       .produtos-direita {
-        width: 50px;
+        width: 35px;
       }
 
       .produtos-esquerda {
-        left: calc(50% - 130px);
+        left: calc(50% - 110px);
       }
 
       .produtos-direita {
-        right: calc(50% - 130px);
+        right: calc(50% - 110px);
       }
 
       .produtos-esquerda img,
       .produtos-direita img {
-        max-height: 45px;
+        max-height: 35px;
       }
 
     }
