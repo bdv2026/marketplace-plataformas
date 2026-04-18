@@ -14,18 +14,21 @@ html, body {
   height: 100%;
 }
 
-/* 🔥 FUNDO REAL (SEM BUG) */
-#bg {
+/* 🔥 FUNDO CORRIGIDO (FACHADA GARANTIDA) */
+body::before {
+  content: "";
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  width: auto;
-  z-index: -1;
+  background: url("fachada.png") no-repeat center top;
+  background-size: cover;
+  z-index: -2;
+  pointer-events: none;
 }
 
-/* SEU LAYOUT (INTACTO) */
+/* 🔥 CENÁRIO PRINCIPAL */
 #scene {
   width: 1160px;
   height: 720px;
@@ -33,6 +36,7 @@ html, body {
   top: 0;
   left: 50%;
   transform-origin: top center;
+  z-index: 1;
 }
 
 .container {
@@ -42,12 +46,13 @@ html, body {
   justify-content: space-between;
 }
 
+/* 🔥 LOGOS */
 .logos {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 0 0 220px;
-  background: url('tijolo-fundo.png') no-repeat center;
+  background: url("tijolo-fundo.png") no-repeat center;
   background-size: cover;
   padding: 20px;
 }
@@ -61,6 +66,7 @@ html, body {
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { height: 110px; }
 
+/* 🔥 PRODUTOS LATERAIS */
 .produtos-esquerda,
 .produtos-direita {
   position: fixed;
@@ -72,6 +78,7 @@ html, body {
   justify-content: space-around;
   align-items: center;
   pointer-events: none;
+  z-index: 1;
 }
 
 .produtos-esquerda { left: calc(50% - 400px); }
@@ -83,13 +90,12 @@ html, body {
   max-height: 120px;
   object-fit: contain;
 }
+
+/* 🔥 ESCALA RESPONSIVA */
 </style>
 </head>
 
 <body>
-
-<!-- 🔥 FUNDO DIRETO -->
-<img src="fachada.png" id="bg">
 
 <div id="scene">
 
