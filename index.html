@@ -6,16 +6,18 @@
 <title>B.D.V. Shopping Virtual</title>
 
 <style>
+
+/* 🔥 TELA FIXA (MANTIDO) */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* 🔥 tela fixa REAL */
+  overflow: hidden;
   font-family: Arial, sans-serif;
   background: #050608;
 }
 
-/* FACHADA */
+/* 🔥 FACHADA (CORRIGIDA PARA VOLTAR) */
 body::before {
   content: "";
   position: fixed;
@@ -26,7 +28,7 @@ body::before {
   height: 100%;
   background: url('fachada.png') no-repeat center top;
   background-size: contain;
-  z-index: -1;
+  z-index: 0; /* 🔥 corrigido */
 }
 
 /* CONTAINER */
@@ -35,112 +37,71 @@ body::before {
   height: 100vh;
   display: flex;
   justify-content: space-between;
+  z-index: 2;
 }
 
-/* DESKTOP (INALTERADO) */
+/* 🔥 LATERAIS */
 .logos {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 220px;
+
+  width: 110px;
   height: 100%;
-  background: url('tijolo-fundo.png') no-repeat center;
-  background-size: cover;
-  padding: 20px;
+
+  background: url('tijolo-fundo.png') repeat-y center;
+  background-size: contain;
+
+  padding: 10px 5px;
+  box-sizing: border-box;
 }
 
 /* LINKS */
 .logos a {
+  display: block;
   text-align: center;
 }
 
-/* TAMANHOS DESKTOP */
+/* 🔥 LOGOS PADRONIZADOS */
 .logos img {
-  height: 90px;
+  height: 60px;
 }
 
-.logos img[alt="Mercado Livre"] {
-  height: 160px;
+/* 🔥 AJUSTE DO MERCADO LIVRE (ENCOSTADO À ESQUERDA) */
+.logos:first-child a:first-child img {
+  margin-left: -5px;
 }
 
-.logos img[alt="Jequiti"],
-.logos img[alt="Shopee"],
-.logos img[alt="SHEIN"] {
-  height: 110px;
-}
-
-/* PRODUTOS */
+/* 🔥 PRODUTOS (VOLTARAM) */
 .produtos-esquerda,
 .produtos-direita {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 180px;
+  width: 110px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
   pointer-events: none;
+  z-index: 1;
 }
 
 .produtos-esquerda {
-  left: calc(50% - 400px);
+  left: calc(50% - 260px);
 }
 
 .produtos-direita {
-  right: calc(50% - 400px);
+  right: calc(50% - 260px);
 }
 
-/* 🔥 MOBILE CORRETO */
-@media (max-width: 768px) {
-
-  /* 🔥 FUNDO DE TIJOLO CORRETO */
-  .logos {
-    position: fixed;
-    top: 0;
-    height: 100%;
-
-    width: 110px; /* 🔥 igual ao tamanho da Jequiti */
-    padding: 10px 5px;
-
-    background: url('tijolo-fundo.png') repeat-y center;
-    background-size: contain;
-  }
-
-  /* ESQUERDA */
-  .logos:first-child {
-    left: 0;
-  }
-
-  /* DIREITA */
-  .logos:last-child {
-    right: 0;
-  }
-
-  /* 🔥 LOGOS TODOS IGUAIS (tamanho da Shopee) */
-  .logos img {
-    height: 60px;
-  }
-
-  /* 🔥 PRODUTOS MESMO TAMANHO DA JEQUITI */
-  .produtos-esquerda,
-  .produtos-direita {
-    width: 110px;
-  }
-
-  .produtos-esquerda {
-    left: calc(50% - 220px);
-  }
-
-  .produtos-direita {
-    right: calc(50% - 220px);
-  }
-
-  .produtos-esquerda img,
-  .produtos-direita img {
-    max-height: 60px;
-  }
-
+/* 🔥 TAMANHO DOS PRODUTOS */
+.produtos-esquerda img,
+.produtos-direita img {
+  max-height: 60px;
+  object-fit: contain;
 }
 
 </style>
