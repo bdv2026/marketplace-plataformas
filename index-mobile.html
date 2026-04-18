@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>B.D.V. Mobile</title>
 
 <style>
@@ -14,17 +14,16 @@
     font-family: Arial, sans-serif;
   }
 
-  /* 🔥 FUNDO CORRIGIDO (NÃO CORTA MAIS) */
+  /* 🔥 ajuste leve para não cortar */
   body::before {
     content: "";
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background: url('fachada.png') no-repeat center top;
-    background-size: contain; /* 🔥 ESSA É A CORREÇÃO */
+    background-size: contain;
     z-index: -1;
     opacity: 0.9;
   }
@@ -35,10 +34,8 @@
     align-items: center;
     gap: 12px;
     padding: 10px;
-    min-height: 100vh;
   }
 
-  /* 🔥 FUNDO DE TIJOLO PRESERVADO */
   .logos {
     display: flex;
     flex-wrap: wrap;
@@ -50,7 +47,7 @@
   }
 
   .logos img {
-    height: 55px;
+    height: 60px;
   }
 
   .produtos {
