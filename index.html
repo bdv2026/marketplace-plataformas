@@ -18,16 +18,13 @@ html, body {
 #scene {
   width: 1160px;
   height: 100vh;
-
   position: absolute;
   top: 0;
   left: 50%;
-
   transform-origin: top center;
-  transform: translateX(-50%) scale(1);
 }
 
-/* FUNDO (NÃO MEXIDO) */
+/* FUNDO PRESERVADO */
 body::before {
   content: "";
   position: fixed;
@@ -75,11 +72,11 @@ body::before {
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { height: 110px; }
 
-/* 🔥 AJUSTE SÓ NA COLUNA DIREITA (SHEIN / AMAZON / SHOPEE PARTE FINAL) */
+/* 🔥 SUBIR LOGOS DA DIREITA (SHEIN / AMAZON / SHOPEE) */
 .logos:last-child {
   justify-content: flex-start;
-  gap: 40px;
-  padding-top: 60px;
+  padding-top: 40px; /* antes estava mais baixo */
+  gap: 35px;
 }
 
 .produtos-esquerda,
@@ -104,7 +101,6 @@ body::before {
   max-height: 120px;
   object-fit: contain;
 }
-
 </style>
 </head>
 
@@ -167,7 +163,8 @@ function fitScene() {
     window.innerHeight / baseH
   );
 
-  scene.style.transform = `translate(-50%, 0) scale(${scale})`;
+  /* 🔥 CENTRALIZAÇÃO CORRETA */
+  scene.style.transform = `translateX(-50%) scale(${scale})`;
 }
 
 window.addEventListener("resize", fitScene);
