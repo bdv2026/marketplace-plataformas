@@ -13,9 +13,6 @@
       overflow: hidden;
     }
 
-    /* REMOVIDO METAL */
-
-    /* FACHADA CENTRAL */
     body::before {
       content: "";
       position: fixed;
@@ -76,8 +73,7 @@
       transform: scale(1.05);
     }
 
-    /* 🔥 NOVO: COLUNAS DE PRODUTOS (ESPAÇO METÁLICO) */
-
+    /* PRODUTOS LATERAIS */
     .produtos-esquerda,
     .produtos-direita {
       position: fixed;
@@ -92,7 +88,6 @@
       pointer-events: none;
     }
 
-    /* posição entre fachada e tijolo */
     .produtos-esquerda {
       left: calc(50% - 400px);
     }
@@ -109,11 +104,49 @@
       opacity: 0.95;
     }
 
+    /* 🔥 AJUSTE MOBILE (SEM QUEBRAR NADA) */
+    @media (max-width: 768px) {
+
+      body {
+        overflow: hidden;
+      }
+
+      .produtos-esquerda,
+      .produtos-direita {
+        display: none;
+      }
+
+      .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .logos {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+      }
+
+      .logos img {
+        height: 60px;
+      }
+
+      body::before {
+        background-size: cover;
+        background-position: center;
+      }
+
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- 🔥 PRODUTOS LADO ESQUERDO -->
+  <!-- PRODUTOS ESQUERDA -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -121,7 +154,7 @@
     <img src="jardinagem.jpg">
   </div>
 
-  <!-- 🔥 PRODUTOS LADO DIREITO -->
+  <!-- PRODUTOS DIREITA -->
   <div class="produtos-direita">
     <img src="ferramentas.webp">
     <img src="suplemento.jpg">
@@ -130,7 +163,6 @@
 
   <div class="container">
 
-    <!-- ESQUERDA -->
     <div class="logos">
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
@@ -145,7 +177,6 @@
       </a>
     </div>
 
-    <!-- DIREITA -->
     <div class="logos">
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
