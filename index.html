@@ -14,7 +14,7 @@
       overflow: hidden;
     }
 
-    /* FACHADA CENTRAL */
+    /* FACHADA */
     body::before {
       content: "";
       position: fixed;
@@ -25,7 +25,6 @@
       height: 100%;
       background: url('fachada.png') no-repeat center top;
       background-size: contain;
-      pointer-events: none;
       z-index: -1;
     }
 
@@ -35,31 +34,27 @@
       display: flex;
       justify-content: space-between;
       align-items: stretch;
-      padding: 0;
     }
 
-    /* TIJOLO + LOGOS (DESKTOP NORMAL) */
+    /* LATERAIS PADRÃO (DESKTOP) */
     .logos {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: 0 0 220px;
+      width: 220px;
       height: 100%;
       background: url('tijolo-fundo.png') no-repeat center;
       background-size: cover;
-      margin: 0;
       padding: 20px;
-      z-index: 2;
+      box-sizing: border-box;
     }
 
     .logos a {
-      display: block;
       text-align: center;
     }
 
     .logos img {
       height: 90px;
-      transition: 0.2s;
     }
 
     .logos img[alt="Mercado Livre"] {
@@ -72,10 +67,6 @@
       height: 110px;
     }
 
-    .logos a:hover img {
-      transform: scale(1.05);
-    }
-
     /* PRODUTOS */
     .produtos-esquerda,
     .produtos-direita {
@@ -83,7 +74,6 @@
       top: 0;
       height: 100%;
       width: 180px;
-      z-index: 0;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -104,58 +94,53 @@
       width: 100%;
       max-height: 120px;
       object-fit: contain;
-      opacity: 0.95;
     }
 
-    /* 🔥 MOBILE DEFINITIVO */
+    /* 🔥 MOBILE FINAL */
     @media (max-width: 768px) {
 
       body {
         overflow: hidden;
       }
 
-      body::before {
-        background-size: contain;
-        background-position: center top;
-      }
-
-      /* 🔥 TIJOLO MINIMALISTA (CORREÇÃO FINAL) */
+      /* LATERAIS IGUAIS (CORREÇÃO) */
       .logos {
-        flex: 0 0 18px;     /* largura mínima */
-        height: 60%;        /* não ocupa mais a tela toda */
-        margin: auto 0;     /* centraliza verticalmente */
+        width: 18px;              /* força igualdade */
+        flex: none;               /* remove comportamento flex variável */
+        height: 60%;
+        margin: auto 0;
         padding: 4px 1px;
 
         background-size: contain;
         background-repeat: repeat-y;
       }
 
-      /* logos bem compactos */
+      /* LOGOS IGUAIS NOS DOIS LADOS */
       .logos img {
-        height: 26px;
+        height: 28px;
       }
 
       .logos img[alt="Mercado Livre"] {
-        height: 35px;
+        height: 38px;
       }
 
-      /* produtos discretos */
+      /* PRODUTOS MAIORES (DOBRADO) */
       .produtos-esquerda,
       .produtos-direita {
-        width: 25px;
+        width: 50px; /* antes ~25 */
       }
 
       .produtos-esquerda {
-        left: calc(50% - 95px);
+        left: calc(50% - 100px);
       }
 
       .produtos-direita {
-        right: calc(50% - 95px);
+        right: calc(50% - 100px);
       }
 
       .produtos-esquerda img,
       .produtos-direita img {
-        max-height: 25px;
+        max-height: 50px; /* antes ~25 */
       }
 
     }
@@ -165,6 +150,7 @@
 
 <body>
 
+  <!-- PRODUTOS -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -180,6 +166,7 @@
 
   <div class="container">
 
+    <!-- ESQUERDA -->
     <div class="logos">
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
@@ -194,6 +181,7 @@
       </a>
     </div>
 
+    <!-- DIREITA -->
     <div class="logos">
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
