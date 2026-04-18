@@ -38,7 +38,7 @@
       padding: 0;
     }
 
-    /* TIJOLO + LOGOS (DESKTOP PRESERVADO) */
+    /* TIJOLO + LOGOS (DESKTOP NORMAL) */
     .logos {
       display: flex;
       flex-direction: column;
@@ -76,7 +76,7 @@
       transform: scale(1.05);
     }
 
-    /* PRODUTOS LATERAIS */
+    /* PRODUTOS */
     .produtos-esquerda,
     .produtos-direita {
       position: fixed;
@@ -107,7 +107,7 @@
       opacity: 0.95;
     }
 
-    /* 🔥 MOBILE — AJUSTE MAIS FORTE */
+    /* 🔥 MOBILE DEFINITIVO */
     @media (max-width: 768px) {
 
       body {
@@ -119,41 +119,43 @@
         background-position: center top;
       }
 
-      /* 🔥 TIJOLO BEM MAIS FINO */
+      /* 🔥 TIJOLO MINIMALISTA (CORREÇÃO FINAL) */
       .logos {
-        flex: 0 0 35px; /* 🔥 ajuste forte aqui */
-        padding: 6px 2px;
+        flex: 0 0 18px;     /* largura mínima */
+        height: 60%;        /* não ocupa mais a tela toda */
+        margin: auto 0;     /* centraliza verticalmente */
+        padding: 4px 1px;
 
         background-size: contain;
         background-repeat: repeat-y;
       }
 
-      /* logos ainda visíveis */
+      /* logos bem compactos */
       .logos img {
-        height: 32px;
+        height: 26px;
       }
 
       .logos img[alt="Mercado Livre"] {
-        height: 45px;
+        height: 35px;
       }
 
-      /* produtos mais compactos */
+      /* produtos discretos */
       .produtos-esquerda,
       .produtos-direita {
-        width: 35px;
+        width: 25px;
       }
 
       .produtos-esquerda {
-        left: calc(50% - 110px);
+        left: calc(50% - 95px);
       }
 
       .produtos-direita {
-        right: calc(50% - 110px);
+        right: calc(50% - 95px);
       }
 
       .produtos-esquerda img,
       .produtos-direita img {
-        max-height: 35px;
+        max-height: 25px;
       }
 
     }
@@ -163,7 +165,6 @@
 
 <body>
 
-  <!-- PRODUTOS ESQUERDA -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -171,7 +172,6 @@
     <img src="jardinagem.jpg">
   </div>
 
-  <!-- PRODUTOS DIREITA -->
   <div class="produtos-direita">
     <img src="ferramentas.webp">
     <img src="suplemento.jpg">
@@ -180,7 +180,6 @@
 
   <div class="container">
 
-    <!-- ESQUERDA -->
     <div class="logos">
       <a href="https://meli.la/2qu3xa4" target="_blank">
         <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
@@ -195,7 +194,6 @@
       </a>
     </div>
 
-    <!-- DIREITA -->
     <div class="logos">
       <a href="SEU-LINK-JEQUITI" target="_blank">
         <img src="logomarca-jequiti.png" alt="Jequiti">
