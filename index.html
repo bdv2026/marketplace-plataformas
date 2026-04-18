@@ -13,7 +13,7 @@ body {
   overflow: hidden;
 }
 
-/* FUNDO FACHADA (INTACTO) */
+/* FACHADA (INTACTA) */
 body::before {
   content: "";
   position: fixed;
@@ -28,7 +28,7 @@ body::before {
   z-index: -1;
 }
 
-/* CENA */
+/* CONTAINER */
 #scene {
   width: 1160px;
   height: 100vh;
@@ -36,7 +36,7 @@ body::before {
   position: relative;
 }
 
-/* CONTAINER */
+/* LOGOS */
 .container {
   position: relative;
   height: 100vh;
@@ -45,7 +45,6 @@ body::before {
   align-items: stretch;
 }
 
-/* LOGOS (INALTERADO) */
 .logos {
   display: flex;
   flex-direction: column;
@@ -77,7 +76,7 @@ body::before {
   height: 110px;
 }
 
-/* 🔥 CORREÇÃO REAL DAS LATERAIS (COMO NO ORIGINAL) */
+/* 🔥 PRODUTOS NAS EXTREMIDADES DA TELA (CORRIGIDO) */
 .produtos-esquerda,
 .produtos-direita {
   position: fixed;
@@ -92,11 +91,11 @@ body::before {
 }
 
 .produtos-esquerda {
-  left: calc(50% - 400px);
+  left: 0;
 }
 
 .produtos-direita {
-  right: calc(50% - 400px);
+  right: 0;
 }
 
 .produtos-esquerda img,
@@ -113,7 +112,7 @@ body::before {
 
 <div id="scene">
 
-  <!-- PRODUTOS ESQUERDA (RESTAURADO ORIGINAL) -->
+  <!-- ESQUERDA -->
   <div class="produtos-esquerda">
     <img src="decora.webp">
     <img src="eletrodomestico.jpg">
@@ -121,7 +120,7 @@ body::before {
     <img src="jardinagem.jpg">
   </div>
 
-  <!-- PRODUTOS DIREITA (RESTAURADO ORIGINAL) -->
+  <!-- DIREITA -->
   <div class="produtos-direita">
     <img src="ferramentas.webp">
     <img src="suplemento.jpg">
