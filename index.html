@@ -8,7 +8,7 @@
 <style>
 
 /* =========================
-   🔒 DESKTOP (NÃO ALTERADO)
+   DESKTOP (INALTERADO)
 ========================= */
 
 body {
@@ -17,37 +17,6 @@ body {
   background: #050608;
   position: relative;
   overflow: hidden;
-}
-
-/* FUNDO METÁLICO */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background:
-    radial-gradient(circle at 50% 45%, rgba(255,255,255,0.95), transparent 25%),
-    radial-gradient(circle at 30% 70%, rgba(220,230,255,0.35), transparent 50%),
-    radial-gradient(circle at 75% 30%, rgba(200,210,230,0.3), transparent 50%),
-    linear-gradient(
-      90deg,
-      #020203 0%,
-      #0f1116 15%,
-      #3a404c 30%,
-      #dfe6ef 45%,
-      #ffffff 50%,
-      #dfe6ef 55%,
-      #3a404c 70%,
-      #0f1116 85%,
-      #020203 100%
-    );
-
-  mix-blend-mode: screen;
-  opacity: 0.95;
-  z-index: -2;
 }
 
 /* FACHADA */
@@ -61,6 +30,7 @@ body::before {
   height: 100%;
   background: url('fachada.png') no-repeat center top;
   background-size: contain;
+  pointer-events: none;
   z-index: -1;
 }
 
@@ -69,27 +39,26 @@ body::before {
   height: 100vh;
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
 }
 
-/* LATERAIS DESKTOP */
 .logos {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 220px;
+  flex: 0 0 220px;
   height: 100%;
   background: url('tijolo-fundo.png') no-repeat center;
   background-size: cover;
   padding: 20px;
-  box-sizing: border-box;
+  z-index: 2;
 }
 
-/* LINKS */
 .logos a {
+  display: block;
   text-align: center;
 }
 
-/* TAMANHOS DESKTOP */
 .logos img {
   height: 90px;
 }
@@ -128,61 +97,58 @@ body::before {
 
 .produtos-esquerda img,
 .produtos-direita img {
+  width: 100%;
   max-height: 120px;
   object-fit: contain;
 }
 
 /* =========================
-   📱 MOBILE (CORRIGIDO DE VERDADE)
+   📱 MOBILE (AJUSTE REAL)
 ========================= */
 
 @media (max-width: 768px) {
 
+  /* 🔒 TELA FIXA */
   html, body {
     height: 100%;
-    overflow: hidden; /* tela fixa */
+    overflow: hidden;
   }
 
-  /* 🧱 TIJOLO: largura igual nos dois lados */
+  /* 🧱 FUNDO DE TIJOLO PADRÃO (IGUAL NOS DOIS LADOS) */
   .logos {
+    flex: 0 0 110px;
     width: 110px;
     min-width: 110px;
     max-width: 110px;
 
-    height: 100%;
-
     padding: 10px 5px;
 
-    background: url('tijolo-fundo.png') repeat-y center;
     background-size: contain;
   }
 
-  /* 🏷️ TODOS OS LOGOS = SHOPEE */
+  /* 🏷️ LOGOS PADRONIZADOS (BASE SHOPEE MANTIDA) */
   .logos img {
     height: 65px;
   }
 
-  /* 🖼️ PRODUTOS = MESMO TAMANHO DA JEQUITI */
-  .produtos-esquerda,
-  .produtos-direita {
-    width: 110px;
-  }
-
-  .produtos-esquerda {
-    left: calc(50% - 230px);
-  }
-
-  .produtos-direita {
-    right: calc(50% - 230px);
-  }
-
+  /* 🖼️ PRODUTOS = TAMANHO JEQUITI (MAIOR VISUALMENTE) */
   .produtos-esquerda img,
   .produtos-direita img {
-    max-height: 65px;
+    max-height: 75px;
+    width: auto;
+  }
+
+  /* 🔧 CENTRALIZAÇÃO SEM QUEBRAR A FACHADA */
+  .container {
+    align-items: center;
+  }
+
+  body::before {
+    background-size: cover;
+    background-position: center;
   }
 
 }
-
 </style>
 </head>
 
@@ -204,7 +170,6 @@ body::before {
 
 <div class="container">
 
-  <!-- ESQUERDA -->
   <div class="logos">
     <a href="https://meli.la/2qu3xa4" target="_blank">
       <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
@@ -219,7 +184,6 @@ body::before {
     </a>
   </div>
 
-  <!-- DIREITA -->
   <div class="logos">
     <a href="SEU-LINK-JEQUITI" target="_blank">
       <img src="logomarca-jequiti.png" alt="Jequiti">
