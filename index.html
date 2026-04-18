@@ -36,7 +36,7 @@
       align-items: stretch;
     }
 
-    /* LATERAIS PADRÃO (DESKTOP) */
+    /* DESKTOP (INALTERADO) */
     .logos {
       display: flex;
       flex-direction: column;
@@ -96,17 +96,20 @@
       object-fit: contain;
     }
 
-    /* 🔥 MOBILE FINAL */
+    /* 🔥 MOBILE FINAL CORRIGIDO */
     @media (max-width: 768px) {
 
       body {
         overflow: hidden;
       }
 
-      /* LATERAIS IGUAIS (CORREÇÃO) */
+      /* 🔥 TRAVA TOTAL DAS LATERAIS */
       .logos {
-        width: 18px;              /* força igualdade */
-        flex: none;               /* remove comportamento flex variável */
+        flex: none;
+        width: 22px;
+        min-width: 22px;
+        max-width: 22px;
+
         height: 60%;
         margin: auto 0;
         padding: 4px 1px;
@@ -115,32 +118,32 @@
         background-repeat: repeat-y;
       }
 
-      /* LOGOS IGUAIS NOS DOIS LADOS */
+      /* 🔥 LOGOS PADRONIZADOS E MAIORES */
       .logos img {
-        height: 28px;
+        height: 42px;
       }
 
       .logos img[alt="Mercado Livre"] {
-        height: 38px;
+        height: 50px;
       }
 
-      /* PRODUTOS MAIORES (DOBRADO) */
+      /* 🔥 PRODUTOS MESMO TAMANHO DOS LOGOS */
       .produtos-esquerda,
       .produtos-direita {
-        width: 50px; /* antes ~25 */
+        width: 60px;
       }
 
       .produtos-esquerda {
-        left: calc(50% - 100px);
+        left: calc(50% - 110px);
       }
 
       .produtos-direita {
-        right: calc(50% - 100px);
+        right: calc(50% - 110px);
       }
 
       .produtos-esquerda img,
       .produtos-direita img {
-        max-height: 50px; /* antes ~25 */
+        max-height: 42px;
       }
 
     }
