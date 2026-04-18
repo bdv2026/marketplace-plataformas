@@ -13,7 +13,7 @@ body {
   overflow: hidden;
 }
 
-/* 🔥 FACHADA CENTRAL (MANTIDA EXATAMENTE COMO VOCÊ FEZ) */
+/* 🔥 FUNDO (INALTERADO) */
 body::before {
   content: "";
   position: fixed;
@@ -28,16 +28,19 @@ body::before {
   z-index: -1;
 }
 
-/* 🔥 CAMADA DE CÂMERA (CORREÇÃO REAL) */
+/* 🔥 CÂMERA FIXA (CORREÇÃO REAL) */
 #viewport {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
-/* 🔥 SUA CENA INTACTA */
+/* 🔥 SUA CENA ORIGINAL */
 #scene {
   width: 1160px;
   height: 100vh;
@@ -55,7 +58,6 @@ body::before {
   padding: 0;
 }
 
-/* LOGOS (NÃO ALTERADO VISUALMENTE) */
 .logos {
   display: flex;
   flex-direction: column;
@@ -93,7 +95,7 @@ body::before {
   transform: scale(1.05);
 }
 
-/* PRODUTOS (MANTIDOS EXATAMENTE COMO ESTAVAM) */
+/* PRODUTOS (INALTERADO) */
 .produtos-esquerda,
 .produtos-direita {
   position: fixed;
@@ -123,12 +125,50 @@ body::before {
   object-fit: contain;
   opacity: 0.95;
 }
+
+/* 🔥 MOBILE ORIGINAL MANTIDO (NÃO MEXIDO) */
+@media (max-width: 768px) {
+
+  body {
+    overflow: hidden;
+  }
+
+  .produtos-esquerda,
+  .produtos-direita {
+    display: none;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .logos {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .logos img {
+    height: 60px;
+  }
+
+  body::before {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 CÂMERA -->
+<!-- 🔥 CAMERA WRAPPER -->
 <div id="viewport">
   <div id="scene">
 
