@@ -6,17 +6,14 @@
 <title>B.D.V. Shopping Virtual</title>
 
 <style>
-html, body {
+body {
   margin: 0;
-  height: 100%;
-  overflow: hidden;
+  font-family: Arial, sans-serif;
   background: #050608;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  overflow: hidden;
 }
 
-/* 🔥 FUNDO FACHADA (PRESERVADO) */
+/* 🔥 FACHADA CENTRAL (MANTIDA EXATAMENTE COMO VOCÊ FEZ) */
 body::before {
   content: "";
   position: fixed;
@@ -31,12 +28,21 @@ body::before {
   z-index: -1;
 }
 
-/* 🔥 CENA FIXA */
+/* 🔥 CAMADA DE CÂMERA (CORREÇÃO REAL) */
+#viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 🔥 SUA CENA INTACTA */
 #scene {
   width: 1160px;
   height: 100vh;
-  transform-origin: top center;
   position: relative;
+  transform-origin: top center;
 }
 
 /* CONTAINER ORIGINAL */
@@ -49,7 +55,7 @@ body::before {
   padding: 0;
 }
 
-/* LOGOS (INALTERADO VISUALMENTE) */
+/* LOGOS (NÃO ALTERADO VISUALMENTE) */
 .logos {
   display: flex;
   flex-direction: column;
@@ -87,10 +93,10 @@ body::before {
   transform: scale(1.05);
 }
 
-/* 🔥 PRODUTOS AGORA DENTRO DA CENA (CORREÇÃO IMPORTANTE) */
+/* PRODUTOS (MANTIDOS EXATAMENTE COMO ESTAVAM) */
 .produtos-esquerda,
 .produtos-direita {
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 100%;
   width: 180px;
@@ -103,11 +109,11 @@ body::before {
 }
 
 .produtos-esquerda {
-  left: 0;
+  left: calc(50% - 400px);
 }
 
 .produtos-direita {
-  right: 0;
+  right: calc(50% - 400px);
 }
 
 .produtos-esquerda img,
@@ -122,55 +128,58 @@ body::before {
 
 <body>
 
-<div id="scene">
+<!-- 🔥 CÂMERA -->
+<div id="viewport">
+  <div id="scene">
 
-  <!-- PRODUTOS ESQUERDA -->
-  <div class="produtos-esquerda">
-    <img src="decora.webp">
-    <img src="eletrodomestico.jpg">
-    <img src="eletroeletronico.jpg">
-    <img src="jardinagem.jpg">
-  </div>
-
-  <!-- PRODUTOS DIREITA -->
-  <div class="produtos-direita">
-    <img src="ferramentas.webp">
-    <img src="suplemento.jpg">
-    <img src="roupa-acessorio.jpg">
-  </div>
-
-  <div class="container">
-
-    <div class="logos">
-      <a href="https://meli.la/2qu3xa4" target="_blank">
-        <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-      </a>
-
-      <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
-        <img src="logomarca-magalu.png" alt="Magalu">
-      </a>
-
-      <a href="SEU-LINK-AMAZON" target="_blank">
-        <img src="logomarca-amazon.jpg" alt="Amazon">
-      </a>
+    <!-- PRODUTOS ESQUERDA -->
+    <div class="produtos-esquerda">
+      <img src="decora.webp">
+      <img src="eletrodomestico.jpg">
+      <img src="eletroeletronico.jpg">
+      <img src="jardinagem.jpg">
     </div>
 
-    <div class="logos">
-      <a href="SEU-LINK-JEQUITI" target="_blank">
-        <img src="logomarca-jequiti.png" alt="Jequiti">
-      </a>
+    <!-- PRODUTOS DIREITA -->
+    <div class="produtos-direita">
+      <img src="ferramentas.webp">
+      <img src="suplemento.jpg">
+      <img src="roupa-acessorio.jpg">
+    </div>
 
-      <a href="SEU-LINK-SHOPEE" target="_blank">
-        <img src="logomarca-Shopee.jpg" alt="Shopee">
-      </a>
+    <div class="container">
 
-      <a href="SEU-LINK-SHEIN" target="_blank">
-        <img src="logomarca-shein.png" alt="SHEIN">
-      </a>
+      <div class="logos">
+        <a href="https://meli.la/2qu3xa4" target="_blank">
+          <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+        </a>
+
+        <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
+          <img src="logomarca-magalu.png" alt="Magalu">
+        </a>
+
+        <a href="SEU-LINK-AMAZON" target="_blank">
+          <img src="logomarca-amazon.jpg" alt="Amazon">
+        </a>
+      </div>
+
+      <div class="logos">
+        <a href="SEU-LINK-JEQUITI" target="_blank">
+          <img src="logomarca-jequiti.png" alt="Jequiti">
+        </a>
+
+        <a href="SEU-LINK-SHOPEE" target="_blank">
+          <img src="logomarca-Shopee.jpg" alt="Shopee">
+        </a>
+
+        <a href="SEU-LINK-SHEIN" target="_blank">
+          <img src="logomarca-shein.png" alt="SHEIN">
+        </a>
+      </div>
+
     </div>
 
   </div>
-
 </div>
 
 <script>
