@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
-if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-  location.href = "index-mobile.html";
-} else {
-  location.href = "index-desktop.html";
-}
+  var isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+    window.location.replace("index-mobile.html");
+  } else {
+    window.location.replace("index-desktop.html");
+  }
 </script>
 
 </head>
-<body></body>
+<body>
+</body>
 </html>
