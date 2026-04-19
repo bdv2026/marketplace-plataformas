@@ -9,36 +9,31 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
-  background: #050608;
-  font-family: Arial, sans-serif;
+  position: fixed;
+  width: 100%;
 }
 
-/* 🔥 FACHADA OCUPA A TELA TODA */
+/* 🔥 FUNDO: FACHADA APENAS */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background: url("fachada.png") no-repeat center top;
   background-size: cover;
-  z-index: 0;
-  pointer-events: none;
+  z-index: -1;
 }
 
-/* 🔥 CAMADA DOS BOTÕES (PRESERVADOS) */
-.mobile-container {
+/* 🔥 CONTAINER DOS BOTÕES (SEM ALTERAR LÓGICA) */
+.container {
   position: relative;
   height: 100vh;
-  width: 100%;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
-  padding: 0;
 }
 
-/* 🔥 LOGOS (SEM TIJOLO, SEM MUDAR LÓGICA) */
+/* 🔥 LOGOS MANTIDOS COMO ESTÃO */
 .logos {
   display: flex;
   flex-direction: column;
@@ -47,20 +42,18 @@ body::before {
   padding: 20px;
 }
 
-/* mantém comportamento dos links */
 .logos a {
   display: block;
   text-align: center;
 }
 
-/* mantém tamanhos base (sem interferir na sua lógica) */
 .logos img {
   height: 60px;
   object-fit: contain;
   transition: 0.2s;
 }
 
-/* preserva hierarquia visual existente */
+/* mantém diferenciação original */
 .logos img[alt="Mercado Livre"] { height: 100px; }
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { height: 75px; }
@@ -69,26 +62,13 @@ body::before {
   transform: scale(1.05);
 }
 
-/* 🔥 LADO DIREITO VAZIO (mantém estrutura sem produtos) */
-.side-space {
-  flex: 0 0 140px;
-}
-
-/* 🔥 GARANTE TELA FIXA */
-body {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
 </style>
 </head>
 
 <body>
 
-<div class="mobile-container">
+<div class="container">
 
-  <!-- ESQUERDA: BOTÕES -->
   <div class="logos">
 
     <a href="https://meli.la/2qu3xa4" target="_blank">
@@ -117,8 +97,7 @@ body {
 
   </div>
 
-  <!-- DIREITA VAZIA (mantém equilíbrio visual) -->
-  <div class="side-space"></div>
+  <div style="flex:0 0 140px;"></div>
 
 </div>
 
