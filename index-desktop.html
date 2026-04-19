@@ -105,13 +105,8 @@
       opacity: 0.95;
     }
 
-    /* ✔ ZOOM GLOBAL (SÓ MOBILE) */
-    @media (max-width: 768px) {
-      body {
-        transform-origin: top center;
-        transform: scale(calc(min(100vw / 1160, 100vh / 720)));
-      }
-    }
+    /* ❌ REMOVIDO: zoom por scale no mobile
+       (era o principal causador de instabilidade visual) */
 
   </style>
 </head>
