@@ -15,7 +15,7 @@ html, body {
   width: 100%;
 }
 
-/* 🔥 FUNDO: FACHADA APENAS */
+/* 🔥 APENAS FACHADA COMO FUNDO */
 body::before {
   content: "";
   position: fixed;
@@ -25,7 +25,7 @@ body::before {
   z-index: -1;
 }
 
-/* 🔥 CONTAINER DOS BOTÕES (SEM ALTERAR LÓGICA) */
+/* 🔥 NÃO ALTEREI POSIÇÃO DOS BOTÕES */
 .container {
   position: relative;
   height: 100vh;
@@ -33,7 +33,7 @@ body::before {
   justify-content: space-between;
 }
 
-/* 🔥 LOGOS MANTIDOS COMO ESTÃO */
+/* 🔥 MANTIDO EXATAMENTE COMO ESTAVA */
 .logos {
   display: flex;
   flex-direction: column;
@@ -50,17 +50,11 @@ body::before {
 .logos img {
   height: 60px;
   object-fit: contain;
-  transition: 0.2s;
 }
 
-/* mantém diferenciação original */
 .logos img[alt="Mercado Livre"] { height: 100px; }
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { height: 75px; }
-
-.logos a:hover img {
-  transform: scale(1.05);
-}
 
 </style>
 </head>
