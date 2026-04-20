@@ -12,59 +12,61 @@ html, body {
   height: 100vh;
   overflow: hidden;
   width: 100%;
+  background: #050608;
 }
 
-/* 🔥 FUNDO FIXO ESTÁVEL */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
+/* 🔝 PARTE SUPERIOR - FACHADA */
+.topo {
+  height: 55vh;
   background: url("fachada.png") no-repeat center top;
+  background-size: contain;
+  background-color: #050608;
+}
+
+/* 🔻 PARTE INFERIOR - TIJOLO + LOGOS */
+.base {
+  height: 45vh;
+  background: url("tijolo-fundo.png") no-repeat center;
   background-size: cover;
-  background-attachment: fixed;
-  z-index: -1;
-}
-
-/* 🔥 ESTRUTURA MANTIDA */
-.container {
-  position: relative;
-  height: 100vh;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 🔥 LOGOS PRESERVADOS + AJUSTE FINO */
+/* LOGOS */
 .logos {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 0 0 140px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+  padding: 10px;
 }
 
 .logos a {
-  display: block;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 🔧 ajuste leve para evitar corte */
 .logos img {
-  height: 60px;
   width: 100%;
+  max-height: 60px;
   object-fit: contain;
 }
 
-.logos img[alt="Mercado Livre"] { height: 100px; }
+/* ajustes específicos */
+.logos img[alt="Mercado Livre"] { max-height: 80px; }
 .logos img[alt="Shopee"],
-.logos img[alt="SHEIN"] { height: 75px; }
+.logos img[alt="SHEIN"] { max-height: 70px; }
 
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="topo"></div>
 
+<div class="base">
   <div class="logos">
 
     <a href="https://meli.la/2qu3xa4" target="_blank">
@@ -92,9 +94,6 @@ body::before {
     </a>
 
   </div>
-
-  <div style="flex:0 0 140px;"></div>
-
 </div>
 
 </body>
