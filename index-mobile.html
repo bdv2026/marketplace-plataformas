@@ -46,7 +46,7 @@ html, body {
 
 /* LOGOS */
 .logos {
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   width: 95%;
@@ -56,13 +56,14 @@ html, body {
 }
 
 .logos a {
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .logos img {
-  width: 140%;
+  width: auto;
+  max-width: 100%;
   max-height: 60px;
   object-fit: contain;
 }
