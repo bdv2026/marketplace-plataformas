@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.D.V. Mobile</title>
+
 <style>
 html, body {
   margin: 0;
@@ -8,7 +15,7 @@ html, body {
   background: #050608;
 }
 
-/* 🔝 TOPO FIXO (FACHADA) */
+/* 🔝 FACHADA (CAMADA INDEPENDENTE) */
 .topo {
   position: fixed;
   top: 0;
@@ -18,9 +25,10 @@ html, body {
   background: url("fachada.png") no-repeat center top;
   background-size: cover;
   background-color: #050608;
+  z-index: 1;
 }
 
-/* 🔻 BASE FIXA */
+/* 🧱 BASE FIXA */
 .base {
   position: fixed;
   bottom: 0;
@@ -33,9 +41,11 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  z-index: 2;
 }
 
-/* LOGOS */
+/* 📦 GRID DOS LOGOS (TRAVADO) */
 .logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -49,6 +59,7 @@ html, body {
   align-items: center;
 }
 
+/* 📌 LOGOS PADRÃO */
 .logos img {
   height: 60px;
   width: auto;
@@ -61,18 +72,21 @@ html, body {
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { max-height: 70px; }
 
-/* PRODUTOS LATERAIS */
+/* 🧱 PRODUTOS LATERAIS (FORA DA FACHADA) */
 .produtos {
-  position: absolute;
-  top: 45%;
+  position: fixed;
+  top: 15%;
   width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
   pointer-events: none;
   opacity: 0.5;
   filter: grayscale(100%);
+
+  z-index: 3;
 }
 
 .produtos.esquerda { left: 0; }
@@ -83,3 +97,57 @@ html, body {
   object-fit: contain;
 }
 </style>
+</head>
+
+<body>
+
+<!-- 🔝 FACHADA -->
+<div class="topo"></div>
+
+<!-- 🧱 PRODUTOS ESQUERDA -->
+<div class="produtos esquerda">
+  <img src="decora.webp">
+  <img src="eletrodomestico.jpg">
+  <img src="eletroeletronico.jpg">
+</div>
+
+<!-- 🧱 PRODUTOS DIREITA -->
+<div class="produtos direita">
+  <img src="ferramentas.webp">
+  <img src="suplemento.jpg">
+  <img src="roupa-acessorio.jpg">
+</div>
+
+<!-- 🧱 BASE + LOGOS -->
+<div class="base">
+  <div class="logos">
+
+    <a href="https://meli.la/2qu3xa4" target="_blank">
+      <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
+    </a>
+
+    <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
+      <img src="logomarca-magalu.png" alt="Magalu">
+    </a>
+
+    <a href="SEU-LINK-AMAZON" target="_blank">
+      <img src="logomarca-amazon.jpg" alt="Amazon">
+    </a>
+
+    <a href="SEU-LINK-JEQUITI" target="_blank">
+      <img src="logomarca-jequiti.png" alt="Jequiti">
+    </a>
+
+    <a href="SEU-LINK-SHOPEE" target="_blank">
+      <img src="logomarca-Shopee.jpg" alt="Shopee">
+    </a>
+
+    <a href="SEU-LINK-SHEIN" target="_blank">
+      <img src="logomarca-shein.png" alt="SHEIN">
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>
