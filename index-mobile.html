@@ -15,7 +15,7 @@ html, body {
   background: #050608;
 }
 
-/* 🔝 FACHADA (CAMADA INDEPENDENTE) */
+/* 🔝 TOPO FIXO (FACHADA) */
 .topo {
   position: fixed;
   top: 0;
@@ -25,10 +25,9 @@ html, body {
   background: url("fachada.png") no-repeat center top;
   background-size: cover;
   background-color: #050608;
-  z-index: 1;
 }
 
-/* 🧱 BASE FIXA */
+/* 🔻 BASE FIXA */
 .base {
   position: fixed;
   bottom: 0;
@@ -41,11 +40,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  z-index: 2;
 }
 
-/* 📦 GRID DOS LOGOS (TRAVADO) */
+/* LOGOS GRID */
 .logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -59,7 +56,6 @@ html, body {
   align-items: center;
 }
 
-/* 📌 LOGOS PADRÃO */
 .logos img {
   height: 60px;
   width: auto;
@@ -72,10 +68,10 @@ html, body {
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { max-height: 70px; }
 
-/* 🧱 PRODUTOS LATERAIS (FORA DA FACHADA) */
+/* PRODUTOS LATERAIS */
 .produtos {
-  position: fixed;
-  top: 15%;
+  position: absolute;
+  top: 45%;
   width: 120px;
   display: flex;
   flex-direction: column;
@@ -85,8 +81,6 @@ html, body {
   pointer-events: none;
   opacity: 0.5;
   filter: grayscale(100%);
-
-  z-index: 3;
 }
 
 .produtos.esquerda { left: 0; }
@@ -96,29 +90,28 @@ html, body {
   width: 100%;
   object-fit: contain;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- 🔝 FACHADA -->
-<div class="topo"></div>
+<div class="topo">
 
-<!-- 🧱 PRODUTOS ESQUERDA -->
-<div class="produtos esquerda">
-  <img src="decora.webp">
-  <img src="eletrodomestico.jpg">
-  <img src="eletroeletronico.jpg">
+  <div class="produtos esquerda">
+    <img src="decora.webp">
+    <img src="eletrodomestico.jpg">
+    <img src="eletroeletronico.jpg">
+  </div>
+
+  <div class="produtos direita">
+    <img src="ferramentas.webp">
+    <img src="suplemento.jpg">
+    <img src="roupa-acessorio.jpg">
+  </div>
+
 </div>
 
-<!-- 🧱 PRODUTOS DIREITA -->
-<div class="produtos direita">
-  <img src="ferramentas.webp">
-  <img src="suplemento.jpg">
-  <img src="roupa-acessorio.jpg">
-</div>
-
-<!-- 🧱 BASE + LOGOS -->
 <div class="base">
   <div class="logos">
 
