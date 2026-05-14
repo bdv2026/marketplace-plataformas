@@ -6,159 +6,487 @@
   <title>B.D.V. Shopping Virtual</title>
 
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #050608;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* FUNDO */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(to right,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.45)),
+        #050608;
+      z-index: -2;
+    }
+
+    /* ESTRUTURA PRINCIPAL */
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* FACHADA */
+    .fachada-area {
+      width: 58%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
       overflow: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+    .fachada-area img {
       width: 100%;
       height: 100%;
-      background: url('fachada.png') no-repeat center top;
-      background-size: contain;
-      pointer-events: none;
-      z-index: -1;
+      object-fit: contain;
+      object-position: center;
     }
 
-    .container {
-      position: relative;
+    /* PRODUTOS */
+    .produtos-centro {
+      width: 12%;
       height: 100vh;
       display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      padding: 0;
-    }
-
-    .logos {
-      display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      flex: 0 0 220px;
-      height: 100%;
-      background: url('tijolo-fundo.png') no-repeat center;
-      background-size: cover;
-      margin: 0;
-      padding: 20px;
-      z-index: 2;
-    }
-
-    .logos a {
-      display: block;
-      text-align: center;
-    }
-
-    .logos img {
-      height: 90px;
-      transition: 0.2s;
-    }
-
-    .logos img[alt="Mercado Livre"] {
-      height: 160px;
-    }
-
-    .logos img[alt="Jequiti"],
-    .logos img[alt="Shopee"],
-    .logos img[alt="SHEIN"] {
-      height: 110px;
-    }
-
-    .logos a:hover img {
-      transform: scale(1.05);
-    }
-
-    /* PRODUTOS LATERAIS */
-    .produtos-esquerda,
-    .produtos-direita {
-      position: fixed;
-      top: 0;
-      height: 100%;
-      width: 180px;
-      z-index: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-evenly;
       align-items: center;
-      pointer-events: none;
+      padding: 10px;
+      gap: 12px;
     }
 
-    .produtos-esquerda {
-      left: calc(50% - 400px);
-    }
-
-    .produtos-direita {
-      right: calc(50% - 400px);
-    }
-
-    .produtos-esquerda img,
-    .produtos-direita img {
+    .produtos-centro img {
       width: 100%;
-      max-height: 120px;
+      max-width: 120px;
+      max-height: 110px;
       object-fit: contain;
-      opacity: 0.95;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      padding: 6px;
+      backdrop-filter: blur(4px);
+      box-shadow:
+        0 0 12px rgba(0,255,255,0.08);
+      transition: 0.25s;
     }
 
-    /* ❌ REMOVIDO: zoom por scale no mobile
-       (era o principal causador de instabilidade visual) */
+    .produtos-centro img:hover {
+      transform: scale(1.06);
+    }
+
+    /* TEXTO CYBERPUNK */
+    .vitrine-texto {
+      width: 30%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+
+      color: #00f6ff;
+      text-align: center;
+
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .bloco {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(0,255,255,0.35);
+
+      box-shadow:
+        0 0 12px rgba(0,255,255,0.25),
+        0 0 20px rgba(255,0,255,0.18);
+
+      font-size: 16px;
+
+      color: #00f6ff;
+
+      text-shadow:
+        0 0 6px #00f6ff,
+        0 0 12px #ff00ff;
+
+      animation: pulse 3s infinite alternate;
+
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(0.98); opacity: 0.75; }
+      to { transform: scale(1.03); opacity: 1; }
+    }
+
+    /* PAINEL DIREITO */
+    .painel-lateral {
+      width: 30%;
+      height: 100vh;
+      background:
+        linear-gradient(to bottom,
+        rgba(25,25,25,0.96),
+        rgba(10,10,10,0.96));
+      border-left: 2px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    /* BOTÕES */
+    .botao-loja {
+      width: 95%;
+      min-height: 95px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      text-decoration: none;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .botao-loja:hover {
+      transform: scale(1.02);
+      background: rgba(0,255,255,0.08);
+      box-shadow:
+        0 0 20px rgba(0,255,255,0.15);
+    }
+
+    .botao-loja img {
+      width: 85px;
+      object-fit: contain;
+    }
+
+    /* OVERLAY */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    /* CADASTRO */
+    .form-container {
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      color: black;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-container button {
+      margin-top: 20px;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .voltar {
+      background: #f44336 !important;
+    }
+
+    /* MINHA CONTA */
+    .account-container {
+      background: rgba(0,0,0,0.85);
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      color: white;
+    }
+
+    .info {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: left;
+    }
 
   </style>
 </head>
 
 <body>
 
-  <!-- PRODUTOS ESQUERDA -->
-  <div class="produtos-esquerda">
-    <img src="decora.webp">
-    <img src="eletrodomestico.jpg">
-    <img src="eletroeletronico.jpg">
-    <img src="jardinagem.jpg">
-  </div>
-
-  <!-- PRODUTOS DIREITA -->
-  <div class="produtos-direita">
-    <img src="ferramentas.webp">
-    <img src="suplemento.jpg">
-    <img src="roupa-acessorio.jpg">
-  </div>
-
   <div class="container">
 
-    <div class="logos">
-      <a href="https://meli.la/2qu3xa4" target="_blank">
-        <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-      </a>
+    <!-- TEXTO -->
+    <div class="vitrine-texto">
 
-      <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
-        <img src="logomarca-magalu.png" alt="Magalu">
-      </a>
+      <div class="bloco" onclick="abrirCadastro()">
+        CADASTRE-SE AQUI
+      </div>
 
-      <a href="SEU-LINK-AMAZON" target="_blank">
-        <img src="logomarca-amazon.jpg" alt="Amazon">
-      </a>
+      <div class="bloco" onclick="abrirConta()">
+        MINHA CONTA
+      </div>
+
+      <div class="bloco">
+        MILHÕES DE PRODUTOS DISPONÍVEIS
+      </div>
+
+      <div class="bloco">
+        SHOPPING VIRTUAL IMERSIVO
+      </div>
+
+      <div class="bloco">
+        EXPERIÊNCIA CYBERPUNK FUTURISTA
+      </div>
+
     </div>
 
-    <div class="logos">
-      <a href="SEU-LINK-JEQUITI" target="_blank">
-        <img src="logomarca-jequiti.png" alt="Jequiti">
+    <!-- FACHADA -->
+    <div class="fachada-area">
+      <img src="fachada.png" alt="Fachada BDV">
+    </div>
+
+    <!-- PRODUTOS -->
+    <div class="produtos-centro">
+      <img src="decora.webp">
+      <img src="eletrodomestico.jpg">
+      <img src="eletroeletronico.jpg">
+      <img src="jardinagem.jpg">
+      <img src="ferramentas.webp">
+      <img src="suplemento.jpg">
+      <img src="roupa-acessorio.jpg">
+    </div>
+
+    <!-- PAINEL -->
+    <div class="painel-lateral">
+
+      <a class="botao-loja" href="https://meli.la/2qu3xa4" target="_blank">
+        <img src="logomarca-mercadolivre.png">
+        Mercado Livre
       </a>
 
-      <a href="SEU-LINK-SHOPEE" target="_blank">
-        <img src="logomarca-Shopee.jpg" alt="Shopee">
+      <a class="botao-loja" href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
+        <img src="logomarca-magalu.png">
+        Magalu
       </a>
 
-      <a href="SEU-LINK-SHEIN" target="_blank">
-        <img src="logomarca-shein.png" alt="SHEIN">
+      <a class="botao-loja" href="https://amzn.to/3PAtnvH" target="_blank">
+        <img src="logomarca-amazon.jpg">
+        Amazon
       </a>
+
+      <a class="botao-loja" href="SEU-LINK-SHOPEE" target="_blank">
+        <img src="logomarca-Shopee.jpg">
+        Shopee
+      </a>
+
+      <a class="botao-loja" href="SEU-LINK-SHEIN" target="_blank">
+        <img src="logomarca-shein.png">
+        Shein
+      </a>
+
+      <a class="botao-loja" href="SEU-LINK-JEQUITI" target="_blank">
+        <img src="logomarca-jequiti.png">
+        Jequiti
+      </a>
+
     </div>
 
   </div>
+
+  <!-- CADASTRO -->
+  <div class="overlay" id="cadastroOverlay">
+
+    <div class="form-container">
+
+      <h1>Cadastro de Usuário</h1>
+
+      <form id="formCadastro">
+
+        <label>Nome Completo</label>
+        <input type="text" id="nome" required>
+
+        <label>Endereço</label>
+        <input type="text" id="endereco" required>
+
+        <label>RG</label>
+        <input type="text" id="rg" required>
+
+        <label>CPF</label>
+        <input type="text" id="cpf" required>
+
+        <label>Celular / WhatsApp</label>
+        <input type="tel" id="celular" required>
+
+        <label>E-mail</label>
+        <input type="email" id="email" required>
+
+        <label>Senha</label>
+        <input type="password" id="senha" required>
+
+        <button type="submit">Cadastrar</button>
+
+      </form>
+
+      <button class="voltar" onclick="fecharCadastro()">
+        Voltar
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- MINHA CONTA -->
+  <div class="overlay" id="contaOverlay">
+
+    <div class="account-container">
+
+      <h1>Minha Conta</h1>
+
+      <p id="boasvindas"></p>
+
+      <div id="dadosConta"></div>
+
+      <button class="voltar" onclick="fecharConta()">
+        Voltar
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function abrirCadastro() {
+      document.getElementById("cadastroOverlay").style.display = "flex";
+    }
+
+    function fecharCadastro() {
+      document.getElementById("cadastroOverlay").style.display = "none";
+    }
+
+    function abrirConta() {
+
+      document.getElementById("contaOverlay").style.display = "flex";
+
+      const user = JSON.parse(localStorage.getItem("bdv_user"));
+
+      if(user){
+
+        document.getElementById("boasvindas").innerText =
+          "Bem-vindo, " + user.nome + "!";
+
+        document.getElementById("dadosConta").innerHTML = `
+
+          <div class="info">
+            Nome: ${user.nome}
+          </div>
+
+          <div class="info">
+            E-mail: ${user.email}
+          </div>
+
+          <div class="info">
+            Celular: ${user.celular}
+          </div>
+
+          <div class="info">
+            CPF: ${user.cpf}
+          </div>
+
+        `;
+
+      } else {
+
+        document.getElementById("boasvindas").innerText =
+          "Nenhum usuário cadastrado.";
+
+        document.getElementById("dadosConta").innerHTML = "";
+
+      }
+    }
+
+    function fecharConta() {
+      document.getElementById("contaOverlay").style.display = "none";
+    }
+
+    document.getElementById("formCadastro").addEventListener("submit", function(event){
+
+      event.preventDefault();
+
+      const user = {
+
+        nome: document.getElementById("nome").value,
+        endereco: document.getElementById("endereco").value,
+        rg: document.getElementById("rg").value,
+        cpf: document.getElementById("cpf").value,
+        celular: document.getElementById("celular").value,
+        email: document.getElementById("email").value,
+        senha: document.getElementById("senha").value
+
+      };
+
+      localStorage.setItem("bdv_user", JSON.stringify(user));
+
+      alert("Cadastro realizado com sucesso!");
+
+      fecharCadastro();
+
+    });
+
+  </script>
 
 </body>
 </html>
