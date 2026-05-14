@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,6 +14,7 @@ html, body {
   height: 100%;
   width: 100%;
   background: #050608;
+  font-family: Arial, sans-serif;
 }
 
 /* 🔝 TOPO FIXO (FACHADA) */
@@ -38,8 +40,11 @@ html, body {
   background-size: cover;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+
+  padding-top: 8px;
 }
 
 /* LOGOS GRID */
@@ -68,6 +73,46 @@ html, body {
 .logos img[alt="Shopee"],
 .logos img[alt="SHEIN"] { max-height: 70px; }
 
+/* BOTÕES */
+.botoes-mobile {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.botao-mobile {
+  flex: 1;
+  max-width: 180px;
+
+  padding: 10px;
+
+  border-radius: 12px;
+
+  background: rgba(0,0,0,0.45);
+
+  border: 1px solid rgba(0,255,255,0.35);
+
+  color: #00f6ff;
+
+  font-weight: bold;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 6px #00f6ff,
+    0 0 12px #ff00ff;
+
+  box-shadow:
+    0 0 10px rgba(0,255,255,0.25),
+    0 0 16px rgba(255,0,255,0.15);
+
+  backdrop-filter: blur(4px);
+
+  cursor: pointer;
+}
+
 /* PRODUTOS LATERAIS */
 .produtos {
   position: absolute;
@@ -89,6 +134,81 @@ html, body {
 .produtos img {
   width: 100%;
   object-fit: contain;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* CADASTRO */
+.form-container {
+  background: rgba(255,255,255,0.95);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  color: black;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container button {
+  margin-top: 20px;
+  padding: 10px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.voltar {
+  background: #f44336 !important;
+}
+
+/* MINHA CONTA */
+.account-container {
+  background: rgba(0,0,0,0.85);
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+}
+
+.info {
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-align: left;
 }
 
 </style>
@@ -113,6 +233,7 @@ html, body {
 </div>
 
 <div class="base">
+
   <div class="logos">
 
     <a href="https://meli.la/2qu3xa4" target="_blank">
@@ -140,7 +261,162 @@ html, body {
     </a>
 
   </div>
+
+  <div class="botoes-mobile">
+
+    <div class="botao-mobile" onclick="abrirCadastro()">
+      CADASTRAR
+    </div>
+
+    <div class="botao-mobile" onclick="abrirConta()">
+      MINHA CONTA
+    </div>
+
+  </div>
+
 </div>
+
+<!-- CADASTRO -->
+<div class="overlay" id="cadastroOverlay">
+
+  <div class="form-container">
+
+    <h1>Cadastro de Usuário</h1>
+
+    <form id="formCadastro">
+
+      <label>Nome Completo</label>
+      <input type="text" id="nome" required>
+
+      <label>Endereço</label>
+      <input type="text" id="endereco" required>
+
+      <label>RG</label>
+      <input type="text" id="rg" required>
+
+      <label>CPF</label>
+      <input type="text" id="cpf" required>
+
+      <label>Celular / WhatsApp</label>
+      <input type="tel" id="celular" required>
+
+      <label>E-mail</label>
+      <input type="email" id="email" required>
+
+      <label>Senha</label>
+      <input type="password" id="senha" required>
+
+      <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <button class="voltar" onclick="fecharCadastro()">
+      Voltar
+    </button>
+
+  </div>
+
+</div>
+
+<!-- MINHA CONTA -->
+<div class="overlay" id="contaOverlay">
+
+  <div class="account-container">
+
+    <h1>Minha Conta</h1>
+
+    <p id="boasvindas"></p>
+
+    <div id="dadosConta"></div>
+
+    <button class="voltar" onclick="fecharConta()">
+      Voltar
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+function abrirCadastro() {
+  document.getElementById("cadastroOverlay").style.display = "flex";
+}
+
+function fecharCadastro() {
+  document.getElementById("cadastroOverlay").style.display = "none";
+}
+
+function abrirConta() {
+
+  document.getElementById("contaOverlay").style.display = "flex";
+
+  const user = JSON.parse(localStorage.getItem("bdv_user"));
+
+  if(user){
+
+    document.getElementById("boasvindas").innerText =
+      "Bem-vindo, " + user.nome + "!";
+
+    document.getElementById("dadosConta").innerHTML = `
+
+      <div class="info">
+        Nome: ${user.nome}
+      </div>
+
+      <div class="info">
+        E-mail: ${user.email}
+      </div>
+
+      <div class="info">
+        Celular: ${user.celular}
+      </div>
+
+      <div class="info">
+        CPF: ${user.cpf}
+      </div>
+
+    `;
+
+  } else {
+
+    document.getElementById("boasvindas").innerText =
+      "Nenhum usuário cadastrado.";
+
+    document.getElementById("dadosConta").innerHTML = "";
+
+  }
+}
+
+function fecharConta() {
+  document.getElementById("contaOverlay").style.display = "none";
+}
+
+document.getElementById("formCadastro").addEventListener("submit", function(event){
+
+  event.preventDefault();
+
+  const user = {
+
+    nome: document.getElementById("nome").value,
+    endereco: document.getElementById("endereco").value,
+    rg: document.getElementById("rg").value,
+    cpf: document.getElementById("cpf").value,
+    celular: document.getElementById("celular").value,
+    email: document.getElementById("email").value,
+    senha: document.getElementById("senha").value
+
+  };
+
+  localStorage.setItem("bdv_user", JSON.stringify(user));
+
+  alert("Cadastro realizado com sucesso!");
+
+  fecharCadastro();
+
+});
+
+</script>
 
 </body>
 </html>
