@@ -420,13 +420,17 @@ async function abrirConta() {
       </div>
     `;
 
-  } else {
+    } else {
 
     document.getElementById("loginArea").style.display = "block";
 
     document.getElementById("usuarioArea").style.display = "none";
 
   }
+
+} // FECHA abrirConta()
+
+function fecharConta() {
 
 function fecharConta() {
  document.getElementById("btnLogin").addEventListener("click", async () => {
