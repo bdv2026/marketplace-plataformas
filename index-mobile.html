@@ -433,7 +433,10 @@ async function abrirConta() {
 function fecharConta() {
 
 function fecharConta() {
- document.getElementById("btnLogin").addEventListener("click", async () => {
+  document.getElementById("contaOverlay").style.display = "none";
+}
+
+document.getElementById("btnLogin").addEventListener("click", async () => {
 
   const email =
     document.getElementById("loginEmail").value;
@@ -467,6 +470,23 @@ document.getElementById("btnLogout").addEventListener("click", async () => {
   alert("Logout realizado com sucesso!");
 
 });
+
+document.getElementById("formCadastro").addEventListener("submit", async function(event){
+
+  event.preventDefault();
+
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: senha,
+    options: {
+      data: {
+        nome: nome
+      }
+    }
   });
 
   if (error) {
@@ -477,6 +497,8 @@ document.getElementById("btnLogout").addEventListener("click", async () => {
   alert("Cadastro realizado com sucesso!");
 
   fecharCadastro();
+
+});
 
 });
 
