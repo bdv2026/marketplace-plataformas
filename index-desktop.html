@@ -501,6 +501,30 @@
     function fecharConta() {
       document.getElementById("contaOverlay").style.display = "none";
     }
+    document.getElementById("btnLogin").addEventListener("click", async () => {
+
+  const email =
+    document.getElementById("loginEmail").value;
+
+  const senha =
+    document.getElementById("loginSenha").value;
+
+  const { error } =
+    await supabaseClient.auth.signInWithPassword({
+      email,
+      password: senha
+    });
+
+  if (error) {
+
+    alert("Erro no login: " + error.message);
+    return;
+
+  }
+
+  abrirConta();
+
+});
 
   document.getElementById("formCadastro").addEventListener("submit", async function(event){
 
