@@ -525,6 +525,17 @@
   abrirConta();
 
 });
+    document.getElementById("btnLogout").addEventListener("click", async () => {
+
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("usuarioArea").style.display = "none";
+
+  document.getElementById("loginArea").style.display = "block";
+
+  alert("Logout realizado com sucesso!");
+
+});
 
   document.getElementById("formCadastro").addEventListener("submit", async function(event){
 
