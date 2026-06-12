@@ -429,25 +429,40 @@ async function abrirConta() {
   }
 
 function fecharConta() {
-  document.getElementById("contaOverlay").style.display = "none";
-}
+ document.getElementById("btnLogin").addEventListener("click", async () => {
 
-document.getElementById("formCadastro").addEventListener("submit", async function(event){
+  const email =
+    document.getElementById("loginEmail").value;
 
-  event.preventDefault();
+  const senha =
+    document.getElementById("loginSenha").value;
 
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
+  const { error } =
+    await supabaseClient.auth.signInWithPassword({
+      email,
+      password: senha
+    });
 
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: email,
-    password: senha,
-    options: {
-      data: {
-        nome: nome
-      }
-    
+  if (error) {
+    alert("Erro no login: " + error.message);
+    return;
+  }
+
+  abrirConta();
+
+});
+
+document.getElementById("btnLogout").addEventListener("click", async () => {
+
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("usuarioArea").style.display = "none";
+
+  document.getElementById("loginArea").style.display = "block";
+
+  alert("Logout realizado com sucesso!");
+
+});
   });
 
   if (error) {
