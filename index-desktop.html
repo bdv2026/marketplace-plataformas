@@ -470,27 +470,34 @@
       document.getElementById("contaOverlay").style.display = "none";
     }
 
-    document.getElementById("formCadastro").addEventListener("submit", function(event){
+  document.getElementById("formCadastro").addEventListener("submit", async function(event){
 
-      event.preventDefault();
+  event.preventDefault();
 
-      const user = {
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
 
-        nome: document.getElementById("nome").value,
-        endereco: document.getElementById("endereco").value,
-        rg: document.getElementById("rg").value,
-        cpf: document.getElementById("cpf").value,
-        celular: document.getElementById("celular").value,
-        email: document.getElementById("email").value,
-        senha: document.getElementById("senha").value
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: senha,
+    options: {
+      data: {
+        nome: nome
+      }
+    }
+  });
 
-      };
+  if (error) {
+    alert("Erro no cadastro: " + error.message);
+    return;
+  }
 
-      localStorage.setItem("bdv_user", JSON.stringify(user));
+  alert("Cadastro realizado com sucesso!");
 
-      alert("Cadastro realizado com sucesso!");
+  fecharCadastro();
 
-      fecharCadastro();
+});
 
     });
 
