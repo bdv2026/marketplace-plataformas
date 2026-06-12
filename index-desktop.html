@@ -460,7 +460,7 @@
       document.getElementById("cadastroOverlay").style.display = "none";
     }
 
-   async function abrirConta() {
+ async function abrirConta() {
 
   document.getElementById("contaOverlay").style.display = "flex";
 
@@ -488,18 +488,22 @@
       </div>
     `;
 
-  } else {
+    } else {
 
     document.getElementById("loginArea").style.display = "block";
 
     document.getElementById("usuarioArea").style.display = "none";
 
   }
-    
-    function fecharConta() {
-      document.getElementById("contaOverlay").style.display = "none";
-    }
-    document.getElementById("btnLogin").addEventListener("click", async () => {
+
+} // FECHA abrirConta()
+
+
+function fecharConta() {
+  document.getElementById("contaOverlay").style.display = "none";
+}
+
+document.getElementById("btnLogin").addEventListener("click", async () => {
 
   const email =
     document.getElementById("loginEmail").value;
@@ -514,16 +518,15 @@
     });
 
   if (error) {
-
     alert("Erro no login: " + error.message);
     return;
-
   }
 
   abrirConta();
 
 });
-    document.getElementById("btnLogout").addEventListener("click", async () => {
+
+document.getElementById("btnLogout").addEventListener("click", async () => {
 
   await supabaseClient.auth.signOut();
 
@@ -535,7 +538,7 @@
 
 });
 
-  document.getElementById("formCadastro").addEventListener("submit", async function(event){
+document.getElementById("formCadastro").addEventListener("submit", async function(event){
 
   event.preventDefault();
 
@@ -550,6 +553,7 @@
       data: {
         nome: nome
       }
+    }
   });
 
   if (error) {
@@ -564,7 +568,8 @@
 });
 
 
-  </script>
+</script>
 
 </body>
 </html>
+
