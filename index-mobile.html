@@ -392,45 +392,42 @@ function fecharCadastro() {
   document.getElementById("cadastroOverlay").style.display = "none";
 }
 
-function abrirConta() {
+async function abrirConta() {
 
   document.getElementById("contaOverlay").style.display = "flex";
 
-  const user = JSON.parse(localStorage.getItem("bdv_user"));
+  const { data: { user } } =
+    await supabaseClient.auth.getUser();
 
-  if(user){
+  if (user) {
+
+    document.getElementById("loginArea").style.display = "none";
+
+    document.getElementById("usuarioArea").style.display = "block";
 
     document.getElementById("boasvindas").innerText =
-      "Bem-vindo, " + user.nome + "!";
+      "Bem-vindo, " +
+      (user.user_metadata?.nome || "Usuário") +
+      "!";
 
     document.getElementById("dadosConta").innerHTML = `
-
       <div class="info">
-        Nome: ${user.nome}
+        Nome: ${user.user_metadata?.nome || "-"}
       </div>
 
       <div class="info">
-        E-mail: ${user.email}
+        E-mail: ${user.email || "-"}
       </div>
-
-      <div class="info">
-        Celular: ${user.celular}
-      </div>
-
-      <div class="info">
-        CPF: ${user.cpf}
-      </div>
-
     `;
 
   } else {
 
-    document.getElementById("boasvindas").innerText =
-      "Nenhum usuário cadastrado.";
+    document.getElementById("loginArea").style.display = "block";
 
-    document.getElementById("dadosConta").innerHTML = "";
+    document.getElementById("usuarioArea").style.display = "none";
 
   }
+}
 }
 
 function fecharConta() {
