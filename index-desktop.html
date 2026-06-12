@@ -460,45 +460,42 @@
       document.getElementById("cadastroOverlay").style.display = "none";
     }
 
-    function abrirConta() {
+   async function abrirConta() {
 
-      document.getElementById("contaOverlay").style.display = "flex";
+  document.getElementById("contaOverlay").style.display = "flex";
 
-      const user = JSON.parse(localStorage.getItem("bdv_user"));
+  const { data: { user } } =
+    await supabaseClient.auth.getUser();
 
-      if(user){
+  if (user) {
 
-        document.getElementById("boasvindas").innerText =
-          "Bem-vindo, " + user.nome + "!";
+    document.getElementById("loginArea").style.display = "none";
 
-        document.getElementById("dadosConta").innerHTML = `
+    document.getElementById("usuarioArea").style.display = "block";
 
-          <div class="info">
-            Nome: ${user.nome}
-          </div>
+    document.getElementById("boasvindas").innerText =
+      "Bem-vindo, " +
+      (user.user_metadata?.nome || "Usuário") +
+      "!";
 
-          <div class="info">
-            E-mail: ${user.email}
-          </div>
+    document.getElementById("dadosConta").innerHTML = `
+      <div class="info">
+        Nome: ${user.user_metadata?.nome || "-"}
+      </div>
 
-          <div class="info">
-            Celular: ${user.celular}
-          </div>
+      <div class="info">
+        E-mail: ${user.email || "-"}
+      </div>
+    `;
 
-          <div class="info">
-            CPF: ${user.cpf}
-          </div>
+  } else {
 
-        `;
+    document.getElementById("loginArea").style.display = "block";
 
-      } else {
+    document.getElementById("usuarioArea").style.display = "none";
 
-        document.getElementById("boasvindas").innerText =
-          "Nenhum usuário cadastrado.";
-
-        document.getElementById("dadosConta").innerHTML = "";
-
-      }
+  }
+}
     }
 
     function fecharConta() {
