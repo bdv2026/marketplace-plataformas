@@ -427,8 +427,6 @@ async function abrirConta() {
     document.getElementById("usuarioArea").style.display = "none";
 
   }
-}
-}
 
 function fecharConta() {
   document.getElementById("contaOverlay").style.display = "none";
@@ -449,7 +447,7 @@ document.getElementById("formCadastro").addEventListener("submit", async functio
       data: {
         nome: nome
       }
-    }
+    
   });
 
   if (error) {
