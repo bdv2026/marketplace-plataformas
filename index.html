@@ -1,21 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
-  function detectMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
-  }
+<title>B.D.V. Shopping Virtual</title>
 
-  if (detectMobile()) {
-    window.location.replace("index-mobile.html");
-  } else {
-    window.location.replace("index-desktop.html");
-  }
+<meta name="theme-color" content="#050608">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="apple-mobile-web-app-title" content="BDV">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<link rel="icon" type="image/png" href="icon-192.png">
+
+<script>
+
+if ("serviceWorker" in navigator) {
+
+window.addEventListener("load", () => {
+
+navigator.serviceWorker.register("./service-worker.js")
+
+.then(() => {
+
+console.log("Service Worker registrado com sucesso.");
+
+})
+
+.catch(err => {
+
+console.log("Erro ao registrar Service Worker:", err);
+
+});
+
+});
+
+}
+
+function detectMobile() {
+
+return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+|| window.innerWidth <= 768;
+
+}
+
+window.onload = function(){
+
+if(detectMobile()){
+
+window.location.replace("index-mobile.html");
+
+}else{
+
+window.location.replace("index-desktop.html");
+
+}
+
+};
+
 </script>
 
 </head>
-<body></body>
+
+<body>
+
+</body>
+
 </html>
