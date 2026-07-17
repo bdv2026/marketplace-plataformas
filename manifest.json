@@ -1,6 +1,7 @@
 {
   "name": "B.D.V. Shopping Virtual",
   "short_name": "BDV",
+  "id": "/marketplace-plataformas/",
   "description": "Shopping Virtual B.D.V.",
   "start_url": "./",
   "scope": "./",
@@ -12,12 +13,14 @@
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
