@@ -1,4 +1,4 @@
-const CACHE_NAME = "bdv-v1";
+const CACHE_NAME = "bdv-v2";
 
 const urlsToCache = [
   "./",
