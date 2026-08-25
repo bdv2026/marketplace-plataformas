@@ -7,40 +7,31 @@
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" type="image/png" href="./icon-192.png">
 <style>
-:root{--cyan:#00f6ff;--magenta:#ff00ff}
+:root{--cyan:#00f6ff}
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#050608;color:white;overflow-x:hidden}
 .container{width:100%;min-height:80vh;display:flex;align-items:stretch;justify-content:space-between}
 .vitrine-texto{width:28%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;color:var(--cyan);text-align:center;font-weight:bold;gap:16px}
 .fachada-area{width:42%;display:flex;justify-content:center;align-items:center;padding:20px}
 .fachada-area img{width:100%;max-height:85vh;object-fit:contain}
-.painel-lateral{width:30%;background:linear-gradient(to bottom, rgba(25,25,25,0.96), rgba(10,10,10,0.96));border-left:2px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:20px;overflow-y:auto}
-.bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,255,0.35);box-shadow:0 0 12px rgba(0,255,255,0.25);font-size:14px;color:var(--cyan);text-align:center;cursor:pointer;text-transform:uppercase}
-.botao-loja{width:95%;min-height:88px;border-radius:18px;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;padding:12px;color:white;transition:0.25s;cursor:pointer}
+.painel-lateral{width:30%;background:rgba(20,20,20,0.96);border-left:2px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:20px}
+.bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,255,0.35);font-size:14px;color:var(--cyan);text-align:center;cursor:pointer}
+.botao-loja{width:95%;min-height:88px;border-radius:18px;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;padding:12px;color:white;cursor:pointer;transition:0.25s}
 .botao-loja img{width:80px;object-fit:contain}
 .botao-loja.ativo{border-color:var(--cyan);background:rgba(0,246,255,0.12);box-shadow:0 0 25px rgba(0,246,255,0.35);transform:scale(1.04)}
-.botao-loja.embreve{opacity:0.45}
+.botao-loja.embreve{opacity:0.4;pointer-events:none}
 .categorias-section{display:none;width:100%;padding:30px 20px;background:#080a12;border-top:2px solid rgba(0,246,255,0.2)}
 .categorias-section.visivel{display:block}
-.categorias-header{max-width:1200px;margin:0 auto 20px;text-align:center}
-.categorias-header h2{color:var(--cyan);font-size:18px;margin:0 0 6px}
-.categorias-header p{color:#888;font-size:13px;margin:0}
 .categorias-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.cat-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;transition:0.25s;text-decoration:none;color:white;display:block}
-.cat-item:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.cat-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;text-decoration:none;color:white;display:block}
 .cat-item img{width:100%;height:140px;object-fit:cover;display:block}
-.cat-item.cat-info{padding:10px;text-align:center}
-.cat-item.cat-info h4{margin:0 0 6px;font-size:13px}
-.cat-item.cat-info span{display:inline-block;background:var(--cyan);color:#000;font-size:11px;font-weight:800;padding:6px 12px;border-radius:8px}
+.cat-info{padding:10px;text-align:center}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:16px}
-.form-container{background:white;padding:30px;border-radius:10px;width:90%;max-width:500px;color:black}
-.account-container{background:rgba(0,0,0,0.85);padding:30px;border-radius:10px;width:90%;max-width:500px;text-align:center;color:white}
+.form-container{background:white;padding:30px;border-radius:10px;width:90%;max-width:400px;color:black}
+.form-container input{width:100%;padding:10px;margin:6px 0}
+.form-container button{width:100%;padding:10px;margin-top:8px;cursor:pointer}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const supabaseClient=supabase.createClient("https://vbmxtscxcrrwslyhezwt.supabase.co","sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt");
-function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://lista.mercadolivre.com.br/${q}`;if(p==='magalu')return `https://www.magazinevoce.com.br/magazinein_1479585/busca/${q}`;if(p==='amazon')return `https://www.amazon.com.br/s?k=${q}`;return "#";}
-</script>
 </head>
 <body>
 <div class="container">
@@ -60,14 +51,35 @@ function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://list
     <div class="botao-loja embreve"><img src="logomarca-jequiti.png">Jequiti</div>
   </div>
 </div>
+
 <div class="categorias-section" id="secCategorias">
-  <div class="categorias-header">
-    <h2>VOCÊ ESTÁ VENDO: <span id="nomePlat">MERCADO LIVRE</span></h2>
-    <p>Clique em uma categoria abaixo</p>
+  <div style="text-align:center;margin-bottom:20px">
+    <h2 style="color:var(--cyan)">VOCÊ ESTÁ VENDO: <span id="nomePlat"></span></h2>
+    <p style="color:#888">Clique em uma categoria abaixo</p>
   </div>
   <div class="categorias-grid" id="gridCats"></div>
 </div>
+
+<div class="overlay" id="cadastroOverlay">
+  <div class="form-container">
+    <h2>Cadastro</h2>
+    <form id="formCadastro"><input id="nome" placeholder="Nome" required><input id="email" type="email" placeholder="E-mail" required><input id="senha" type="password" placeholder="Senha" required><button type="submit">Cadastrar</button></form>
+    <button onclick="fecharCadastro()" style="background:#f44336;color:white;border:none;border-radius:5px">Voltar</button>
+  </div>
+</div>
+
+<div class="overlay" id="contaOverlay">
+  <div class="form-container" style="background:#111;color:white">
+    <h2>Minha Conta</h2>
+    <div id="loginArea"><input id="loginEmail" type="email" placeholder="E-mail"><input id="loginSenha" type="password" placeholder="Senha"><button id="btnLogin">Entrar</button></div>
+    <div id="usuarioArea" style="display:none"><p id="boas"></p><button id="btnLogout">Sair</button></div>
+    <button onclick="fecharConta()" style="background:#f44336;color:white;border:none;border-radius:5px;margin-top:10px">Voltar</button>
+  </div>
+</div>
+
 <script>
+// FUNÇÕES QUE NÃO PODEM TRAVAR
+function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return 'https://lista.mercadolivre.com.br/'+q;if(p==='magalu')return 'https://www.magazinevoce.com.br/magazinein_1479585/busca/'+q;if(p==='amazon')return 'https://www.amazon.com.br/s?k='+q;return '#';}
 const CATS=[
 {t:"Decoração",img:"decora.webp",q:"decoração casa"},
 {t:"Eletrodomésticos",img:"eletrodomestico.jpg",q:"eletrodomésticos"},
@@ -85,20 +97,40 @@ const CATS=[
 ];
 function selecionarPlataforma(plat){
   document.querySelectorAll('.botao-loja').forEach(b=>b.classList.remove('ativo'));
-  document.querySelector(`[data-plataforma="${plat}"]`).classList.add('ativo');
-  const nomes={ml:'MERCADO LIVRE',magalu:'MAGALU',amazon:'AMAZON'};
-  document.getElementById('nomePlat').innerText=nomes[plat];
-  const grid=document.getElementById('gridCats');
-  const sec=document.getElementById('secCategorias');
+  var el=document.querySelector('[data-plataforma="'+plat+'"]'); if(el) el.classList.add('ativo');
+  var nomes={ml:'MERCADO LIVRE',magalu:'MAGALU',amazon:'AMAZON'};
+  document.getElementById('nomePlat').innerText=nomes[plat]||plat;
+  var grid=document.getElementById('gridCats'); var sec=document.getElementById('secCategorias');
   sec.classList.add('visivel');
-  grid.innerHTML=CATS.map(c=>{
-    const url=searchUrl(plat,c.q);
-    return `<a class="cat-item" href="${url}" target="_blank"><img src="${c.img}"><div class="cat-info"><h4>${c.t}</h4><span>Ver em ${nomes[plat]}</span></div></a>`;
-  }).join('');
-  sec.scrollIntoView({behavior:'smooth'});
+  var html=''; for(var i=0;i<CATS.length;i++){var c=CATS[i]; var url=searchUrl(plat,c.q); html+='<a class="cat-item" href="'+url+'" target="_blank"><img src="'+c.img+'" onerror="this.src=\'https://via.placeholder.com/300x140/0f1218/00f6ff?text='+encodeURIComponent(c.t)+'\'"><div class="cat-info"><h4>'+c.t+'</h4><span style="background:var(--cyan);color:#000;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;display:inline-block;margin-top:6px">Ver em '+nomes[plat]+'</span></div></a>';}
+  grid.innerHTML=html; sec.scrollIntoView({behavior:'smooth'});
 }
-function abrirCadastro(){}
-function abrirConta(){}
+function abrirCadastro(){document.getElementById('cadastroOverlay').style.display='flex';}
+function fecharCadastro(){document.getElementById('cadastroOverlay').style.display='none';}
+function abrirConta(){document.getElementById('contaOverlay').style.display='flex';}
+function fecharConta(){document.getElementById('contaOverlay').style.display='none';}
+
+// SUPABASE COM PROTEÇÃO - NÃO TRAVA MAIS
+let supabaseClient=null;
+try{
+  if(window.supabase){ supabaseClient=supabase.createClient("https://vbmxtscxcrrwslyhezwt.supabase.co","sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt"); }
+}catch(e){ console.log("Supabase offline", e); }
+
+document.getElementById('formCadastro')?.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  if(!supabaseClient){ alert("Erro de conexão, tente novamente"); return; }
+  const nome=document.getElementById('nome').value; const email=document.getElementById('email').value; const senha=document.getElementById('senha').value;
+  const {error}=await supabaseClient.auth.signUp({email,password:senha,options:{data:{nome}}});
+  if(error){ alert(error.message); return; } alert("Cadastrado!"); fecharCadastro();
+});
+document.getElementById('btnLogin')?.addEventListener('click', async ()=>{
+  if(!supabaseClient){ alert("Erro de conexão"); return; }
+  const email=document.getElementById('loginEmail').value; const senha=document.getElementById('loginSenha').value;
+  const {error}=await supabaseClient.auth.signInWithPassword({email,password:senha});
+  if(error){ alert(error.message); return; }
+  document.getElementById('loginArea').style.display='none'; document.getElementById('usuarioArea').style.display='block'; document.getElementById('boas').innerText='Bem-vindo!';
+});
+document.getElementById('btnLogout')?.addEventListener('click', async ()=>{ if(supabaseClient) await supabaseClient.auth.signOut(); document.getElementById('usuarioArea').style.display='none'; document.getElementById('loginArea').style.display='block'; });
 </script>
 </body>
 </html>
