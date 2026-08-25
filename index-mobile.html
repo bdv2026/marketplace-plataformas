@@ -13,17 +13,17 @@ body{margin:0;background:#050608;color:white;font-family:Arial,sans-serif;overfl
 .topo{width:100%;height:48vh;min-height:300px;background:url("fachada.png") no-repeat center top;background-size:cover}
 .base{width:100%;background:url("tijolo-fundo.png") no-repeat center;background-size:cover;background-color:#0a0a0a;padding:12px;display:flex;flex-direction:column;align-items:center;gap:12px;border-top:2px solid rgba(0,255,255,0.15)}
 .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:400px}
-.logos.botao-loja{display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;color:white;text-decoration:none;transition:0.2s;cursor:pointer;min-height:70px}
-.logos.botao-loja img{height:38px;object-fit:contain;margin-bottom:4px}
-.logos.botao-loja span{font-size:9px;font-weight:800;letter-spacing:0.05em}
-.logos.botao-loja.ativo{border-color:var(--cyan);background:rgba(0,246,255,0.15);box-shadow:0 0 18px rgba(0,246,255,0.25)}
-.logos.botao-loja.embreve{opacity:0.4}
+.botao-loja{display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;color:white;transition:0.2s;cursor:pointer;min-height:70px}
+.botao-loja img{height:38px;object-fit:contain;margin-bottom:4px}
+.botao-loja span{font-size:9px;font-weight:800}
+.botao-loja.ativo{border-color:var(--cyan);background:rgba(0,246,255,0.15);box-shadow:0 0 18px rgba(0,246,255,0.25)}
+.botao-loja.embreve{opacity:0.4}
 .botoes{display:flex;gap:8px;width:100%;max-width:400px}
 .botoes div{flex:1;padding:10px;border-radius:10px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,255,255,0.35);color:var(--cyan);text-align:center;font-weight:bold;font-size:12px;cursor:pointer}
 .categorias-section{display:none;padding:16px 10px;background:#080a12;border-top:2px solid rgba(0,246,255,0.2)}
 .categorias-section.visivel{display:block}
 .categorias-header{text-align:center;margin-bottom:12px}
-.categorias-header h2{font-size:13px;color:var(--cyan);margin:0 0 4px;letter-spacing:0.08em}
+.categorias-header h2{font-size:13px;color:var(--cyan);margin:0 0 4px}
 .categorias-header p{font-size:11px;color:#888;margin:0}
 .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:400px;margin:0 auto}
 .cat-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;text-decoration:none;color:white;display:block}
@@ -81,20 +81,4 @@ function sel(plat){
   if(el) el.classList.add('ativo');
   const nomes={ml:'MERCADO LIVRE',magalu:'MAGALU',amazon:'AMAZON'};
   document.getElementById('titPlat').innerText=nomes[plat];
-  document.getElementById('subPlat').innerText=nomes[plat];
-  const grid=document.getElementById('grid');
-  const sec=document.getElementById('secCats');
-  sec.classList.add('visivel');
-  grid.innerHTML=CATS.map(c=>`<a class="cat-item" href="${searchUrl(plat,c.q)}" target="_blank"><img src="${c.img}" onerror="this.src='https://via.placeholder.com/200x90/0f1218/00f6ff?text=${c.t}'"><div class="info"><h4>${c.t}</h4><span>Ver em ${nomes[plat]}</span></div></a>`).join('');
-  sec.scrollIntoView({behavior:'smooth'});
-}
-function abrirCadastro(){document.getElementById("cadastroOverlay").style.display="flex";}
-function fecharCadastro(){document.getElementById("cadastroOverlay").style.display="none";}
-function abrirConta(){document.getElementById("contaOverlay").style.display="flex";}
-function fecharConta(){document.getElementById("contaOverlay").style.display="none";}
-document.getElementById("formCadastro").addEventListener("submit",async(e)=>{e.preventDefault();const email=document.getElementById("email").value;const senha=document.getElementById("senha").value;const nome=document.getElementById("nome").value;const{error}=await supabaseClient.auth.signUp({email,password:senha,options:{data:{nome}}});if(error){alert(error.message);return;}alert("Cadastrado!");fecharCadastro();});
-document.getElementById("btnLogin").addEventListener("click",async()=>{const email=document.getElementById("loginEmail").value;const senha=document.getElementById("loginSenha").value;const{error}=await supabaseClient.auth.signInWithPassword({email,password:senha});if(error){alert(error.message);return;}document.getElementById("loginArea").style.display="none";document.getElementById("usuarioArea").style.display="block";document.getElementById("boas").innerText="Bem-vindo!";});
-document.getElementById("btnLogout").addEventListener("click",async()=>{await supabaseClient.auth.signOut();document.getElementById("usuarioArea").style.display="none";document.getElementById("loginArea").style.display="block";});
-</script>
-</body>
-</html>
+  document.getElementById('
