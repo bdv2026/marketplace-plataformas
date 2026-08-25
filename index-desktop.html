@@ -16,9 +16,9 @@ body{margin:0;font-family:Arial,sans-serif;background:#050608;color:white;overfl
 .fachada-area img{width:100%;max-height:85vh;object-fit:contain;filter:drop-shadow(0 0 20px rgba(0,246,255,0.15))}
 .painel-lateral{width:30%;background:linear-gradient(to bottom, rgba(25,25,25,0.96), rgba(10,10,10,0.96));border-left:2px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:20px;overflow-y:auto}
 .bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,255,0.35);box-shadow:0 0 12px rgba(0,255,255,0.25);font-size:14px;color:var(--cyan);text-align:center;cursor:pointer;text-transform:uppercase}
-.botao-loja{width:95%;min-height:88px;border-radius:18px;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;padding:12px;text-decoration:none;color:white;transition:0.25s;cursor:pointer;position:relative}
+.botao-loja{width:95%;min-height:88px;border-radius:18px;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;padding:12px;color:white;transition:0.25s;cursor:pointer;position:relative}
 .botao-loja img{width:80px;object-fit:contain}
-.botao-loja:hover{transform:scale(1.02);border-color:rgba(0,246,255,0.5)}
+.botao-loja:hover{transform:scale(1.02);border-color:rgba(0,246,255,0.5);box-shadow:0 0 20px rgba(0,246,255,0.2)}
 .botao-loja.ativo{border-color:var(--cyan);background:rgba(0,246,255,0.12);box-shadow:0 0 25px rgba(0,246,255,0.35), 0 0 40px rgba(255,0,255,0.15);transform:scale(1.04)}
 .botao-loja.embreve{opacity:0.45}
 .botao-loja.embreve::after{content:"EM BREVE";position:absolute;top:6px;right:6px;background:rgba(255,255,255,0.15);font-size:8px;padding:2px 5px;border-radius:4px}
@@ -28,20 +28,21 @@ body{margin:0;font-family:Arial,sans-serif;background:#050608;color:white;overfl
 .categorias-header{max-width:1200px;margin:0 auto 20px;text-align:center}
 .categorias-header h2{color:var(--cyan);letter-spacing:0.12em;margin:0 0 6px;text-shadow:0 0 10px var(--cyan);font-size:18px}
 .categorias-header p{color:#888;font-size:13px;margin:0}
-.categorias-header.plataforma-nome{color:var(--magenta);font-weight:bold;text-shadow:0 0 8px var(--magenta)}
+.categorias-header .plataforma-nome{color:var(--magenta);font-weight:bold;text-shadow:0 0 8px var(--magenta)}
 .categorias-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .cat-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;transition:0.25s;text-decoration:none;color:white;display:block}
 .cat-item:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 8px 25px rgba(0,246,255,0.15)}
 .cat-item img{width:100%;height:140px;object-fit:cover;display:block}
-.cat-item.cat-info{padding:10px;text-align:center}
-.cat-item.cat-info h4{margin:0 0 6px;font-size:13px}
-.cat-item.cat-info span{display:inline-block;background:var(--cyan);color:#000;font-size:11px;font-weight:800;padding:6px 12px;border-radius:8px}
+.cat-item .cat-info{padding:10px;text-align:center}
+.cat-item .cat-info h4{margin:0 0 6px;font-size:13px}
+.cat-item .cat-info span{display:inline-block;background:var(--cyan);color:#000;font-size:11px;font-weight:800;padding:6px 12px;border-radius:8px}
 .cat-item.magalu span{background:#0086ff;color:white}
 .cat-item.amazon span{background:#ff9900;color:white}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:16px}
 .form-container{background:rgba(255,255,255,0.95);padding:30px;border-radius:10px;width:90%;max-width:500px;color:black;max-height:90vh;overflow-y:auto}
 .account-container{background:rgba(0,0,0,0.85);padding:30px;border-radius:10px;width:90%;max-width:500px;text-align:center;color:white}
-@media(max-width:768px){.container{flex-direction:column}.vitrine-texto{width:100%;flex-direction:row;flex-wrap:wrap}.bloco{width:calc(50% - 8px);font-size:11px;padding:10px}.fachada-area{width:100%}.painel-lateral{width:100%;flex-direction:row;flex-wrap:wrap}.botao-loja{width:calc(50% - 10px)}.categorias-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1024px){.categorias-grid{grid-template-columns:repeat(3,1fr)}.container{flex-wrap:wrap}.vitrine-texto{width:50%;order:1}.fachada-area{width:100%;order:0;max-height:50vh}.painel-lateral{width:50%;order:2}}
+@media(max-width:768px){.container{flex-direction:column}.vitrine-texto{width:100%;flex-direction:row;flex-wrap:wrap}.bloco{width:calc(50% - 8px);font-size:11px;padding:10px}.fachada-area{width:100%}.painel-lateral{width:100%;flex-direction:row;flex-wrap:wrap}.botao-loja{width:calc(50% - 10px);min-height:75px}.categorias-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -59,12 +60,12 @@ function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://list
   </div>
   <div class="fachada-area"><img src="fachada.png" alt="Fachada BDV"></div>
   <div class="painel-lateral" id="painelLojas">
-    <div class="botao-loja" data-plataforma="ml" onclick="selecionarPlataforma('ml')"><img src="logomarca-mercadolivre.png">Mercado Livre</div>
-    <div class="botao-loja" data-plataforma="magalu" onclick="selecionarPlataforma('magalu')"><img src="logomarca-magalu.png">Magalu</div>
-    <div class="botao-loja" data-plataforma="amazon" onclick="selecionarPlataforma('amazon')"><img src="logomarca-amazon.jpg">Amazon</div>
-    <div class="botao-loja embreve" onclick="alert('Shopee em breve!')"><img src="logomarca-Shopee.jpg">Shopee</div>
-    <div class="botao-loja embreve" onclick="alert('Shein em breve!')"><img src="logomarca-shein.png">Shein</div>
-    <div class="botao-loja embreve" onclick="alert('Jequiti em breve!')"><img src="logomarca-jequiti.png">Jequiti</div>
+    <div class="botao-loja" data-plataforma="ml" onclick="selecionarPlataforma('ml')"><img src="logomarca-mercadolivre.png" onerror="this.style.display='none'">Mercado Livre</div>
+    <div class="botao-loja" data-plataforma="magalu" onclick="selecionarPlataforma('magalu')"><img src="logomarca-magalu.png" onerror="this.style.display='none'">Magalu</div>
+    <div class="botao-loja" data-plataforma="amazon" onclick="selecionarPlataforma('amazon')"><img src="logomarca-amazon.jpg" onerror="this.style.display='none'">Amazon</div>
+    <div class="botao-loja embreve" data-plataforma="shopee" onclick="alert('Shopee em breve!')"><img src="logomarca-Shopee.jpg" onerror="this.style.display='none'">Shopee</div>
+    <div class="botao-loja embreve" data-plataforma="shein" onclick="alert('Shein em breve!')"><img src="logomarca-shein.png" onerror="this.style.display='none'">Shein</div>
+    <div class="botao-loja embreve" data-plataforma="jequiti" onclick="alert('Jequiti em breve!')"><img src="logomarca-jequiti.png" onerror="this.style.display='none'">Jequiti</div>
   </div>
 </div>
 <div class="categorias-section" id="secCategorias">
@@ -72,52 +73,4 @@ function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://list
     <h2>VOCÊ ESTÁ VENDO: <span class="plataforma-nome" id="nomePlat">MERCADO LIVRE</span></h2>
     <p>Clique em uma categoria abaixo para ir direto para <span id="nomePlat2">o Mercado Livre</span></p>
   </div>
-  <div class="categorias-grid" id="gridCats"></div>
-</div>
-<div class="overlay" id="cadastroOverlay"><div class="form-container"><h1>Cadastro</h1><form id="formCadastro"><label>Nome</label><input id="nome" required><label>E-mail</label><input id="email" type="email" required><label>Senha</label><input id="senha" type="password" required><button type="submit">Cadastrar</button></form><button onclick="fecharCadastro()" style="width:100%;background:#f44336;color:white;border:none;padding:10px;border-radius:5px;margin-top:10px">Voltar</button></div></div>
-<div class="overlay" id="contaOverlay"><div class="account-container"><h1>Minha Conta</h1><div id="loginArea"><input id="loginEmail" type="email" placeholder="E-mail" style="width:100%;padding:8px;margin:5px 0"><input id="loginSenha" type="password" placeholder="Senha" style="width:100%;padding:8px;margin:5px 0"><button id="btnLogin" style="width:100%;padding:10px">Entrar</button></div><div id="usuarioArea" style="display:none"><p id="boasvindas"></p><div id="dadosConta"></div><button id="btnLogout">Sair</button></div><button onclick="fecharConta()" style="width:100%;background:#f44336;color:white;border:none;padding:10px;border-radius:5px;margin-top:10px">Voltar</button></div></div>
-<script>
-const CATS=[
-{t:"Decoração",img:"decora.webp",q:"decoração casa"},
-{t:"Eletrodomésticos",img:"eletrodomestico.jpg",q:"eletrodomésticos"},
-{t:"Eletroeletrônicos",img:"eletroeletronico.jpg",q:"eletrônicos"},
-{t:"Jardinagem",img:"jardinagem.jpg",q:"jardinagem"},
-{t:"Ferramentas",img:"ferramentas.webp",q:"ferramentas"},
-{t:"Suplementos",img:"suplemento.jpg",q:"suplementos whey"},
-{t:"Moda e Acessórios",img:"roupa-acessorio.jpg",q:"moda acessórios"},
-{t:"Casa e Cozinha",img:"casa-cozinha.jpg",q:"casa e cozinha"},
-{t:"Beleza",img:"beleza.jpg",q:"beleza cosméticos"},
-{t:"Esportes",img:"esportes.jpg",q:"esportes fitness"},
-{t:"Brinquedos",img:"brinquedos.jpg",q:"brinquedos"},
-{t:"Pet Shop",img:"pet.jpg",q:"pet shop"},
-{t:"Automotivo",img:"automotivo.jpg",q:"automotivo"}
-];
-function selecionarPlataforma(plat){
-  document.querySelectorAll('.botao-loja').forEach(b=>b.classList.remove('ativo'));
-  document.querySelector(`[data-plataforma="${plat}"]`).classList.add('ativo');
-  const nomes={ml:'MERCADO LIVRE',magalu:'MAGALU',amazon:'AMAZON'};
-  document.getElementById('nomePlat').innerText=nomes[plat];
-  document.getElementById('nomePlat2').innerText=nomes[plat];
-  const grid=document.getElementById('gridCats');
-  const sec=document.getElementById('secCategorias');
-  sec.classList.add('visivel');
-  grid.innerHTML=CATS.map(c=>{
-    const url=searchUrl(plat,c.q);
-    const cls=plat==='magalu'?'magalu':plat==='amazon'?'amazon':'';
-    return `<a class="cat-item ${cls}" href="${url}" target="_blank">
-      <img src="${c.img}" onerror="this.src='https://via.placeholder.com/300x140/0f1218/00f6ff?text=${encodeURIComponent(c.t)}'">
-      <div class="cat-info"><h4>${c.t}</h4><span>Ver em ${nomes[plat]}</span></div>
-    </a>`;
-  }).join('');
-  sec.scrollIntoView({behavior:'smooth'});
-}
-function abrirCadastro(){document.getElementById("cadastroOverlay").style.display="flex";}
-function fecharCadastro(){document.getElementById("cadastroOverlay").style.display="none";}
-async function abrirConta(){document.getElementById("contaOverlay").style.display="flex";const{data:{user}}=await supabaseClient.auth.getUser();if(user){document.getElementById("loginArea").style.display="none";document.getElementById("usuarioArea").style.display="block";document.getElementById("boasvindas").innerText="Bem-vindo, "+(user.user_metadata?.nome||"Usuário")+"!";}else{document.getElementById("loginArea").style.display="block";document.getElementById("usuarioArea").style.display="none";}}
-function fecharConta(){document.getElementById("contaOverlay").style.display="none";}
-document.getElementById("btnLogin").addEventListener("click",async()=>{const e=document.getElementById("loginEmail").value;const s=document.getElementById("loginSenha").value;const{error}=await supabaseClient.auth.signInWithPassword({email:e,password:s});if(error){alert(error.message);return;}abrirConta();});
-document.getElementById("btnLogout").addEventListener("click",async()=>{await supabaseClient.auth.signOut();document.getElementById("usuarioArea").style.display="none";document.getElementById("loginArea").style.display="block";});
-document.getElementById("formCadastro").addEventListener("submit",async(e)=>{e.preventDefault();const email=document.getElementById("email").value;const senha=document.getElementById("senha").value;const nome=document.getElementById("nome").value;const{error}=await supabaseClient.auth.signUp({email,password:senha,options:{data:{nome}}});if(error){alert(error.message);return;}alert("Cadastro realizado!");fecharCadastro();});
-</script>
-</body>
-</html>
+  <div class="categorias-grid" id="grid
