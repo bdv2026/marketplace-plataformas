@@ -2,508 +2,71 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-   <link rel="manifest" href="./manifest.json">
-    <link rel="icon" type="image/png" href="./icon-192.png">
-    <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B.D.V. Mobile</title>
-
+<title>B.D.V. Mobile - Responsivo</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  background: #050608;
-  font-family: Arial, sans-serif;
-}
-
-/* 🔝 TOPO FIXO (FACHADA) */
-.topo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  background: url("fachada.png") no-repeat center top;
-  background-size: cover;
-  background-color: #050608;
-}
-
-/* 🔻 BASE FIXA */
-.base {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  background: url("tijolo-fundo.png") no-repeat center;
-  background-size: cover;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  padding-top: 8px;
-}
-
-/* LOGOS GRID */
-.logos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  width: 95%;
-}
-
-.logos a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logos img {
-  height: 60px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* ajustes individuais */
-.logos img[alt="Mercado Livre"] { max-height: 80px; }
-.logos img[alt="Shopee"],
-.logos img[alt="SHEIN"] { max-height: 70px; }
-
-/* BOTÕES */
-.botoes-mobile {
-  width: 95%;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 42px;
-}
-
-.botao-mobile {
-  flex: 1;
-  max-width: 180px;
-
-  padding: 10px;
-
-  border-radius: 12px;
-
-  background: rgba(0,0,0,0.45);
-
-  border: 1px solid rgba(0,255,255,0.35);
-
-  color: #00f6ff;
-
-  font-weight: bold;
-
-  text-align: center;
-
-  text-shadow:
-    0 0 6px #00f6ff,
-    0 0 12px #ff00ff;
-
-  box-shadow:
-    0 0 10px rgba(0,255,255,0.25),
-    0 0 16px rgba(255,0,255,0.15);
-
-  backdrop-filter: blur(4px);
-
-  cursor: pointer;
-}
-
-/* PRODUTOS LATERAIS */
-.produtos {
-  position: absolute;
-  top: 45%;
-  width: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-
-  pointer-events: none;
-  opacity: 0.5;
-  filter: grayscale(100%);
-}
-
-.produtos.esquerda { left: 0; }
-.produtos.direita { right: 0; }
-
-.produtos img {
-  width: 100%;
-  object-fit: contain;
-}
-
-/* OVERLAY */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-/* CADASTRO */
-.form-container {
-  background: rgba(255,255,255,0.95);
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  color: black;
-}
-
-.form-container h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-container label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.form-container input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-container button {
-  margin-top: 20px;
-  padding: 10px;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.voltar {
-  background: #f44336 !important;
-}
-
-/* MINHA CONTA */
-.account-container {
-  background: rgba(0,0,0,0.85);
-  padding: 30px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  color: white;
-}
-
-.info {
-  background: rgba(255,255,255,0.1);
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  text-align: left;
-}
-
+:root{--cyan:#00f6ff;--magenta:#ff00ff}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;min-height:100%;background:#050608;font-family:Arial,sans-serif;color:white;overflow-x:hidden}
+.topo{position:relative;width:100%;height:58vh;min-height:380px;background:url("fachada.png") no-repeat center top;background-size:cover;background-color:#050608;display:flex;align-items:center;justify-content:space-between;padding:10px}
+.produtos{width:110px;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0.9}
+.produtos img{width:100%;max-width:90px;object-fit:contain;border-radius:10px;background:rgba(255,255,255,0.06);padding:4px}
+.base{position:relative;width:100%;background:url("tijolo-fundo.png") no-repeat center;background-size:cover;background-color:#0a0a0a;padding:14px 10px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;border-top:2px solid rgba(0,255,255,0.15)}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:420px}
+.logos a{display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:8px}
+.logos img{height:52px;width:auto;object-fit:contain}
+.logos a.embreve{opacity:0.55;position:relative}
+.logos a.embreve::after{content:"EM BREVE";position:absolute;bottom:4px;right:4px;font-size:7px;background:rgba(255,255,255,0.15);padding:2px 4px;border-radius:4px;color:#aaa}
+.botoes-mobile{width:100%;max-width:420px;display:flex;gap:10px}
+.botao-mobile{flex:1;padding:12px;border-radius:12px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,255,255,0.35);color:var(--cyan);font-weight:bold;text-align:center;text-shadow:0 0 6px var(--cyan),0 0 12px var(--magenta);cursor:pointer;font-size:13px}
+.categorias-mobile{width:100%;padding:18px 12px;background:linear-gradient(to bottom, rgba(5,6,8,0.96), rgba(12,14,20,0.98))}
+.categorias-mobile h2{font-size:13px;color:var(--cyan);text-align:center;letter-spacing:0.12em;margin:0 0 12px}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:420px;margin:0 auto}
+.cat-card-mobile{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px}
+.cat-card-mobile img{width:100%;height:78px;object-fit:cover;border-radius:8px;background:rgba(255,255,255,0.04)}
+.cat-card-mobile h4{margin:0;font-size:11px;color:white}
+.cat-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+.btn-m{font-size:8px;padding:5px 2px;border-radius:6px;text-align:center;text-decoration:none;font-weight:800}
+.btn-m.ml{background:#fff159;color:#333}.btn-m.magalu{background:#0086ff;color:white}.btn-m.amazon{background:#ff9900;color:white}.btn-m.off{background:rgba(255,255,255,0.08);color:#666}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:12px}
+.form-container{background:rgba(255,255,255,0.95);padding:20px;border-radius:10px;width:92%;max-width:400px;color:black;max-height:90vh;overflow-y:auto}
+.account-container{background:rgba(0,0,0,0.85);padding:20px;border-radius:10px;width:92%;max-width:400px;text-align:center;color:white}
+.info{background:rgba(255,255,255,0.1);padding:8px;margin:8px 0;border-radius:5px;text-align:left;font-size:13px}
+@media(min-width:768px){.cat-grid{grid-template-columns:repeat(3,1fr);max-width:720px}.logos{max-width:720px;grid-template-columns:repeat(6,1fr)}}
 </style>
-    </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabaseUrl = "https://vbmxtscxcrrwslyhezwt.supabase.co";
-  const supabaseKey = "sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt";
-
-  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl="https://vbmxtscxcrrwslyhezwt.supabase.co";
+const supabaseKey="sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt";
+const supabaseClient=supabase.createClient(supabaseUrl, supabaseKey);
+function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://lista.mercadolivre.com.br/${q}`;if(p==='magalu')return `https://www.magazinevoce.com.br/magazinein_1479585/busca/${q}`;if(p==='amazon')return `https://www.amazon.com.br/s?k=${q}`;return "#";}
 </script>
 </head>
-
-
 <body>
-
 <div class="topo">
-
-  <div class="produtos esquerda">
-    <img src="decora.webp">
-    <img src="eletrodomestico.jpg">
-    <img src="eletroeletronico.jpg">
-  </div>
-
-  <div class="produtos direita">
-    <img src="ferramentas.webp">
-    <img src="suplemento.jpg">
-    <img src="roupa-acessorio.jpg">
-  </div>
-
+  <div class="produtos esquerda"><img src="decora.webp"><img src="eletrodomestico.jpg"><img src="eletroeletronico.jpg"></div>
+  <div style="flex:1"></div>
+  <div class="produtos direita"><img src="ferramentas.webp"><img src="suplemento.jpg"><img src="roupa-acessorio.jpg"></div>
 </div>
-
 <div class="base">
-
   <div class="logos">
-
-    <a href="https://meli.la/2qu3xa4" target="_blank">
-      <img src="logomarca-mercadolivre.png" alt="Mercado Livre">
-    </a>
-
-    <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank">
-      <img src="logomarca-magalu.png" alt="Magalu">
-    </a>
-
-    <a href="https://amzn.to/42GTYKE" target="_blank">
-      <img src="logomarca-amazon.jpg" alt="Amazon">
-    </a>
-
-    <a href="SEU-LINK-JEQUITI" target="_blank">
-      <img src="logomarca-jequiti.png" alt="Jequiti">
-    </a>
-
-    <a href="SEU-LINK-SHOPEE" target="_blank">
-      <img src="logomarca-Shopee.jpg" alt="Shopee">
-    </a>
-
-    <a href="SEU-LINK-SHEIN" target="_blank">
-      <img src="logomarca-shein.png" alt="SHEIN">
-    </a>
-
+    <a href="https://meli.la/2qu3xa4" target="_blank"><img src="logomarca-mercadolivre.png" alt="Mercado Livre"></a>
+    <a href="https://www.magazinevoce.com.br/magazinein_1479585/" target="_blank"><img src="logomarca-magalu.png" alt="Magalu"></a>
+    <a href="https://amzn.to/42GTYKE" target="_blank"><img src="logomarca-amazon.jpg" alt="Amazon"></a>
+    <a class="embreve" href="SEU-LINK-JEQUITI" target="_blank"><img src="logomarca-jequiti.png" alt="Jequiti"></a>
+    <a class="embreve" href="SEU-LINK-SHOPEE" target="_blank"><img src="logomarca-Shopee.jpg" alt="Shopee"></a>
+    <a class="embreve" href="SEU-LINK-SHEIN" target="_blank"><img src="logomarca-shein.png" alt="SHEIN"></a>
   </div>
-
   <div class="botoes-mobile">
-
-    <div class="botao-mobile" onclick="abrirCadastro()">
-      CADASTRAR
-    </div>
-
-    <div class="botao-mobile" onclick="abrirConta()">
-      MINHA CONTA
-    </div>
-
+    <div class="botao-mobile" onclick="abrirCadastro()">CADASTRAR</div>
+    <div class="botao-mobile" onclick="abrirConta()">MINHA CONTA</div>
   </div>
-
 </div>
-
-<!-- CADASTRO -->
+<div class="categorias-mobile">
+  <h2>TODAS CATEGORIAS • TODAS LOJAS</h2>
+  <div class="cat-grid" id="catGridMobile"></div>
+</div>
 <div class="overlay" id="cadastroOverlay">
-
-  <div class="form-container">
-
-    <h1>Cadastro de Usuário</h1>
-
-    <form id="formCadastro">
-
-      <label>Nome Completo</label>
-      <input type="text" id="nome" required>
-
-      <label>Endereço</label>
-      <input type="text" id="endereco" required>
-
-      <label>RG</label>
-      <input type="text" id="rg" required>
-
-      <label>CPF</label>
-      <input type="text" id="cpf" required>
-
-      <label>Celular / WhatsApp</label>
-      <input type="tel" id="celular" required>
-
-      <label>E-mail</label>
-      <input type="email" id="email" required>
-
-      <label>Senha</label>
-      <input type="password" id="senha" required>
-
-      <button type="submit">Cadastrar</button>
-
-    </form>
-
-    <button class="voltar" onclick="fecharCadastro()">
-      Voltar
-    </button>
-
-  </div>
-
-</div>
-
-<!-- MINHA CONTA -->
-<!-- MINHA CONTA -->
-<div class="overlay" id="contaOverlay">
-
-  <div class="account-container">
-
-    <h1>Minha Conta</h1>
-
-    <!-- ÁREA DE LOGIN -->
-    <div id="loginArea">
-
-      <label>E-mail</label>
-      <input
-        type="email"
-        id="loginEmail"
-        placeholder="Digite seu e-mail"
-      >
-
-      <label>Senha</label>
-      <input
-        type="password"
-        id="loginSenha"
-        placeholder="Digite sua senha"
-      >
-
-      <button id="btnLogin">
-        Entrar
-      </button>
-
-    </div>
-
-    <!-- ÁREA DO USUÁRIO LOGADO -->
-    <div id="usuarioArea" style="display:none;">
-
-      <p id="boasvindas"></p>
-
-      <div id="dadosConta"></div>
-
-      <button id="btnLogout">
-        Sair
-      </button>
-
-    </div>
-
-    <button class="voltar" onclick="fecharConta()">
-      Voltar
-    </button>
-
-  </div>
-
-</div>
-
-</div>
-
-<script>
-
-function abrirCadastro() {
-  document.getElementById("cadastroOverlay").style.display = "flex";
-}
-
-function fecharCadastro() {
-  document.getElementById("cadastroOverlay").style.display = "none";
-}
-
-async function abrirConta() {
-
-  document.getElementById("contaOverlay").style.display = "flex";
-
-  const { data: { user } } =
-    await supabaseClient.auth.getUser();
-
-  if (user) {
-
-    document.getElementById("loginArea").style.display = "none";
-
-    document.getElementById("usuarioArea").style.display = "block";
-
-    document.getElementById("boasvindas").innerText =
-      "Bem-vindo, " +
-      (user.user_metadata?.nome || "Usuário") +
-      "!";
-
-    document.getElementById("dadosConta").innerHTML = `
-      <div class="info">
-        Nome: ${user.user_metadata?.nome || "-"}
-      </div>
-
-      <div class="info">
-        E-mail: ${user.email || "-"}
-      </div>
-    `;
-
-    } else {
-
-    document.getElementById("loginArea").style.display = "block";
-
-    document.getElementById("usuarioArea").style.display = "none";
-
-  }
-
-} // FECHA abrirConta()
-
-
-function fecharConta() {
-  document.getElementById("contaOverlay").style.display = "none";
-}
-
-document.getElementById("btnLogin").addEventListener("click", async () => {
-
-  const email =
-    document.getElementById("loginEmail").value;
-
-  const senha =
-    document.getElementById("loginSenha").value;
-
-  const { error } =
-    await supabaseClient.auth.signInWithPassword({
-      email,
-      password: senha
-    });
-
-  if (error) {
-    alert("Erro no login: " + error.message);
-    return;
-  }
-
-  abrirConta();
-
-});
-
-document.getElementById("btnLogout").addEventListener("click", async () => {
-
-  await supabaseClient.auth.signOut();
-
-  document.getElementById("usuarioArea").style.display = "none";
-
-  document.getElementById("loginArea").style.display = "block";
-
-  alert("Logout realizado com sucesso!");
-
-});
-
-document.getElementById("formCadastro").addEventListener("submit", async function(event){
-
-  event.preventDefault();
-
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: email,
-    password: senha,
-    options: {
-      data: {
-        nome: nome
-      }
-    }
-  });
-
-  if (error) {
-    alert("Erro no cadastro: " + error.message);
-    return;
-  }
-
-  alert("Cadastro realizado com sucesso!");
-
-  fecharCadastro();
-
-});
-
-
-</script>
-
-</body>
-</html>
-
