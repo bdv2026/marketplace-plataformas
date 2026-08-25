@@ -1,82 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
-  <link rel="manifest" href="./manifest.json">
-<link rel="icon" type="image/png" href="./icon-192.png">
-<link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>B.D.V. Shopping Virtual</title>
-
-<meta name="theme-color" content="#050608">
-
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-<meta name="apple-mobile-web-app-title" content="BDV">
-
-<link rel="manifest" href="manifest.json">
-
-<link rel="apple-touch-icon" href="icon-192.png">
-
-<link rel="icon" type="image/png" href="icon-192.png">
-
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" href="./icon-192.png">
+<style>
+:root{--cyan:#00f6ff;--magenta:#ff00ff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#050608;color:white;overflow-x:hidden}
+.container{width:100%;min-height:80vh;display:flex;align-items:stretch;justify-content:space-between}
+.vitrine-texto{width:28%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;color:var(--cyan);text-align:center;font-weight:bold;gap:16px}
+.fachada-area{width:42%;display:flex;justify-content:center;align-items:center;padding:20px}
+.fachada-area img{width:100%;max-height:85vh;object-fit:contain}
+.painel-lateral{width:30%;background:linear-gradient(to bottom, rgba(25,25,25,0.96), rgba(10,10,10,0.96));border-left:2px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:20px;overflow-y:auto}
+.bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,255,0.35);box-shadow:0 0 12px rgba(0,255,255,0.25);font-size:14px;color:var(--cyan);text-align:center;cursor:pointer;text-transform:uppercase}
+.botao-loja{width:95%;min-height:88px;border-radius:18px;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;padding:12px;color:white;transition:0.25s;cursor:pointer}
+.botao-loja img{width:80px;object-fit:contain}
+.botao-loja.ativo{border-color:var(--cyan);background:rgba(0,246,255,0.12);box-shadow:0 0 25px rgba(0,246,255,0.35);transform:scale(1.04)}
+.botao-loja.embreve{opacity:0.45}
+.categorias-section{display:none;width:100%;padding:30px 20px;background:#080a12;border-top:2px solid rgba(0,246,255,0.2)}
+.categorias-section.visivel{display:block}
+.categorias-header{max-width:1200px;margin:0 auto 20px;text-align:center}
+.categorias-header h2{color:var(--cyan);font-size:18px;margin:0 0 6px}
+.categorias-header p{color:#888;font-size:13px;margin:0}
+.categorias-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;transition:0.25s;text-decoration:none;color:white;display:block}
+.cat-item:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.cat-item img{width:100%;height:140px;object-fit:cover;display:block}
+.cat-item.cat-info{padding:10px;text-align:center}
+.cat-item.cat-info h4{margin:0 0 6px;font-size:13px}
+.cat-item.cat-info span{display:inline-block;background:var(--cyan);color:#000;font-size:11px;font-weight:800;padding:6px 12px;border-radius:8px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:16px}
+.form-container{background:white;padding:30px;border-radius:10px;width:90%;max-width:500px;color:black}
+.account-container{background:rgba(0,0,0,0.85);padding:30px;border-radius:10px;width:90%;max-width:500px;text-align:center;color:white}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-
-if ("serviceWorker" in navigator) {
-
-window.addEventListener("load", () => {
-
-navigator.serviceWorker.register("./service-worker.js")
-
-.then(() => {
-
-console.log("Service Worker registrado com sucesso.");
-
-})
-
-.catch(err => {
-
-console.log("Erro ao registrar Service Worker:", err);
-
-});
-
-});
-
-}
-
-function detectMobile() {
-
-return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-
-|| window.innerWidth <= 768;
-
-}
-
-window.onload = function(){
-
-if(detectMobile()){
-
-window.location.replace("index-mobile.html");
-
-}else{
-
-window.location.replace("index-desktop.html");
-
-}
-
-};
-
+const supabaseClient=supabase.createClient("https://vbmxtscxcrrwslyhezwt.supabase.co","sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt");
+function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://lista.mercadolivre.com.br/${q}`;if(p==='magalu')return `https://www.magazinevoce.com.br/magazinein_1479585/busca/${q}`;if(p==='amazon')return `https://www.amazon.com.br/s?k=${q}`;return "#";}
 </script>
-
 </head>
-
 <body>
-
+<div class="container">
+  <div class="vitrine-texto">
+    <div class="bloco" onclick="abrirCadastro()">CADASTRE-SE AQUI</div>
+    <div class="bloco" onclick="abrirConta()">MINHA CONTA</div>
+    <div class="bloco">ESCOLHA A PLATAFORMA AO LADO</div>
+    <div class="bloco">DEPOIS ESCOLHA A CATEGORIA</div>
+  </div>
+  <div class="fachada-area"><img src="fachada.png"></div>
+  <div class="painel-lateral">
+    <div class="botao-loja" data-plataforma="ml" onclick="selecionarPlataforma('ml')"><img src="logomarca-mercadolivre.png">Mercado Livre</div>
+    <div class="botao-loja" data-plataforma="magalu" onclick="selecionarPlataforma('magalu')"><img src="logomarca-magalu.png">Magalu</div>
+    <div class="botao-loja" data-plataforma="amazon" onclick="selecionarPlataforma('amazon')"><img src="logomarca-amazon.jpg">Amazon</div>
+    <div class="botao-loja embreve"><img src="logomarca-Shopee.jpg">Shopee</div>
+    <div class="botao-loja embreve"><img src="logomarca-shein.png">Shein</div>
+    <div class="botao-loja embreve"><img src="logomarca-jequiti.png">Jequiti</div>
+  </div>
+</div>
+<div class="categorias-section" id="secCategorias">
+  <div class="categorias-header">
+    <h2>VOCÊ ESTÁ VENDO: <span id="nomePlat">MERCADO LIVRE</span></h2>
+    <p>Clique em uma categoria abaixo</p>
+  </div>
+  <div class="categorias-grid" id="gridCats"></div>
+</div>
+<script>
+const CATS=[
+{t:"Decoração",img:"decora.webp",q:"decoração casa"},
+{t:"Eletrodomésticos",img:"eletrodomestico.jpg",q:"eletrodomésticos"},
+{t:"Eletroeletrônicos",img:"eletroeletronico.jpg",q:"eletrônicos"},
+{t:"Jardinagem",img:"jardinagem.jpg",q:"jardinagem"},
+{t:"Ferramentas",img:"ferramentas.webp",q:"ferramentas"},
+{t:"Suplementos",img:"suplemento.jpg",q:"suplementos whey"},
+{t:"Moda e Acessórios",img:"roupa-acessorio.jpg",q:"moda acessórios"},
+{t:"Casa e Cozinha",img:"casa-cozinha.jpg",q:"casa e cozinha"},
+{t:"Beleza",img:"beleza.jpg",q:"beleza cosméticos"},
+{t:"Esportes",img:"esportes.jpg",q:"esportes fitness"},
+{t:"Brinquedos",img:"brinquedos.jpg",q:"brinquedos"},
+{t:"Pet Shop",img:"pet.jpg",q:"pet shop"},
+{t:"Automotivo",img:"automotivo.jpg",q:"automotivo"}
+];
+function selecionarPlataforma(plat){
+  document.querySelectorAll('.botao-loja').forEach(b=>b.classList.remove('ativo'));
+  document.querySelector(`[data-plataforma="${plat}"]`).classList.add('ativo');
+  const nomes={ml:'MERCADO LIVRE',magalu:'MAGALU',amazon:'AMAZON'};
+  document.getElementById('nomePlat').innerText=nomes[plat];
+  const grid=document.getElementById('gridCats');
+  const sec=document.getElementById('secCategorias');
+  sec.classList.add('visivel');
+  grid.innerHTML=CATS.map(c=>{
+    const url=searchUrl(plat,c.q);
+    return `<a class="cat-item" href="${url}" target="_blank"><img src="${c.img}"><div class="cat-info"><h4>${c.t}</h4><span>Ver em ${nomes[plat]}</span></div></a>`;
+  }).join('');
+  sec.scrollIntoView({behavior:'smooth'});
+}
+function abrirCadastro(){}
+function abrirConta(){}
+</script>
 </body>
-
 </html>
