@@ -7,7 +7,6 @@
 <meta name="description" content="B.D.V. Shopping Virtual - 25 categorias - Versão Mobile">
 <meta name="author" content="Rodrigo Beltrão">
 <meta name="theme-color" content="#00f6ff">
-<link rel="icon" href="fachada.png?v=3">
 <style>
 * {
   margin: 0;
@@ -32,14 +31,11 @@ body {
     rgba(0, 246, 255, 0.18),
     transparent 55%
   );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 header {
   text-align: center;
   padding: 18px 15px 10px 15px;
   width: 100%;
-  max-width: 500px;
 }
 header h1 {
   color: #00f6ff;
@@ -64,6 +60,11 @@ header h1 {
   margin: 0 auto;
   box-shadow: 0 0 25px rgba(0, 246, 255, 0.28);
   border: 1px solid rgba(0, 246, 255, 0.35);
+  transition: all 0.4s ease;
+}
+.fachada-container img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(0, 246, 255, 0.45);
 }
 .search-area {
   max-width: 500px;
@@ -77,17 +78,26 @@ header h1 {
   padding: 14px 20px;
   border-radius: 30px;
   border: 2px solid #00f6ff;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   font-size: 15px;
   outline: none;
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.25);
+  transition: all 0.3s ease;
+}
+.search-area input:focus {
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.45);
+}
+.search-area input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 .categorias-title {
   text-align: center;
   font-size: 19px;
   margin-bottom: 20px;
   color: #00f6ff;
-  text-shadow: 0 0 10px rgba(0,246,255,0.85);
+  text-shadow: 0 0 10px rgba(0, 246, 255, 0.85);
   letter-spacing: 1px;
   font-weight: 700;
 }
@@ -97,7 +107,7 @@ header h1 {
   gap: 12px;
   max-width: 500px;
   width: 100%;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 50px auto;
   padding: 0 14px;
 }
 .cat {
@@ -106,10 +116,16 @@ header h1 {
   padding: 16px 8px;
   text-align: center;
   background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
-  box-shadow: 0 0 10px rgba(0,246,255,0.25);
+  box-shadow: 0 0 10px rgba(0, 246, 255, 0.25);
+  transition: all 0.3s ease;
   text-decoration: none;
   color: #ffffff;
   display: block;
+}
+.cat:hover {
+  box-shadow: 0 0 20px rgba(0, 246, 255, 0.7);
+  transform: translateY(-3px) scale(1.03);
+  border-color: #ffffff;
 }
 .cat-icon {
   font-size: 28px;
@@ -119,30 +135,16 @@ header h1 {
 .cat-name {
   font-size: 12.5px;
   font-weight: 600;
-}
-.voltar-area {
-  text-align: center;
-  padding: 15px 0 25px 0;
-  width: 100%;
-  max-width: 500px;
-}
-.btn-voltar {
-  display: inline-block;
-  padding: 12px 24px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 25px;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  font-size: 12px;
+  letter-spacing: 0.4px;
 }
 footer {
   text-align: center;
   padding: 28px 15px;
-  border-top: 1px solid rgba(0,246,255,0.15);
-  color: rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(0, 246, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
+  line-height: 1.6;
   width: 100%;
-  max-width: 500px;
 }
 footer strong {
   color: #00f6ff;
@@ -152,10 +154,10 @@ footer strong {
 <body>
 <header><h1>B.D.V. SHOPPING VIRTUAL</h1></header>
 <div class="fachada-container">
-  <img src="fachada.png?v=3" alt="Fachada B.D.V Shopping Virtual">
+  <img src="fachada.png?v=4" alt="Fachada B.D.V Shopping Virtual">
 </div>
 <div class="search-area">
-  <input type="text" id="busca-mobile" placeholder="O que você procura hoje?">
+  <input type="text" placeholder="O que você procura hoje?">
 </div>
 <h2 class="categorias-title">NOSSAS 25 CATEGORIAS</h2>
 <div class="categorias">
@@ -171,7 +173,7 @@ footer strong {
   <a class="cat" href="#"><span class="cat-icon">📚</span><span class="cat-name">Livros</span></a>
   <a class="cat" href="#"><span class="cat-icon">🎮</span><span class="cat-name">Games</span></a>
   <a class="cat" href="#"><span class="cat-icon">📺</span><span class="cat-name">Eletrodomésticos</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🛋️</span><span class="cat-name">Móveis</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🛋</span><span class="cat-name">Móveis</span></a>
   <a class="cat" href="#"><span class="cat-icon">🌱</span><span class="cat-name">Jardim e Piscina</span></a>
   <a class="cat" href="#"><span class="cat-icon">🔧</span><span class="cat-name">Ferramentas</span></a>
   <a class="cat" href="#"><span class="cat-icon">🍔</span><span class="cat-name">Alimentos e Bebidas</span></a>
@@ -180,32 +182,14 @@ footer strong {
   <a class="cat" href="#"><span class="cat-icon">💍</span><span class="cat-name">Joias e Bijus</span></a>
   <a class="cat" href="#"><span class="cat-icon">⌚</span><span class="cat-name">Relógios</span></a>
   <a class="cat" href="#"><span class="cat-icon">👟</span><span class="cat-name">Calçados</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🖥️</span><span class="cat-name">Informática</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🖥</span><span class="cat-name">Informática</span></a>
   <a class="cat" href="#"><span class="cat-icon">📱</span><span class="cat-name">Celulares</span></a>
   <a class="cat" href="#"><span class="cat-icon">🔊</span><span class="cat-name">TV e Áudio</span></a>
   <a class="cat" href="#"><span class="cat-icon">🔥</span><span class="cat-name">Ofertas do Dia</span></a>
 </div>
-<div class="voltar-area">
-  <a href="index.html?v=3" class="btn-voltar">← Voltar ao Início</a>
-</div>
 <footer>
   <strong>B.D.V. Shopping Virtual</strong> © 2026<br>
-  O Seu Shopping a Um Clique - Rodrigo Beltrão
+  O Seu Shopping a Um Clique
 </footer>
-<script>
-  var busca = document.getElementById('busca-mobile');
-  var categorias = document.querySelectorAll('.cat');
-  busca.addEventListener('input', function() {
-    var termo = this.value.toLowerCase();
-    categorias.forEach(function(cat) {
-      var nome = cat.textContent.toLowerCase();
-      if (nome.includes(termo)) {
-        cat.style.display = 'block';
-      } else {
-        cat.style.display = 'none';
-      }
-    });
-  });
-</script>
 </body>
 </html>
