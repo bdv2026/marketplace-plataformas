@@ -4,193 +4,205 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>B.D.V. Shopping Virtual - Desktop</title>
-<meta name="description" content="B.D.V. Shopping Virtual - 25 categorias - Versão Desktop">
+<meta name="description" content="B.D.V. Shopping Virtual - 25 categorias - Desktop">
 <meta name="author" content="Rodrigo Beltrão">
 <meta name="theme-color" content="#00f6ff">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="icon" href="fachada.png?v=4">
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 body {
-  background: #000000;
-  color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+background: #000;
+color: #fff;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+min-height: 100vh;
+width: 100%;
+display: block;
+overflow-x: hidden;
 }
 header {
-  text-align: center;
-  padding: 20px 15px 10px 15px;
-  width: 100%;
+text-align: center;
+padding: 20px 15px 10px 15px;
+width: 100%;
 }
 header h1 {
-  color: #00f6ff;
-  font-size: 14px;
-  letter-spacing: 3px;
-  opacity: 0.7;
-  font-weight: 600;
+color: #00f6ff;
+font-size: 14px;
+letter-spacing: 3px;
+opacity: .7;
+font-weight: 600;
 }
 .fachada-container {
-  text-align: center;
-  margin: 0 auto 30px auto;
-  padding: 0 20px;
-  max-width: 1000px;
-  width: 100%;
+text-align: center;
+margin: 0 auto 30px auto;
+padding: 0 20px;
+max-width: 1000px;
+width: 100%;
 }
 .fachada-container img {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  border-radius: 18px;
-  display: block;
-  margin: 0 auto;
-  box-shadow: 0 0 30px rgba(0, 246, 255, 0.3);
-  border: 1px solid rgba(0, 246, 255, 0.35);
+width: 100%;
+max-width: 900px;
+height: auto;
+border-radius: 18px;
+display: block;
+margin: 0 auto;
+box-shadow: 0 0 30px rgba(0,246,255,.3);
+border: 1px solid rgba(0,246,255,.35);
 }
 .search-area {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto 35px auto;
-  padding: 0 20px;
-  text-align: center;
+max-width: 800px;
+width: 100%;
+margin: 0 auto 35px auto;
+padding: 0 20px;
+text-align: center;
 }
 .search-area input {
-  width: 100%;
-  padding: 16px 24px;
-  border-radius: 30px;
-  border: 2px solid #00f6ff;
-  background: rgba(255,255,255,0.06);
-  color: #ffffff;
-  font-size: 16px;
-  outline: none;
+width: 100%;
+padding: 16px 24px;
+border-radius: 30px;
+border: 2px solid #00f6ff;
+background: rgba(255,255,255,.06);
+color: #fff;
+font-size: 16px;
+outline: none;
 }
 .categorias-title {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 25px;
-  color: #00f6ff;
-  text-shadow: 0 0 10px rgba(0,246,255,0.85);
-  letter-spacing: 1px;
-  font-weight: 700;
+text-align: center;
+font-size: 22px;
+margin-bottom: 25px;
+color: #00f6ff;
+text-shadow: 0 0 10px rgba(0,246,255,.85);
+letter-spacing: 1px;
+font-weight: 700;
 }
 .categorias {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto 50px auto;
-  padding: 0 20px;
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 16px;
+max-width: 1000px;
+width: 100%;
+margin: 0 auto 50px auto;
+padding: 0 20px;
 }
 .cat {
-  border: 2px solid #00f6ff;
-  border-radius: 14px;
-  padding: 20px 10px;
-  text-align: center;
-  background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
-  box-shadow: 0 0 10px rgba(0,246,255,0.25);
-  text-decoration: none;
-  color: #ffffff;
-  display: block;
+border: 2px solid #00f6ff;
+border-radius: 14px;
+padding: 20px 10px;
+text-align: center;
+background: linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+box-shadow: 0 0 10px rgba(0,246,255,.25);
+text-decoration: none;
+color: #fff;
+display: block;
 }
 .cat-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
-  display: block;
+font-size: 32px;
+margin-bottom: 10px;
+display: block;
 }
 .cat-name {
-  font-size: 13px;
-  font-weight: 600;
+font-size: 13px;
+font-weight: 600;
 }
 .plataformas {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto 40px auto;
-  padding: 0 20px;
-  text-align: center;
+max-width: 1000px;
+width: 100%;
+margin: 0 auto 40px auto;
+padding: 0 20px;
+text-align: center;
 }
 .plataformas h3 {
-  color: #00f6ff;
-  font-size: 14px;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-  opacity: 0.8;
+color: #00f6ff;
+font-size: 14px;
+margin-bottom: 15px;
+letter-spacing: 1px;
+opacity: .8;
 }
 .logos {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  opacity: 0.7;
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+opacity: .7;
 }
 footer {
-  text-align: center;
-  padding: 30px 15px;
-  border-top: 1px solid rgba(0,246,255,0.15);
-  color: rgba(255,255,255,0.5);
-  font-size: 12px;
-  width: 100%;
+text-align: center;
+padding: 30px 15px;
+border-top: 1px solid rgba(0,246,255,.15);
+color: rgba(255,255,255,.5);
+font-size: 12px;
+width: 100%;
 }
 footer strong {
-  color: #00f6ff;
+color: #00f6ff;
 }
 </style>
 </head>
-<body>
-<header><h1>B.D.V. SHOPPING VIRTUAL</h1></header>
+<body style="display:block; overflow-x:hidden;">
+<header>
+<h1>B.D.V. SHOPPING VIRTUAL</h1>
+</header>
 <div class="fachada-container">
-  <img src="fachada.png?v=4" alt="Fachada B.D.V Shopping Virtual">
+<img src="fachada.png?v=4" alt="Fachada B.D.V Shopping Virtual">
 </div>
 <div class="search-area">
-  <input type="text" id="busca-desktop" placeholder="O que você procura hoje?">
+<input type="text" id="busca" placeholder="O que você procura hoje?">
 </div>
 <h2 class="categorias-title">NOSSAS 25 CATEGORIAS</h2>
 <div class="categorias">
-  <a class="cat" href="#"><span class="cat-icon">💻</span><span class="cat-name">Tecnologia</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🏠</span><span class="cat-name">Casa e Decoração</span></a>
-  <a class="cat" href="#"><span class="cat-icon">👗</span><span class="cat-name">Moda Feminina</span></a>
-  <a class="cat" href="#"><span class="cat-icon">👔</span><span class="cat-name">Moda Masculina</span></a>
-  <a class="cat" href="#"><span class="cat-icon">💄</span><span class="cat-name">Saúde e Beleza</span></a>
-  <a class="cat" href="#"><span class="cat-icon">⚽</span><span class="cat-name">Esportes e Lazer</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🚗</span><span class="cat-name">Automotivo</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🧸</span><span class="cat-name">Brinquedos</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🐶</span><span class="cat-name">Pet Shop</span></a>
-  <a class="cat" href="#"><span class="cat-icon">📚</span><span class="cat-name">Livros</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🎮</span><span class="cat-name">Games</span></a>
-  <a class="cat" href="#"><span class="cat-icon">📺</span><span class="cat-name">Eletrodomésticos</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🛋️</span><span class="cat-name">Móveis</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🌱</span><span class="cat-name">Jardim e Piscina</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🔧</span><span class="cat-name">Ferramentas</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🍔</span><span class="cat-name">Alimentos e Bebidas</span></a>
-  <a class="cat" href="#"><span class="cat-icon">👶</span><span class="cat-name">Bebês e Cia</span></a>
-  <a class="cat" href="#"><span class="cat-icon">📎</span><span class="cat-name">Papelaria</span></a>
-  <a class="cat" href="#"><span class="cat-icon">💍</span><span class="cat-name">Joias e Bijus</span></a>
-  <a class="cat" href="#"><span class="cat-icon">⌚</span><span class="cat-name">Relógios</span></a>
-  <a class="cat" href="#"><span class="cat-icon">👟</span><span class="cat-name">Calçados</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🖥️</span><span class="cat-name">Informática</span></a>
-  <a class="cat" href="#"><span class="cat-icon">📱</span><span class="cat-name">Celulares</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🔊</span><span class="cat-name">TV e Áudio</span></a>
-  <a class="cat" href="#"><span class="cat-icon">🔥</span><span class="cat-name">Ofertas do Dia</span></a>
+<a class="cat" href="#"><span class="cat-icon">💻</span><span class="cat-name">Tecnologia</span></a>
+<a class="cat" href="#"><span class="cat-icon">🏠</span><span class="cat-name">Casa e Decoração</span></a>
+<a class="cat" href="#"><span class="cat-icon">👗</span><span class="cat-name">Moda Feminina</span></a>
+<a class="cat" href="#"><span class="cat-icon">👔</span><span class="cat-name">Moda Masculina</span></a>
+<a class="cat" href="#"><span class="cat-icon">💄</span><span class="cat-name">Saúde e Beleza</span></a>
+<a class="cat" href="#"><span class="cat-icon">⚽</span><span class="cat-name">Esportes e Lazer</span></a>
+<a class="cat" href="#"><span class="cat-icon">🚗</span><span class="cat-name">Automotivo</span></a>
+<a class="cat" href="#"><span class="cat-icon">🧸</span><span class="cat-name">Brinquedos</span></a>
+<a class="cat" href="#"><span class="cat-icon">🐶</span><span class="cat-name">Pet Shop</span></a>
+<a class="cat" href="#"><span class="cat-icon">📚</span><span class="cat-name">Livros</span></a>
+<a class="cat" href="#"><span class="cat-icon">🎮</span><span class="cat-name">Games</span></a>
+<a class="cat" href="#"><span class="cat-icon">📺</span><span class="cat-name">Eletrodomésticos</span></a>
+<a class="cat" href="#"><span class="cat-icon">🛋️</span><span class="cat-name">Móveis</span></a>
+<a class="cat" href="#"><span class="cat-icon">🌱</span><span class="cat-name">Jardim e Piscina</span></a>
+<a class="cat" href="#"><span class="cat-icon">🔧</span><span class="cat-name">Ferramentas</span></a>
+<a class="cat" href="#"><span class="cat-icon">🍔</span><span class="cat-name">Alimentos e Bebidas</span></a>
+<a class="cat" href="#"><span class="cat-icon">👶</span><span class="cat-name">Bebês e Cia</span></a>
+<a class="cat" href="#"><span class="cat-icon">📎</span><span class="cat-name">Papelaria</span></a>
+<a class="cat" href="#"><span class="cat-icon">💍</span><span class="cat-name">Joias e Bijus</span></a>
+<a class="cat" href="#"><span class="cat-icon">⌚</span><span class="cat-name">Relógios</span></a>
+<a class="cat" href="#"><span class="cat-icon">👟</span><span class="cat-name">Calçados</span></a>
+<a class="cat" href="#"><span class="cat-icon">🖥️</span><span class="cat-name">Informática</span></a>
+<a class="cat" href="#"><span class="cat-icon">📱</span><span class="cat-name">Celulares</span></a>
+<a class="cat" href="#"><span class="cat-icon">🔊</span><span class="cat-name">TV e Áudio</span></a>
+<a class="cat" href="#"><span class="cat-icon">🔥</span><span class="cat-name">Ofertas do Dia</span></a>
 </div>
 <div class="plataformas">
-  <h3>NOSSAS PLATAFORMAS PARCEIRAS</h3>
-  <div class="logos">
-    <span>Amazon</span> | <span>Mercado Livre</span> | <span>Shopee</span> | <span>Magalu</span>
-  </div>
+<h3>NOSSAS PLATAFORMAS PARCEIRAS</h3>
+<div class="logos">
+<span>Amazon</span> | <span>Mercado Livre</span> | <span>Shopee</span> | <span>Magalu</span>
+</div>
 </div>
 <footer>
-  <strong>B.D.V. Shopping Virtual</strong> © 2026<br>
-  O Seu Shopping a Um Clique - Rodrigo Beltrão
+<strong>B.D.V. Shopping Virtual</strong> © 2026<br>
+O Seu Shopping a Um Clique - Rodrigo Beltrão
 </footer>
+<script>
+document.getElementById('busca').addEventListener('input',function(){
+let termo=this.value.toLowerCase();
+document.querySelectorAll('.cat').forEach(function(c){
+let nome=c.querySelector('.cat-name').textContent.toLowerCase();
+c.style.display=nome.includes(termo)?'block':'none';
+});
+});
+</script>
 </body>
 </html>
