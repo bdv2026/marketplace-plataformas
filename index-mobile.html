@@ -1,84 +1,211 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B.D.V. Mobile</title>
-<link rel="manifest" href="./manifest.json">
-<link rel="icon" type="image/png" href="./icon-192.png">
+<title>B.D.V. Shopping Virtual - Mobile</title>
+<meta name="description" content="B.D.V. Shopping Virtual - 25 categorias - Versão Mobile">
+<meta name="author" content="Rodrigo Beltrão">
+<meta name="theme-color" content="#00f6ff">
+<link rel="icon" href="fachada.png?v=3">
 <style>
-:root{--cyan:#00f6ff;--magenta:#ff00ff}
-*{box-sizing:border-box}
-body{margin:0;background:#050608;color:white;font-family:Arial,sans-serif;overflow-x:hidden}
-.topo{width:100%;height:48vh;min-height:300px;background:url("fachada.png") no-repeat center top;background-size:cover}
-.base{width:100%;background:url("tijolo-fundo.png") no-repeat center;background-size:cover;background-color:#0a0a0a;padding:12px;display:flex;flex-direction:column;align-items:center;gap:12px;border-top:2px solid rgba(0,255,255,0.15)}
-.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:400px}
-.botao-loja{display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;color:white;transition:0.2s;cursor:pointer;min-height:70px}
-.botao-loja img{height:38px;object-fit:contain;margin-bottom:4px}
-.botao-loja span{font-size:9px;font-weight:800}
-.botao-loja.ativo{border-color:var(--cyan);background:rgba(0,246,255,0.15);box-shadow:0 0 18px rgba(0,246,255,0.25)}
-.botao-loja.embreve{opacity:0.4}
-.botoes{display:flex;gap:8px;width:100%;max-width:400px}
-.botoes div{flex:1;padding:10px;border-radius:10px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,255,255,0.35);color:var(--cyan);text-align:center;font-weight:bold;font-size:12px;cursor:pointer}
-.categorias-section{display:none;padding:16px 10px;background:#080a12;border-top:2px solid rgba(0,246,255,0.2)}
-.categorias-section.visivel{display:block}
-.categorias-header{text-align:center;margin-bottom:12px}
-.categorias-header h2{font-size:13px;color:var(--cyan);margin:0 0 4px}
-.categorias-header p{font-size:11px;color:#888;margin:0}
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:400px;margin:0 auto}
-.cat-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;text-decoration:none;color:white;display:block}
-.cat-item img{width:100%;height:90px;object-fit:cover}
-.cat-item.info{padding:6px;text-align:center}
-.cat-item.info h4{margin:0;font-size:11px}
-.cat-item.info span{font-size:9px;background:var(--cyan);color:#000;padding:4px 8px;border-radius:6px;display:inline-block;margin-top:4px;font-weight:800}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:12px}
-.form-container{background:white;padding:20px;border-radius:10px;width:92%;max-width:360px;color:black}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgba(0, 246, 255, 0.18),
+    transparent 55%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+header {
+  text-align: center;
+  padding: 18px 15px 10px 15px;
+  width: 100%;
+  max-width: 500px;
+}
+header h1 {
+  color: #00f6ff;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  opacity: 0.7;
+  font-weight: 600;
+}
+.fachada-container {
+  text-align: center;
+  margin: 0 auto 25px auto;
+  padding: 0 14px;
+  max-width: 500px;
+  width: 100%;
+}
+.fachada-container img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.28);
+  border: 1px solid rgba(0, 246, 255, 0.35);
+}
+.search-area {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  padding: 0 14px;
+  text-align: center;
+}
+.search-area input {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: 2px solid #00f6ff;
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+}
+.categorias-title {
+  text-align: center;
+  font-size: 19px;
+  margin-bottom: 20px;
+  color: #00f6ff;
+  text-shadow: 0 0 10px rgba(0,246,255,0.85);
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 40px auto;
+  padding: 0 14px;
+}
+.cat {
+  border: 2px solid #00f6ff;
+  border-radius: 13px;
+  padding: 16px 8px;
+  text-align: center;
+  background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  box-shadow: 0 0 10px rgba(0,246,255,0.25);
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+}
+.cat-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+  display: block;
+}
+.cat-name {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.voltar-area {
+  text-align: center;
+  padding: 15px 0 25px 0;
+  width: 100%;
+  max-width: 500px;
+}
+.btn-voltar {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 25px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 12px;
+}
+footer {
+  text-align: center;
+  padding: 28px 15px;
+  border-top: 1px solid rgba(0,246,255,0.15);
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  width: 100%;
+  max-width: 500px;
+}
+footer strong {
+  color: #00f6ff;
+}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const supabaseClient=supabase.createClient("https://vbmxtscxcrrwslyhezwt.supabase.co","sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt");
-function searchUrl(p,q){q=encodeURIComponent(q);if(p==='ml')return `https://lista.mercadolivre.com.br/${q}`;if(p==='magalu')return `https://www.magazinevoce.com.br/magazinein_1479585/busca/${q}`;if(p==='amazon')return `https://www.amazon.com.br/s?k=${q}`;return "#";}
-</script>
 </head>
 <body>
-<div class="topo"></div>
-<div class="base">
-  <div class="logos" id="logos">
-    <div class="botao-loja" data-p="ml" onclick="sel('ml')"><img src="logomarca-mercadolivre.png"><span>MERCADO LIVRE</span></div>
-    <div class="botao-loja" data-p="magalu" onclick="sel('magalu')"><img src="logomarca-magalu.png"><span>MAGALU</span></div>
-    <div class="botao-loja" data-p="amazon" onclick="sel('amazon')"><img src="logomarca-amazon.jpg"><span>AMAZON</span></div>
-    <div class="botao-loja embreve"><img src="logomarca-Shopee.jpg"><span>SHOPEE</span></div>
-    <div class="botao-loja embreve"><img src="logomarca-shein.png"><span>SHEIN</span></div>
-    <div class="botao-loja embreve"><img src="logomarca-jequiti.png"><span>JEQUITI</span></div>
-  </div>
-  <div class="botoes"><div onclick="abrirCadastro()">CADASTRAR</div><div onclick="abrirConta()">MINHA CONTA</div></div>
+<header><h1>B.D.V. SHOPPING VIRTUAL</h1></header>
+<div class="fachada-container">
+  <img src="fachada.png?v=3" alt="Fachada B.D.V Shopping Virtual">
 </div>
-<div class="categorias-section" id="secCats">
-  <div class="categorias-header"><h2 id="titPlat">MERCADO LIVRE</h2><p>Toque em uma categoria para ver no <span id="subPlat">Mercado Livre</span></p></div>
-  <div class="cat-grid" id="grid"></div>
+<div class="search-area">
+  <input type="text" id="busca-mobile" placeholder="O que você procura hoje?">
 </div>
-<div class="overlay" id="cadastroOverlay"><div class="form-container"><h2>Cadastro</h2><form id="formCadastro"><input id="nome" placeholder="Nome" required style="width:100%;padding:8px;margin:5px 0"><input id="email" type="email" placeholder="E-mail" required style="width:100%;padding:8px;margin:5px 0"><input id="senha" type="password" placeholder="Senha" required style="width:100%;padding:8px;margin:5px 0"><button type="submit" style="width:100%;padding:10px;margin-top:8px">Cadastrar</button></form><button onclick="fecharCadastro()" style="width:100%;background:#f44336;color:white;border:none;padding:8px;border-radius:5px;margin-top:8px">Voltar</button></div></div>
-<div class="overlay" id="contaOverlay"><div class="form-container" style="background:rgba(0,0,0,0.9);color:white"><h2>Minha Conta</h2><div id="loginArea"><input id="loginEmail" type="email" placeholder="E-mail" style="width:100%;padding:8px;margin:5px 0"><input id="loginSenha" type="password" placeholder="Senha" style="width:100%;padding:8px;margin:5px 0"><button id="btnLogin" style="width:100%;padding:8px">Entrar</button></div><div id="usuarioArea" style="display:none"><p id="boas"></p><button id="btnLogout" style="width:100%;padding:8px">Sair</button></div><button onclick="fecharConta()" style="width:100%;background:#f44336;color:white;border:none;padding:8px;border-radius:5px;margin-top:8px">Voltar</button></div></div>
+<h2 class="categorias-title">NOSSAS 25 CATEGORIAS</h2>
+<div class="categorias">
+  <a class="cat" href="#"><span class="cat-icon">💻</span><span class="cat-name">Tecnologia</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🏠</span><span class="cat-name">Casa e Decoração</span></a>
+  <a class="cat" href="#"><span class="cat-icon">👗</span><span class="cat-name">Moda Feminina</span></a>
+  <a class="cat" href="#"><span class="cat-icon">👔</span><span class="cat-name">Moda Masculina</span></a>
+  <a class="cat" href="#"><span class="cat-icon">💄</span><span class="cat-name">Saúde e Beleza</span></a>
+  <a class="cat" href="#"><span class="cat-icon">⚽</span><span class="cat-name">Esportes e Lazer</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🚗</span><span class="cat-name">Automotivo</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🧸</span><span class="cat-name">Brinquedos</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🐶</span><span class="cat-name">Pet Shop</span></a>
+  <a class="cat" href="#"><span class="cat-icon">📚</span><span class="cat-name">Livros</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🎮</span><span class="cat-name">Games</span></a>
+  <a class="cat" href="#"><span class="cat-icon">📺</span><span class="cat-name">Eletrodomésticos</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🛋️</span><span class="cat-name">Móveis</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🌱</span><span class="cat-name">Jardim e Piscina</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🔧</span><span class="cat-name">Ferramentas</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🍔</span><span class="cat-name">Alimentos e Bebidas</span></a>
+  <a class="cat" href="#"><span class="cat-icon">👶</span><span class="cat-name">Bebês e Cia</span></a>
+  <a class="cat" href="#"><span class="cat-icon">📎</span><span class="cat-name">Papelaria</span></a>
+  <a class="cat" href="#"><span class="cat-icon">💍</span><span class="cat-name">Joias e Bijus</span></a>
+  <a class="cat" href="#"><span class="cat-icon">⌚</span><span class="cat-name">Relógios</span></a>
+  <a class="cat" href="#"><span class="cat-icon">👟</span><span class="cat-name">Calçados</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🖥️</span><span class="cat-name">Informática</span></a>
+  <a class="cat" href="#"><span class="cat-icon">📱</span><span class="cat-name">Celulares</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🔊</span><span class="cat-name">TV e Áudio</span></a>
+  <a class="cat" href="#"><span class="cat-icon">🔥</span><span class="cat-name">Ofertas do Dia</span></a>
+</div>
+<div class="voltar-area">
+  <a href="index.html?v=3" class="btn-voltar">← Voltar ao Início</a>
+</div>
+<footer>
+  <strong>B.D.V. Shopping Virtual</strong> © 2026<br>
+  O Seu Shopping a Um Clique - Rodrigo Beltrão
+</footer>
 <script>
-const CATS=[
-{t:"Decoração",img:"decora.webp",q:"decoração"},
-{t:"Eletrodomésticos",img:"eletrodomestico.jpg",q:"eletrodomésticos"},
-{t:"Eletroeletrônicos",img:"eletroeletronico.jpg",q:"eletrônicos"},
-{t:"Jardinagem",img:"jardinagem.jpg",q:"jardinagem"},
-{t:"Ferramentas",img:"ferramentas.webp",q:"ferramentas"},
-{t:"Suplementos",img:"suplemento.jpg",q:"suplementos"},
-{t:"Moda",img:"roupa-acessorio.jpg",q:"moda"},
-{t:"Casa e Cozinha",img:"casa-cozinha.jpg",q:"casa"},
-{t:"Beleza",img:"beleza.jpg",q:"beleza"},
-{t:"Esportes",img:"esportes.jpg",q:"esportes"},
-{t:"Brinquedos",img:"brinquedos.jpg",q:"brinquedos"},
-{t:"Pet Shop",img:"pet.jpg",q:"pet"},
-{t:"Automotivo",img:"automotivo.jpg",q:"automotivo"}
-];
-function sel(plat){
-  document.querySelectorAll('.botao-loja').forEach(b=>b.classList.remove('ativo'));
-  const el=document.querySelector(`[data-p="${plat}"]`);
-  if(el) el.classList.add('ativo');
-  const nomes={ml:'MERCADO LIVRE',magalu:'MAGALU',amazon:'AMAZON'};
-  document.getElementById('titPlat').innerText=nomes[plat];
-  document.getElementById('
+  var busca = document.getElementById('busca-mobile');
+  var categorias = document.querySelectorAll('.cat');
+  busca.addEventListener('input', function() {
+    var termo = this.value.toLowerCase();
+    categorias.forEach(function(cat) {
+      var nome = cat.textContent.toLowerCase();
+      if (nome.includes(termo)) {
+        cat.style.display = 'block';
+      } else {
+        cat.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>
