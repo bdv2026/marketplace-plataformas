@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="./icon-192.png?v=5">
 <link rel="manifest" href="./manifest.json?v=5">
 <script>
-// ANTI-CACHE v5 - resolve o F5 voltar pro antigo
+// ANTI-CACHE v5
 (function(){
   if('serviceWorker' in navigator){
     navigator.serviceWorker.getRegistrations().then(r=>r.forEach(reg=>reg.unregister()));
@@ -55,7 +55,7 @@ body::before{content:"";position:fixed;inset:0;background:linear-gradient(to rig
 .categorias-lista{width:100%;max-width:800px;display:flex;flex-direction:column;gap:10px;padding:20px 0 40px 0}
 .cat-item{width:100%;padding:16px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(0,255,255,0.2);border-radius:12px;color:#fff;font-size:15px;font-weight:bold;cursor:pointer;transition:0.2s;text-align:left}
 .cat-item:hover{background:rgba(0,255,255,0.15);border-color:#00f6ff;transform:translateX(6px);box-shadow:0 0 12px rgba(0,255,255,0.2)}
-.btn-voltar-cat{margin:20px 0;padding:12px 30px;border-radius:10px;border:1px solid #ff00ff;background:transparent;color:#ff00ff;cursor:pointer;font-weight:bold}
+.btn-voltar-cat{margin:0;padding:12px 24px;border-radius:10px;border:1px solid #ff00ff;background:transparent;color:#ff00ff;cursor:pointer;font-weight:bold}
 #btnMenuMobile{display:none;position:fixed;top:12px;right:12px;z-index:9000;width:48px;height:48px;border-radius:12px;background:rgba(0,0,0,0.7);border:1px solid #00f6ff;color:#00f6ff;font-size:26px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 12px rgba(0,255,255,0.4)}
 #drawerMobile{display:none;position:fixed;inset:0;z-index:9001}
 #drawerMobile.drawer-bg{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
@@ -77,32 +77,13 @@ const supabaseUrl="https://vbmxtscxcrrwslyhezwt.supabase.co";
 const supabaseKey="sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt";
 const supabaseClient=supabase.createClient(supabaseUrl,supabaseKey);
 
-// CATEGORIAS REAIS POR PLATAFORMA - SÓ TEXTO, SEM IMAGEM
 const plataformas = {
-  mercadolivre: {
-    nome:"Mercado Livre", logo:"logomarca-mercadolivre.png?v=5", base:"https://lista.mercadolivre.com.br/",
-    cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"]
-  },
-  magalu: {
-    nome:"Magalu", logo:"logomarca-magalu.png?v=5", base:"https://www.magazineluiza.com.br/busca/",
-    cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"]
-  },
-  amazon: {
-    nome:"Amazon", logo:"logomarca-amazon.jpg?v=5", base:"https://www.amazon.com.br/s?k=",
-    cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"]
-  },
-  shopee: {
-    nome:"Shopee", logo:"logomarca-Shopee.jpg?v=5", base:"https://shopee.com.br/search?keyword=",
-    cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"]
-  },
-  shein: {
-    nome:"Shein", logo:"logomarca-shein.png?v=5", base:"https://br.shein.com/search?search_text=",
-    cats:["Novidades Femininas","Vestidos","Blusas","Calças Femininas","Saias","Moda Praia","Lingerie e Pijamas","Sapatos Femininos","Bolsas e Acessórios","Moda Masculina","Moda Infantil","Plus Size","Casa e Decoração","Beleza","Esporte"]
-  },
-  jequiti: {
-    nome:"Jequiti", logo:"logomarca-jequiti.png?v=5", base:"https://www.jequiti.com.br/busca?q=",
-    cats:["Perfumaria Feminina","Perfumaria Masculina","Perfumaria Infantil","Maquiagem - Rosto","Maquiagem - Olhos","Maquiagem - Boca","Corpo e Banho","Cabelos","Hidratantes","Presentes","Kits","Ofertas"]
-  }
+  mercadolivre: { nome:"Mercado Livre", logo:"logomarca-mercadolivre.png?v=5", base:"https://lista.mercadolivre.com.br/", cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"] },
+  magalu: { nome:"Magalu", logo:"logomarca-magalu.png?v=5", base:"https://www.magazineluiza.com.br/busca/", cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"] },
+  amazon: { nome:"Amazon", logo:"logomarca-amazon.jpg?v=5", base:"https://www.amazon.com.br/s?k=", cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"] },
+  shopee: { nome:"Shopee", logo:"logomarca-Shopee.jpg?v=5", base:"https://shopee.com.br/search?keyword=", cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"] },
+  shein: { nome:"Shein", logo:"logomarca-shein.png?v=5", base:"https://br.shein.com/search?search_text=", cats:["Novidades Femininas","Vestidos","Blusas","Calças Femininas","Saias","Moda Praia","Lingerie e Pijamas","Sapatos Femininos","Bolsas e Acessórios","Moda Masculina","Moda Infantil","Plus Size","Casa e Decoração","Beleza","Esporte"] },
+  jequiti: { nome:"Jequiti", logo:"logomarca-jequiti.png?v=5", base:"https://www.jequiti.com.br/busca?q=", cats:["Perfumaria Feminina","Perfumaria Masculina","Perfumaria Infantil","Maquiagem - Rosto","Maquiagem - Olhos","Maquiagem - Boca","Corpo e Banho","Cabelos","Hidratantes","Presentes","Kits","Ofertas"] }
 };
 
 let plataformaAtual=null;
@@ -110,7 +91,6 @@ function abrirPlataforma(id){
   plataformaAtual = plataformas[id];
   document.getElementById('catHeaderNome').innerText = "Você está na plataforma " + plataformaAtual.nome;
   document.getElementById('catHeaderLogo').src = plataformaAtual.logo;
-  document.getElementById('catHeaderLogo').onerror = function(){ this.style.display='none'; };
   document.getElementById('catHeaderLogo').style.display='block';
   const lista = document.getElementById('listaCategorias');
   lista.innerHTML = "";
@@ -129,15 +109,18 @@ function abrirCategoria(catNome){
   if(plataformaAtual.nome==="Amazon"){
     url = plataformaAtual.base + encodeURIComponent(catNome);
   } else {
-    // Mercado Livre, Magalu, Shopee, Shein, Jequiti usam slug com traço
     let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
     url = plataformaAtual.base + slug;
     if(plataformaAtual.nome==="Magalu") url = url + "/";
   }
-  // Mantém seu link afiliado base - aqui abre a categoria correta, não mais página de roupas
   window.open(url,'_blank');
 }
 function fecharCategorias(){document.getElementById('categoriasOverlay').style.display='none'}
+function voltarHome(){
+  document.getElementById('categoriasOverlay').style.display='none';
+  window.scrollTo({top:0, behavior:'smooth'});
+  plataformaAtual=null;
+}
 function abrirMenuMobile(){document.getElementById('drawerMobile').style.display='block'}
 function fecharMenuMobile(){document.getElementById('drawerMobile').style.display='none'}
 function abrirCadastro(){document.getElementById('cadastroOverlay').style.display='flex';fecharMenuMobile()}
@@ -159,7 +142,6 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
 </script>
 </head>
 <body>
-
 <button id="btnMenuMobile" onclick="abrirMenuMobile()">⋮</button>
 <div id="drawerMobile" onclick="fecharMenuMobile()">
 <div class="drawer-bg"></div>
@@ -172,7 +154,6 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
 <div class="bloco">EXPERIÊNCIA CYBERPUNK FUTURISTA</div>
 </div>
 </div>
-
 <div class="container">
 <div class="vitrine-texto">
 <div class="bloco" onclick="abrirCadastro()">CADASTRE-SE AQUI</div>
@@ -181,23 +162,19 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
 <div class="bloco">SHOPPING VIRTUAL IMERSIVO</div>
 <div class="bloco">EXPERIÊNCIA CYBERPUNK FUTURISTA</div>
 </div>
-
 <div class="fachada-area">
 <img src="fachada.png?v=5" alt="Fachada BDV" onerror="this.src='https://via.placeholder.com/600x900/050608/00f6ff?text=BDV+FACHADA'">
 </div>
-
 <div class="painel-lateral">
 <h3>ESCOLHA A PLATAFORMA</h3>
-<div class="botao-loja" onclick="abrirPlataforma('mercadolivre')"><img src="logomarca-mercadolivre.png?v=5" onerror="this.src='https://via.placeholder.com/80/FFE600/000?text=ML'"><span>Mercado Livre</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('magalu')"><img src="logomarca-magalu.png?v=5" onerror="this.src='https://via.placeholder.com/80/0086FF/FFF?text=Magalu'"><span>Magalu</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('amazon')"><img src="logomarca-amazon.jpg?v=5" onerror="this.src='https://via.placeholder.com/80/FF9900/000?text=Amazon'"><span>Amazon</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('shopee')"><img src="logomarca-Shopee.jpg?v=5" onerror="this.src='https://via.placeholder.com/80/EE4D2D/FFF?text=Shopee'"><span>Shopee</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('shein')"><img src="logomarca-shein.png?v=5" onerror="this.src='https://via.placeholder.com/80/000/FFF?text=SHEIN'"><span>Shein</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('jequiti')"><img src="logomarca-jequiti.png?v=5" onerror="this.src='https://via.placeholder.com/80/FF00AA/FFF?text=Jequiti'"><span>Jequiti</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('mercadolivre')"><img src="logomarca-mercadolivre.png?v=5"><span>Mercado Livre</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('magalu')"><img src="logomarca-magalu.png?v=5"><span>Magalu</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('amazon')"><img src="logomarca-amazon.jpg?v=5"><span>Amazon</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('shopee')"><img src="logomarca-Shopee.jpg?v=5"><span>Shopee</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('shein')"><img src="logomarca-shein.png?v=5"><span>Shein</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('jequiti')"><img src="logomarca-jequiti.png?v=5"><span>Jequiti</span></div>
 </div>
 </div>
-
-<!-- OVERLAY CATEGORIAS - SÓ TEXTO -->
 <div class="overlay" id="categoriasOverlay">
 <div class="categorias-header">
 <img id="catHeaderLogo" src="" alt="">
@@ -205,10 +182,11 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
 <p style="color:#aaa;margin:5px 0 0 0">Escolha uma categoria abaixo</p>
 </div>
 <div class="categorias-lista" id="listaCategorias"></div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:20px 0 40px 0">
 <button class="btn-voltar-cat" onclick="fecharCategorias()">← Voltar para plataformas</button>
+<button class="btn-voltar-cat" onclick="voltarHome()" style="border-color:#00f6ff;color:#00f6ff">⌂ Voltar para página inicial</button>
 </div>
-
-<!-- CADASTRO -->
+</div>
 <div class="overlay" id="cadastroOverlay">
 <div class="form-container">
 <h1>Cadastro de Usuário</h1>
@@ -225,8 +203,6 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
 <button class="voltar" onclick="fecharCadastro()">Voltar</button>
 </div>
 </div>
-
-<!-- CONTA -->
 <div class="overlay" id="contaOverlay">
 <div class="account-container">
 <h1>Minha Conta</h1>
@@ -243,7 +219,6 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
 <button class="voltar" onclick="fecharConta()">Voltar</button>
 </div>
 </div>
-
 <script>
 document.getElementById('btnLogin').addEventListener('click', async ()=>{
   const email=document.getElementById('loginEmail').value;
@@ -256,7 +231,6 @@ document.getElementById('btnLogout').addEventListener('click', async ()=>{
   await supabaseClient.auth.signOut();
   document.getElementById('usuarioArea').style.display='none';
   document.getElementById('loginArea').style.display='block';
-  alert('Logout realizado!');
 });
 document.getElementById('formCadastro').addEventListener('submit', async function(e){
   e.preventDefault();
