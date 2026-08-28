@@ -6,23 +6,16 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B.D.V. Shopping Virtual v11</title>
-<link rel="icon" href="./icon-192.png?v=11">
-<link rel="manifest" href="./manifest.json?v=11">
-<script>
-(function(){
-  if('serviceWorker' in navigator){ navigator.serviceWorker.getRegistrations().then(r=>r.forEach(reg=>reg.unregister())); }
-  if('caches' in window){ caches.keys().then(k=>k.forEach(c=>caches.delete(c))); }
-  const V="v11"; if(localStorage.getItem('bdv_v')!==V){ localStorage.clear(); sessionStorage.clear(); localStorage.setItem('bdv_v',V); }
-})();
-</script>
+<title>B.D.V. Shopping Virtual</title>
+<link rel="icon" href="./icon-192.png?v=12">
+<link rel="manifest" href="./manifest.json?v=12">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#050608;color:#00f6ff;overflow:hidden;height:100vh}
 .container{width:100%;height:100vh;display:flex;justify-content:space-between;overflow:hidden}
 .vitrine-texto{width:28%;height:100vh;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:20px;text-align:center;font-weight:bold}
 .bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,255,0.35);box-shadow:0 0 12px rgba(0,255,255,0.25),0 0 20px rgba(255,0,255,0.18);font-size:15px;text-shadow:0 0 6px #00f6ff,0 0 12px #ff00ff;animation:pulse 3s infinite alternate;cursor:pointer}
-.bloco-unico{width:100%;padding:20px;border-radius:14px;background:rgba(0,0,0,0.4);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff,0 0 24px #00f6ff,inset 0 0 10px rgba(0,246,255,0.2);font-size:14px;line-height:1.6;color:#00f6ff;text-shadow:0 0 8px #00f6ff,0 0 16px #00f6ff;animation:pulse 3s infinite alternate;text-align:center}
+.bloco-unico{width:100%;padding:20px;border-radius:14px;background:rgba(0,0,0,0.4);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff,0 0 24px #00f6ff; font-size:14px;line-height:1.6;color:#00f6ff;text-shadow:0 0 8px #00f6ff;text-align:center}
 @keyframes pulse{from{transform:scale(0.98);opacity:0.75}to{transform:scale(1.03);opacity:1}}
 .fachada-area{width:42%;height:100vh;display:flex;justify-content:center;align-items:center;position:relative}
 .fachada-area img{width:100%;height:100%;object-fit:contain}
@@ -31,12 +24,7 @@ body{margin:0;font-family:Arial,sans-serif;background:#050608;color:#00f6ff;over
 .botao-loja img{width:60px;height:44px;object-fit:contain;background:#fff;border-radius:8px;padding:4px}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:20px}
 .form-container{background:#fff;padding:30px;border-radius:10px;width:90%;max-width:500px;color:#000}
-.form-container input{width:100%;padding:8px;margin-top:5px;border:1px solid #ccc;border-radius:5px}
-.form-container label{display:block;margin-top:10px;font-weight:bold}
-.form-container button{margin-top:20px;padding:10px;background:#4CAF50;color:white;border:none;border-radius:5px;width:100%;font-size:16px;cursor:pointer}
-.voltar{background:#f44336!important}
 .account-container{background:rgba(0,0,0,0.85);padding:30px;border-radius:10px;width:90%;max-width:500px;color:#fff;text-align:center}
-.info{background:rgba(255,255,255,0.1);padding:10px;margin:10px 0;border-radius:5px;text-align:left}
 #categoriasOverlay{flex-direction:column;background:rgba(5,6,8,0.98);overflow-y:auto;justify-content:flex-start;align-items:center}
 .categorias-header{width:100%;max-width:800px;text-align:center;padding:20px 0;border-bottom:1px solid rgba(0,246,255,0.3)}
 .categorias-header h2{font-size:26px;color:#00f6ff;text-shadow:0 0 10px #00f6ff}
@@ -44,29 +32,27 @@ body{margin:0;font-family:Arial,sans-serif;background:#050608;color:#00f6ff;over
 .categorias-lista{width:100%;max-width:800px;display:flex;flex-direction:column;gap:10px;padding:20px 0 40px 0}
 .cat-item{width:100%;padding:16px 20px;background:rgba(0,0,0,0.3);border:2px solid #00f6ff;border-radius:12px;color:#fff;font-weight:bold;cursor:pointer;box-shadow:0 0 8px #00f6ff}
 .btn-voltar-cat{padding:12px 24px;border-radius:10px;border:1px solid #ff00ff;background:transparent;color:#ff00ff;font-weight:bold;cursor:pointer}
-.botoes-mobile-fachada,.texto-mobile-fachada{display:none}
+
+/* MOBILE - AGORA COM ESTILO GARANTIDO */
 @media(max-width:1024px){
-body{overflow:auto;height:auto}
-.container{flex-direction:column;height:auto}
-.fachada-area{width:100%;height:75vh;min-height:600px;position:relative}
-.vitrine-texto{display:none!important}
-.botoes-mobile-fachada{display:flex!important;flex-direction:column;gap:8px;position:absolute;top:108px;left:50%;transform:translateX(-50%);width:160px;z-index:20}
-.botoes-mobile-fachada.bloco{display:block!important;width:100%;padding:10px 6px;font-size:11px;text-align:center;border-radius:10px;background:rgba(0,0,0,0.65);border:1.5px solid #00f6ff;box-shadow:0 0 10px #00f6ff}
-.texto-mobile-fachada{display:block!important;position:absolute;bottom:12px;left:50%;transform:translateX(-50%);width:92%;max-width:320px;padding:10px 8px;font-size:11px;line-height:1.3;text-align:center;border-radius:10px;background:rgba(0,0,0,0.65);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff,0 0 22px #00f6ff;color:#00f6ff;text-shadow:0 0 8px #00f6ff;z-index:20}
-.painel-lateral{width:100%;height:auto;border-top:2px solid rgba(0,246,255,0.2);padding:16px}
-.botao-loja{width:100%}
+  body{overflow:auto;height:auto}
+ .container{flex-direction:column;height:auto}
+ .fachada-area{width:100%;height:75vh;min-height:620px;position:relative}
+ .vitrine-texto{display:none!important}
+ .painel-lateral{width:100%;height:auto;border-top:2px solid rgba(0,246,255,0.2);padding:16px}
+ .botao-loja{width:100%}
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2?v=11"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const supabaseClient=supabase.createClient("https://vbmxtscxcrrwslyhezwt.supabase.co","sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt");
 const plataformas={
-  mercadolivre:{nome:"Mercado Livre",logo:"logomarca-mercadolivre.png?v=11",base:"https://lista.mercadolivre.com.br/",cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"]},
-  magalu:{nome:"Magalu",logo:"logomarca-magalu.png?v=11",base:"https://www.magazineluiza.com.br/busca/",cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"]},
-  amazon:{nome:"Amazon",logo:"logomarca-amazon.jpg?v=11",base:"https://www.amazon.com.br/s?k=",cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"]},
-  shopee:{nome:"Shopee",logo:"logomarca-Shopee.jpg?v=11",base:"https://shopee.com.br/search?keyword=",cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"]},
-  shein:{nome:"Shein",logo:"logomarca-shein.png?v=11",base:"https://br.shein.com/search?search_text=",cats:["Novidades Femininas","Vestidos","Blusas","Calças Femininas","Saias","Moda Praia","Lingerie e Pijamas","Sapatos Femininos","Bolsas e Acessórios","Moda Masculina","Moda Infantil","Plus Size","Casa e Decoração","Beleza","Esporte"]},
-  jequiti:{nome:"Jequiti",logo:"logomarca-jequiti.png?v=11",base:"https://www.jequiti.com.br/busca?q=",cats:["Perfumaria Feminina","Perfumaria Masculina","Perfumaria Infantil","Maquiagem - Rosto","Maquiagem - Olhos","Maquiagem - Boca","Corpo e Banho","Cabelos","Hidratantes","Presentes","Kits","Ofertas"]}
+  mercadolivre:{nome:"Mercado Livre",logo:"logomarca-mercadolivre.png?v=12",base:"https://lista.mercadolivre.com.br/",cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"]},
+  magalu:{nome:"Magalu",logo:"logomarca-magalu.png?v=12",base:"https://www.magazineluiza.com.br/busca/",cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"]},
+  amazon:{nome:"Amazon",logo:"logomarca-amazon.jpg?v=12",base:"https://www.amazon.com.br/s?k=",cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"]},
+  shopee:{nome:"Shopee",logo:"logomarca-Shopee.jpg?v=12",base:"https://shopee.com.br/search?keyword=",cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"]},
+  shein:{nome:"Shein",logo:"logomarca-shein.png?v=12",base:"https://br.shein.com/search?search_text=",cats:["Novidades Femininas","Vestidos","Blusas","Calças Femininas","Saias","Moda Praia","Lingerie e Pijamas","Sapatos Femininos","Bolsas e Acessórios","Moda Masculina","Moda Infantil","Plus Size","Casa e Decoração","Beleza","Esporte"]},
+  jequiti:{nome:"Jequiti",logo:"logomarca-jequiti.png?v=12",base:"https://www.jequiti.com.br/busca?q=",cats:["Perfumaria Feminina","Perfumaria Masculina","Perfumaria Infantil","Maquiagem - Rosto","Maquiagem - Olhos","Maquiagem - Boca","Corpo e Banho","Cabelos","Hidratantes","Presentes","Kits","Ofertas"]}
 };
 let plataformaAtual=null;
 function abrirPlataforma(id){plataformaAtual=plataformas[id];document.getElementById('catHeaderNome').innerText="Você está na plataforma "+plataformaAtual.nome;document.getElementById('catHeaderLogo').src=plataformaAtual.logo;const lista=document.getElementById('listaCategorias');lista.innerHTML="";plataformaAtual.cats.forEach(cat=>{const d=document.createElement('div');d.className='cat-item';d.innerText=cat;d.onclick=()=>abrirCategoria(cat);lista.appendChild(d);});document.getElementById('categoriasOverlay').style.display='flex';}
@@ -75,7 +61,7 @@ function fecharCategorias(){document.getElementById('categoriasOverlay').style.d
 function voltarHome(){document.getElementById('categoriasOverlay').style.display='none';window.scrollTo({top:0,behavior:'smooth'});plataformaAtual=null;}
 function abrirCadastro(){document.getElementById('cadastroOverlay').style.display='flex'}
 function fecharCadastro(){document.getElementById('cadastroOverlay').style.display='none'}
-async function abrirConta(){document.getElementById('contaOverlay').style.display='flex';const {data:{user}}=await supabaseClient.auth.getUser();if(user){document.getElementById('loginArea').style.display='none';document.getElementById('usuarioArea').style.display='block';document.getElementById('boasvindas').innerText="Bem-vindo, "+(user.user_metadata?.nome||"Usuário")+"!";document.getElementById('dadosConta').innerHTML=`<div class="info">Nome: ${user.user_metadata?.nome||"-"}</div><div class="info">E-mail: ${user.email||"-"}</div>`;}else{document.getElementById('loginArea').style.display='block';document.getElementById('usuarioArea').style.display='none';}}
+async function abrirConta(){document.getElementById('contaOverlay').style.display='flex';const {data:{user}}=await supabaseClient.auth.getUser();if(user){document.getElementById('loginArea').style.display='none';document.getElementById('usuarioArea').style.display='block';document.getElementById('boasvindas').innerText="Bem-vindo, "+(user.user_metadata?.nome||"Usuário")+"!";document.getElementById('dadosConta').innerHTML=`<div style="background:rgba(255,255,255,0.1);padding:10px;margin:10px 0;border-radius:5px;text-align:left">Nome: ${user.user_metadata?.nome||"-"}</div><div style="background:rgba(255,255,255,0.1);padding:10px;margin:10px 0;border-radius:5px;text-align:left">E-mail: ${user.email||"-"}</div>`;}else{document.getElementById('loginArea').style.display='block';document.getElementById('usuarioArea').style.display='none';}}
 function fecharConta(){document.getElementById('contaOverlay').style.display='none'}
 </script>
 </head>
@@ -86,29 +72,49 @@ function fecharConta(){document.getElementById('contaOverlay').style.display='no
   <div class="bloco" onclick="abrirConta()">MINHA CONTA</div>
   <div class="bloco-unico">Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista</div>
 </div>
+
 <div class="fachada-area">
-  <div class="botoes-mobile-fachada">
-    <div class="bloco" onclick="abrirCadastro()">CADASTRE-SE AQUI</div>
-    <div class="bloco" onclick="abrirConta()">MINHA CONTA</div>
+  <!-- MOBILE - ESTILO DIRETO NO ELEMENTO PRA GARANTIR -->
+  <div style="display:none" class="mobile-only">
+    <div style="position:absolute;top:110px;left:50%;transform:translateX(-50%);width:160px;z-index:99;display:flex;flex-direction:column;gap:8px" id="botoesMobile">
+      <div onclick="abrirCadastro()" style="padding:11px 6px;font-size:11px;text-align:center;border-radius:10px;background:rgba(0,0,0,0.7);border:1.5px solid #00f6ff;box-shadow:0 0 10px #00f6ff;color:#00f6ff;text-shadow:0 0 6px #00f6ff;cursor:pointer;font-weight:bold">CADASTRE-SE AQUI</div>
+      <div onclick="abrirConta()" style="padding:11px 6px;font-size:11px;text-align:center;border-radius:10px;background:rgba(0,0,0,0.7);border:1.5px solid #00f6ff;box-shadow:0 0 10px #00f6ff;color:#00f6ff;text-shadow:0 0 6px #00f6ff;cursor:pointer;font-weight:bold">MINHA CONTA</div>
+    </div>
+    <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:92%;max-width:320px;padding:10px 8px;font-size:11px;line-height:1.3;text-align:center;border-radius:10px;background:rgba(0,0,0,0.7);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff,0 0 22px #00f6ff;color:#00f6ff;text-shadow:0 0 8px #00f6ff;z-index:99" id="textoMobile">
+      Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista
+    </div>
   </div>
-  <div class="texto-mobile-fachada">
-    Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista
-  </div>
-  <img src="fachada.png?v=11" alt="Fachada">
+  <img src="fachada.png?v=12" alt="Fachada">
 </div>
+
 <div class="painel-lateral">
 <h3>ESCOLHA A PLATAFORMA</h3>
-<div class="botao-loja" onclick="abrirPlataforma('mercadolivre')"><img src="logomarca-mercadolivre.png?v=11"><span>Mercado Livre</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('magalu')"><img src="logomarca-magalu.png?v=11"><span>Magalu</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('amazon')"><img src="logomarca-amazon.jpg?v=11"><span>Amazon</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('shopee')"><img src="logomarca-Shopee.jpg?v=11"><span>Shopee</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('shein')"><img src="logomarca-shein.png?v=11"><span>Shein</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('jequiti')"><img src="logomarca-jequiti.png?v=11"><span>Jequiti</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('mercadolivre')"><img src="logomarca-mercadolivre.png?v=12"><span>Mercado Livre</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('magalu')"><img src="logomarca-magalu.png?v=12"><span>Magalu</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('amazon')"><img src="logomarca-amazon.jpg?v=12"><span>Amazon</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('shopee')"><img src="logomarca-Shopee.jpg?v=12"><span>Shopee</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('shein')"><img src="logomarca-shein.png?v=12"><span>Shein</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('jequiti')"><img src="logomarca-jequiti.png?v=12"><span>Jequiti</span></div>
 </div>
 </div>
+
+<script>
+// FORÇA MOSTRAR NO MOBILE
+if(window.innerWidth<=1024){
+  document.querySelector('.mobile-only').style.display='block';
+}
+window.addEventListener('resize',()=>{
+  if(window.innerWidth<=1024){
+    document.querySelector('.mobile-only').style.display='block';
+  }else{
+    document.querySelector('.mobile-only').style.display='none';
+  }
+});
+</script>
+
 <div class="overlay" id="categoriasOverlay"><div class="categorias-header"><img id="catHeaderLogo"><h2 id="catHeaderNome"></h2><p style="color:#aaa">Escolha uma categoria</p></div><div class="categorias-lista" id="listaCategorias"></div><div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:20px 0 40px 0"><button class="btn-voltar-cat" onclick="fecharCategorias()">← Voltar para plataformas</button><button class="btn-voltar-cat" onclick="voltarHome()" style="border-color:#00f6ff;color:#00f6ff">⌂ Página inicial</button></div></div>
-<div class="overlay" id="cadastroOverlay"><div class="form-container"><h1>Cadastro</h1><form id="formCadastro"><label>Nome</label><input id="nome" required><label>Endereço</label><input id="endereco" required><label>RG</label><input id="rg" required><label>CPF</label><input id="cpf" required><label>Celular</label><input id="celular" required><label>E-mail</label><input type="email" id="email" required><label>Senha</label><input type="password" id="senha" required><button type="submit">Cadastrar</button></form><button class="voltar" onclick="fecharCadastro()">Voltar</button></div></div>
-<div class="overlay" id="contaOverlay"><div class="account-container"><h1>Minha Conta</h1><div id="loginArea"><input id="loginEmail" placeholder="E-mail"><input type="password" id="loginSenha" placeholder="Senha"><button id="btnLogin">Entrar</button></div><div id="usuarioArea" style="display:none"><p id="boasvindas"></p><div id="dadosConta"></div><button id="btnLogout">Sair</button></div><button class="voltar" onclick="fecharConta()">Voltar</button></div></div>
+<div class="overlay" id="cadastroOverlay"><div class="form-container"><h1>Cadastro</h1><form id="formCadastro"><label>Nome</label><input id="nome" required><label>E-mail</label><input type="email" id="email" required><label>Senha</label><input type="password" id="senha" required><button type="submit">Cadastrar</button></form><button class="voltar" onclick="fecharCadastro()" style="margin-top:10px;padding:10px;background:#f44336;color:white;border:none;border-radius:5px;width:100%">Voltar</button></div></div>
+<div class="overlay" id="contaOverlay"><div class="account-container"><h1>Minha Conta</h1><div id="loginArea"><input id="loginEmail" placeholder="E-mail" style="width:100%;padding:8px;margin:5px 0"><input type="password" id="loginSenha" placeholder="Senha" style="width:100%;padding:8px;margin:5px 0"><button id="btnLogin" style="padding:10px;background:#4CAF50;color:white;border:none;border-radius:5px;width:100%">Entrar</button></div><div id="usuarioArea" style="display:none"><p id="boasvindas"></p><div id="dadosConta"></div><button id="btnLogout" style="padding:10px;background:#f44336;color:white;border:none;border-radius:5px;width:100%">Sair</button></div><button class="voltar" onclick="fecharConta()" style="margin-top:10px;padding:10px;background:#f44336;color:white;border:none;border-radius:5px;width:100%">Voltar</button></div></div>
 <script>
 document.getElementById('btnLogin').addEventListener('click', async()=>{const e=document.getElementById('loginEmail').value,s=document.getElementById('loginSenha').value;const {error}=await supabaseClient.auth.signInWithPassword({email:e,password:s});if(error){alert(error.message);return;}abrirConta();});
 document.getElementById('btnLogout')?.addEventListener('click', async()=>{await supabaseClient.auth.signOut();document.getElementById('usuarioArea').style.display='none';document.getElementById('loginArea').style.display='block';});
