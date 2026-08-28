@@ -2,134 +2,167 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>BDV Mobile - FINAL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>BDV Mobile</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{width:100%;background:#050608;overflow-x:hidden}
-  
-  .fachada-mobile{
-    width:100%;
-    max-width:100vw;
-    background:#050608;
-    overflow-x:hidden;
-    display:block;
-  }
-  .fachada-wrapper{
-    width:100%;
-    position:relative;
-    display:block;
-  }
-  .fachada-wrapper .fachada-img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-  /* BOTOES - COM RESPIRO ABAIXO DO BDV */
+*{
+  box-sizing:border-box
+}
+html,body{
+  margin:0;
+  padding:0;
+  background:#050608;
+  overflow-x:hidden;
+  width:100%
+}
+.fachada-mobile{
+  width:100%;
+  background:#050608;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+  overflow-x:hidden
+}
+.fachada-bg{
+  width:100%;
+  position:relative;
+  line-height:0;
+  background-color:#050608
+}
+.fachada-bg img{
+  width:100%;
+  height:auto;
+  display:block
+}
+.botoes-mobile{
+  position:absolute;
+  top:128px;
+  left:50%;
+  transform:translateX(-50%);
+  width:168px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:10
+}
+.bloco{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(0,0,0,.85);
+  border:1.5px solid #00f6ff;
+  box-shadow:0 0 12px #00f6ff;
+  text-align:center;
+  font-size:11px;
+  font-weight:bold;
+  cursor:pointer;
+  color:#00f6ff
+}
+.texto-mobile{
+  position:absolute;
+  bottom:38px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:315px;
+  padding:12px;
+  font-size:11.5px;
+  line-height:1.4;
+  text-align:center;
+  border-radius:10px;
+  background:rgba(0,0,0,.85);
+  border:2px solid #00f6ff;
+  box-shadow:0 0 12px #00f6ff;
+  color:#00f6ff;
+  z-index:10
+}
+.painel-mobile{
+  width:100%;
+  background:#111;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  position:relative;
+  z-index:5
+}
+.botao-loja{
+  border:2px solid #00f6ff;
+  border-radius:18px;
+  padding:12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  color:#fff;
+  background:rgba(0,0,0,.3);
+  cursor:pointer
+}
+.botao-loja img{
+  width:60px;
+  height:44px;
+  background:#fff;
+  border-radius:8px;
+  padding:4px;
+  object-fit:contain
+}
+@media(max-width:360px){
   .botoes-mobile{
-    position:absolute;
-    top:128px; /* RESPIRO QUE VOCE PEDIU */
-    left:50%;
-    transform:translateX(-50%);
-    width:168px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    z-index:20;
+    top:118px;
+    width:150px
   }
-  .bloco{
-    width:100%;
-    padding:13px 10px;
-    border-radius:12px;
-    background:rgba(0,0,0,.90);
-    border:1.5px solid #00f6ff;
-    box-shadow:0 0 12px #00f6ff, inset 0 0 8px rgba(0,246,255,.2);
-    text-align:center;
-    font-family:Arial, sans-serif;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:.5px;
-    cursor:pointer;
-    color:#00f6ff;
-  }
-  /* TEXTO - COM RESPIRO ACIMA DO RODAPE */
   .texto-mobile{
-    position:absolute;
-    bottom:38px; /* RESPIRO QUE VOCE PEDIU */
-    left:50%;
-    transform:translateX(-50%);
-    width:90%;
-    max-width:315px;
-    padding:12px;
-    font-family:Arial, sans-serif;
-    font-size:11.5px;
-    line-height:1.4;
-    text-align:center;
-    border-radius:10px;
-    background:rgba(0,0,0,.90);
-    border:2px solid #00f6ff;
-    box-shadow:0 0 12px #00f6ff;
-    color:#00f6ff;
-    z-index:20;
+    bottom:32px;
+    font-size:10.5px
   }
-  .painel-mobile{
-    width:100%;
-    background:#0f0f0f;
-    padding:16px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    border-top:1px solid #222;
-  }
-  .botao-loja{
-    border:2px solid #00f6ff;
-    border-radius:18px;
-    padding:12px;
-    display:flex;
-    gap:12px;
-    align-items:center;
-    color:#fff;
-    background:rgba(0,0,0,.4);
-    cursor:pointer;
-    font-family:Arial, sans-serif;
-    font-size:14px;
-  }
-  .botao-loja img{
-    width:60px;height:44px;
-    background:#fff;
-    border-radius:8px;
-    padding:4px;
-    object-fit:contain;
-    flex-shrink:0;
-  }
-  @media(max-width:360px){
-    .botoes-mobile{top:118px;width:150px}
-    .texto-mobile{bottom:32px;font-size:10.5px}
-  }
+}
 </style>
 </head>
 <body>
 <div class="fachada-mobile">
-  <div class="fachada-wrapper">
-    <img class="fachada-img" src="fachada.png" alt="BDV Fachada">
-    
+  <div class="fachada-bg">
+    <img src="fachada.png" alt="Fachada BDV">
     <div class="botoes-mobile">
-      <div class="bloco" onclick="location.href='#cadastro'">CADASTRE-SE AQUI</div>
-      <div class="bloco" onclick="location.href='#conta'">MINHA CONTA</div>
+      <div class="bloco" onclick="location.href='#cadastro'">
+        CADASTRE-SE AQUI
+      </div>
+      <div class="bloco" onclick="location.href='#conta'">
+        MINHA CONTA
+      </div>
     </div>
-
     <div class="texto-mobile">
-      Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista
+      Milhões de produtos,<br>
+      disponíveis<br>
+      dentro de um Shopping Virtual<br>
+      imersivo<br>
+      cyberpunk futurista
     </div>
   </div>
-
   <div class="painel-mobile">
-    <div class="botao-loja" onclick="window.open('#','_blank')"><img src="logomarca-mercadolivre.png" alt="ML"><span>Mercado Livre</span></div>
-    <div class="botao-loja"><img src="logomarca-magalu.png" alt="Magalu"><span>Magalu</span></div>
-    <div class="botao-loja"><img src="logomarca-amazon.jpg" alt="Amazon"><span>Amazon</span></div>
-    <div class="botao-loja"><img src="logomarca-Shopee.jpg" alt="Shopee"><span>Shopee</span></div>
-    <div class="botao-loja"><img src="logomarca-shein.png" alt="Shein"><span>Shein</span></div>
-    <div class="botao-loja"><img src="logomarca-jequiti.png" alt="Jequiti"><span>Jequiti</span></div>
+    <div class="botao-loja" onclick="window.open('#','_blank')">
+      <img src="logomarca-mercadolivre.png" alt="ML">
+      <span>Mercado Livre</span>
+    </div>
+    <div class="botao-loja">
+      <img src="logomarca-magalu.png" alt="Magalu">
+      <span>Magalu</span>
+    </div>
+    <div class="botao-loja">
+      <img src="logomarca-amazon.jpg" alt="Amazon">
+      <span>Amazon</span>
+    </div>
+    <div class="botao-loja">
+      <img src="logomarca-Shopee.jpg" alt="Shopee">
+      <span>Shopee</span>
+    </div>
+    <div class="botao-loja">
+      <img src="logomarca-shein.png" alt="Shein">
+      <span>Shein</span>
+    </div>
+    <div class="botao-loja">
+      <img src="logomarca-jequiti.png" alt="Jequiti">
+      <span>Jequiti</span>
+    </div>
   </div>
 </div>
 </body>
