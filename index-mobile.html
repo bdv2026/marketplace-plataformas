@@ -1,8 +1,63 @@
-<div style="position:absolute;top:85px;left:50%;transform:translateX(-50%);width:160px;z-index:99;display:flex;flex-direction:column;gap:8px">
-  <div onclick="abrirCadastro()" style="padding:11px 6px;font-size:11px;text-align:center;border-radius:10px;background:rgba(0,0,0,0.7);border:1.5px solid #00f6ff;box-shadow:0 0 10px #00f6ff;color:#00f6ff;font-weight:bold">CADASTRE-SE AQUI</div>
-  <div onclick="abrirConta()" style="padding:11px 6px;font-size:11px;text-align:center;border-radius:10px;background:rgba(0,0,0,0.7);border:1.5px solid #00f6ff;box-shadow:0 0 10px #00f6ff;color:#00f6ff;font-weight:bold">MINHA CONTA</div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BDV v14</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050608;color:#00f6ff;font-family:Arial}
+.container{display:flex;height:100vh}.vitrine-texto{width:28%;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:20px;text-align:center}
+.bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid #00f6ff;box-shadow:0 0 12px #00f6ff;cursor:pointer;text-align:center;margin-bottom:10px}
+.bloco-unico{width:100%;padding:20px;border-radius:14px;background:rgba(0,0,0,.4);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff;line-height:1.5;text-align:center}
+.fachada-area{width:42%;position:relative;display:flex;justify-content:center;align-items:center}.fachada-area img{width:100%;height:100%;object-fit:contain}
+.painel-lateral{width:30%;background:#111;border-left:2px solid #222;display:flex;flex-direction:column;gap:12px;padding:20px;justify-content:center}
+.botao-loja{border:2px solid #00f6ff;border-radius:18px;padding:12px;color:#fff;display:flex;gap:10px;align-items:center;cursor:pointer}
+.botao-loja img{width:60px;height:44px;background:#fff;border-radius:8px;padding:4px}
+@media(max-width:1024px){
+ .container{flex-direction:column;height:auto} 
+ .vitrine-texto{display:none}
+ .fachada-area{width:100%;min-height:720px}
+ .painel-lateral{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="vitrine-texto">
+<div class="bloco">CADASTRE-SE AQUI</div>
+<div class="bloco">MINHA CONTA</div>
+<div class="bloco-unico">Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista</div>
 </div>
 
-<div style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:92%;max-width:320px;padding:10px 8px;font-size:11px;line-height:1.35;text-align:center;border-radius:10px;background:rgba(0,0,0,0.7);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff;color:#00f6ff;z-index:99">
-  Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista
+<div class="fachada-area">
+<!-- MOBILE COM ESPAÇO REAL -->
+<div style="position:absolute; top:95px; left:50%; transform:translateX(-50%); width:165px; display:none; flex-direction:column; gap:10px; z-index:99;" id="btnsMob">
+<div style="padding:12px; font-size:11px; text-align:center; border-radius:10px; background:rgba(0,0,0,.8); border:1.5px solid #00f6ff; box-shadow:0 0 12px #00f6ff; color:#00f6ff; font-weight:bold;">CADASTRE-SE AQUI</div>
+<div style="padding:12px; font-size:11px; text-align:center; border-radius:10px; background:rgba(0,0,0,.8); border:1.5px solid #00f6ff; box-shadow:0 0 12px #00f6ff; color:#00f6ff; font-weight:bold;">MINHA CONTA</div>
 </div>
+
+<div style="position:absolute; bottom:25px; left:50%; transform:translateX(-50%); width:90%; max-width:310px; padding:12px; font-size:11.5px; line-height:1.4; text-align:center; border-radius:10px; background:rgba(0,0,0,.8); border:2px solid #00f6ff; box-shadow:0 0 12px #00f6ff; color:#00f6ff; z-index:99; display:none;" id="txtMob">
+Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista
+</div>
+
+<img src="fachada.png" alt="Fachada">
+</div>
+
+<div class="painel-lateral">
+<div class="botao-loja"><img src="logomarca-mercadolivre.png"><span>Mercado Livre</span></div>
+<div class="botao-loja"><img src="logomarca-magalu.png"><span>Magalu</span></div>
+<div class="botao-loja"><img src="logomarca-amazon.jpg"><span>Amazon</span></div>
+<div class="botao-loja"><img src="logomarca-Shopee.jpg"><span>Shopee</span></div>
+<div class="botao-loja"><img src="logomarca-shein.png"><span>Shein</span></div>
+<div class="botao-loja"><img src="logomarca-jequiti.png"><span>Jequiti</span></div>
+</div>
+</div>
+
+<script>
+if(window.innerWidth<=1024){
+ document.getElementById('btnsMob').style.display='flex';
+ document.getElementById('txtMob').style.display='block';
+}
+</script>
+</body>
+</html>
