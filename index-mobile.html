@@ -2,65 +2,45 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BDV Shopping Virtual</title>
-<link rel="icon" href="./icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>BDV Mobile</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050608;color:#00f6ff;font-family:Arial;overflow:hidden;height:100vh}
-.container{width:100%;height:100vh;display:flex}
-.vitrine-texto{width:28%;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:20px;text-align:center}
-.bloco{width:100%;padding:16px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid #00f6ff;box-shadow:0 0 12px #00f6ff;cursor:pointer}
-.bloco-unico{width:100%;padding:20px;border-radius:14px;background:rgba(0,0,0,.4);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff;text-align:center;line-height:1.6}
-.fachada-area{width:42%;height:100vh;position:relative;display:flex;justify-content:center;align-items:center}
-.fachada-area img{width:100%;height:100%;object-fit:contain}
-.painel-lateral{width:30%;height:100vh;background:#111;border-left:2px solid #222;display:flex;flex-direction:column;gap:12px;padding:20px;justify-content:center;overflow:auto}
-.botao-loja{border:2px solid #00f6ff;border-radius:18px;padding:12px;display:flex;gap:10px;align-items:center;color:#fff;cursor:pointer}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#050608;overflow-x:hidden}
+.fachada-mobile{width:100%;height:auto;background:#050608;display:flex;flex-direction:column;align-items:center;position:relative;overflow-x:hidden}
+.fachada-bg{width:100%;min-height:760px;background-color:#050608;background-image:url('fachada.png');background-position:center top;background-repeat:no-repeat;background-size:100% auto;position:relative}
+.botoes-mobile{position:absolute;top:128px;left:50%;transform:translateX(-50%);width:168px;display:flex;flex-direction:column;gap:12px;z-index:10}
+.bloco{width:100%;padding:12px;border-radius:12px;background:rgba(0,0,0,.85);border:1.5px solid #00f6ff;box-shadow:0 0 12px #00f6ff;text-align:center;font-size:11px;font-weight:bold;cursor:pointer;color:#00f6ff}
+.texto-mobile{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);width:90%;max-width:315px;padding:12px;font-size:11.5px;line-height:1.4;text-align:center;border-radius:10px;background:rgba(0,0,0,.85);border:2px solid #00f6ff;box-shadow:0 0 12px #00f6ff;color:#00f6ff;z-index:10}
+.painel-mobile{width:100%;background:#111;padding:16px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:5}
+.botao-loja{border:2px solid #00f6ff;border-radius:18px;padding:12px;display:flex;gap:10px;align-items:center;color:#fff;background:rgba(0,0,0,.3);cursor:pointer}
 .botao-loja img{width:60px;height:44px;background:#fff;border-radius:8px;padding:4px;object-fit:contain}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:20px;overflow:auto}
-.form-container{background:#fff;padding:30px;border-radius:10px;width:90%;max-width:500px;color:#000}
-.cat-item{width:100%;padding:16px;background:rgba(0,0,0,.3);border:2px solid #00f6ff;border-radius:12px;color:#fff;margin-bottom:8px;cursor:pointer}
-@media(max-width:1024px){
-body{overflow:auto;height:auto}
-.container{flex-direction:column;height:auto}
-.vitrine-texto{display:none!important}
-.fachada-area{width:100%;min-height:720px;background:url('fachada.png') center top no-repeat;background-size:contain;display:block}
-.fachada-area img{display:none!important}
-.painel-lateral{width:100%;height:auto}
-.mobile-botoes{display:flex!important}
-.mobile-texto{display:block!important}
+@media(max-width:360px){
+  .fachada-bg{min-height:700px}
+  .botoes-mobile{top:118px;width:150px}
+  .texto-mobile{bottom:32px;font-size:10.5px}
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const supabaseClient=supabase.createClient("https://vbmxtscxcrrwslyhezwt.supabase.co","sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt");
-const plataformas={
-mercadolivre:{nome:"Mercado Livre",logo:"logomarca-mercadolivre.png",base:"https://lista.mercadolivre.com.br/",cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Casa, Móveis e Decoração","Ferramentas","Moda Masculina","Moda Feminina","Esportes","Beleza","Brinquedos","Bebês","Automotivo","Livros","Pet Shop"]},
-magalu:{nome:"Magalu",logo:"logomarca-magalu.png",base:"https://www.magazineluiza.com.br/busca/",cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa","Moda Feminina","Moda Masculina","Beleza","Brinquedos","Ferramentas","Automotivo","Pet Shop"]},
-amazon:{nome:"Amazon",logo:"logomarca-amazon.jpg",base:"https://www.amazon.com.br/s?k=",cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Informática","Casa","Livros","Moda","Beleza","Esportes","Brinquedos","Pet Shop"]},
-shopee:{nome:"Shopee",logo:"logomarca-Shopee.jpg",base:"https://shopee.com.br/search?keyword=",cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares","Casa","Beleza","Esportes","Brinquedos","Automotivo","Pet Shop"]},
-shein:{nome:"Shein",logo:"logomarca-shein.png",base:"https://br.shein.com/search?search_text=",cats:["Novidades Femininas","Vestidos","Blusas","Calças","Moda Praia","Sapatos","Bolsas","Moda Masculina","Infantil","Casa","Beleza"]},
-jequiti:{nome:"Jequiti",logo:"logomarca-jequiti.png",base:"https://www.jequiti.com.br/busca?q=",cats:["Perfumaria Feminina","Perfumaria Masculina","Maquiagem","Corpo e Banho","Cabelos","Presentes","Kits","Ofertas"]}
-};
-let plataformaAtual=null;
-function abrirPlataforma(id){plataformaAtual=plataformas[id];document.getElementById('catHeaderNome').innerText=plataformaAtual.nome;document.getElementById('catHeaderLogo').src=plataformaAtual.logo;const l=document.getElementById('listaCategorias');l.innerHTML="";plataformaAtual.cats.forEach(c=>{const d=document.createElement('div');d.className='cat-item';d.innerText=c;d.onclick=()=>window.open(plataformaAtual.base+c,'_blank');l.appendChild(d);});document.getElementById('categoriasOverlay').style.display='flex';}
-function fecharCategorias(){document.getElementById('categoriasOverlay').style.display='none'}
-function abrirCadastro(){document.getElementById('cadastroOverlay').style.display='flex'}
-function fecharCadastro(){document.getElementById('cadastroOverlay').style.display='none'}
-function abrirConta(){document.getElementById('contaOverlay').style.display='flex'}
-function fecharConta(){document.getElementById('contaOverlay').style.display='none'}
-</script>
 </head>
 <body>
-<div class="container">
-<div class="vitrine-texto">
-<div class="bloco" onclick="abrirCadastro()">CADASTRE-SE AQUI</div>
-<div class="bloco" onclick="abrirConta()">MINHA CONTA</div>
-<div class="bloco-unico">Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista</div>
+<div class="fachada-mobile">
+<div class="fachada-bg">
+<div class="botoes-mobile">
+<div class="bloco" onclick="location.href='#cadastro'">CADASTRE-SE AQUI</div>
+<div class="bloco" onclick="location.href='#conta'">MINHA CONTA</div>
 </div>
-<div class="fachada-area">
-<img src="fachada.png">
-<div class="mobile-botoes" style="display:none;position:absolute;top:92px;left:50%;transform:translateX(-50%);width:165px;flex-direction:column;gap:10px;z-index:20">
-<div class="bloco" onclick="abrirCadastro()" style="font-size:11px;padding:11px">CADASTRE-SE AQUI</div>
-<div class="bloco" onclick="abrirConta()" style="font-size:11px;padding:11px">MINHA CONTA</div>
+<div class="texto-mobile">
+Milhões de produtos,<br>disponíveis<br>dentro de um Shopping Virtual<br>imersivo<br>cyberpunk futurista
 </div>
-<div class="mobile-texto" style="display:none
+</div>
+<div class="painel-mobile">
+<div class="botao-loja" onclick="window.open('#','_blank')"><img src="logomarca-mercadolivre.png" alt="ML"><span>Mercado Livre</span></div>
+<div class="botao-loja"><img src="logomarca-magalu.png" alt="Magalu"><span>Magalu</span></div>
+<div class="botao-loja"><img src="logomarca-amazon.jpg" alt="Amazon"><span>Amazon</span></div>
+<div class="botao-loja"><img src="logomarca-Shopee.jpg" alt="Shopee"><span>Shopee</span></div>
+<div class="botao-loja"><img src="logomarca-shein.png" alt="Shein"><span>Shein</span></div>
+<div class="botao-loja"><img src="logomarca-jequiti.png" alt="Jequiti"><span>Jequiti</span></div>
+</div>
+</div>
+</body>
+</html>
