@@ -1,20 +1,20 @@
 <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
 <channel>
-<title>B.D.V. Shopping Virtual v5</title>
+<title>BDV Shopping Virtual</title>
 <link>https://bdv2026.github.io/marketplace-plataformas/</link>
-<description>Sistema de Shopping Virtual Integrado com gestão unificada de estoque - BDV - Sincronização a cada 5 a 15 minutos via API REST para Mercado Livre, Amazon, Magalu</description>
+<description>Sistema de Shopping Virtual Integrado com gestão unificada de estoque - BDV - PI (10) banco (20) integracao (30) ML (40) Amazon (50) Magalu (60)</description>
 <item>
 <g:id>BDV001</g:id>
-<g:title>BDV - Produto Exemplo 1 - Troque por SKU real do banco (20)</g:title>
-<g:description>Sistema (10) com banco unificado (20) e módulo de integração (30) para Mercado Livre (40), Amazon (50), Magalu (60). Webhook para prevenir overselling.</g:description>
+<g:title>BDV Smart Hub - Sistema de Gestão Unificada</g:title>
+<g:description>Sistema (10) com banco unificado (20) e modulo de integracao (30) para Mercado Livre (40), Amazon (50), Magalu (60). Sincronizacao a cada 5 a 15 min via API REST. Webhook para prevenir overselling. Feed XML (70) e painel (80).</g:description>
 <g:link>https://bdv2026.github.io/marketplace-plataformas/</g:link>
-<g:image_link>https://bdv2026.github.io/marketplace-plataformas/icon-192.png</g:image_link>
+<g:image_link>https://bdv2026.github.io/marketplace-plataformas/icon-512.png</g:image_link>
 <g:availability>in_stock</g:availability>
 <g:price>99.90 BRL</g:price>
 <g:brand>BDV</g:brand>
 <g:condition>new</g:condition>
-<g:gtin>7890000000011</g:gtin>
-<g:custom_label_0>BDV_TODAS_CATEGORIAS</g:custom_label_0>
+<g:identifier_exists>no</g:identifier_exists>
+<g:custom_label_0>BDV_SISTEMA</g:custom_label_0>
 </item>
 </channel>
 </rss>
