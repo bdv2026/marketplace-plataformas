@@ -82,7 +82,7 @@ const plataformas = {
   mercadolivre: { nome:"Mercado Livre", logo:"logomarca-mercadolivre.png?v=5", base:"https://lista.mercadolivre.com.br/", cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"] },
   magalu: { nome:"Magalu", logo:"logomarca-magalu.png?v=5", base:"https://www.magazineluiza.com.br/busca/", cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"] },
   amazon: { nome:"Amazon", logo:"logomarca-amazon.jpg?v=5", base:"https://www.amazon.com.br/s?k=", cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"] },
-  shopee: { nome:"Shopee", logo:"logomarca-Shopee.jpg?v=5", base:"https://shopee.com.br/search?keyword=", cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"] },
+  shopee: { nome:"Shopee", logo:"logomarca-Shopee.jpg?v=5", base:"https://shopee.com.br/search?keyword=", cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"], afiliados:{"Ofertas Relâmpago":"https://s.shopee.com.br/3VkhCCPWek","Moda Feminina":"https://s.shopee.com.br/3LRGztQ9zj","Moda Masculina":"https://s.shopee.com.br/4VdEO2Licy","Celulares e Acessórios":"https://s.shopee.com.br/4LJoBjMLxx","Casa e Decoração":"https://s.shopee.com.br/4B0NzQMzIw"} },
   shein: { nome:"Shein", logo:"logomarca-shein.png?v=5", base:"https://br.shein.com/search?search_text=", cats:["Novidades Femininas","Vestidos","Blusas","Calças Femininas","Saias","Moda Praia","Lingerie e Pijamas","Sapatos Femininos","Bolsas e Acessórios","Moda Masculina","Moda Infantil","Plus Size","Casa e Decoração","Beleza","Esporte"] },
   jequiti: { nome:"Jequiti", logo:"logomarca-jequiti.png?v=5", base:"https://www.jequiti.com.br/busca?q=", cats:["Perfumaria Feminina","Perfumaria Masculina","Perfumaria Infantil","Maquiagem - Rosto","Maquiagem - Olhos","Maquiagem - Boca","Corpo e Banho","Cabelos","Hidratantes","Presentes","Kits","Ofertas"] }
 };
@@ -108,15 +108,17 @@ function abrirCategoria(catNome){
   let url="";
   if(plataformaAtual.nome==="Shopee" && plataformaAtual.afiliados && plataformaAtual.afiliados[catNome]){
     url=plataformaAtual.afiliados[catNome];
-  } else if(plataformaAtual.nome===" Amazon"){
+  } else if(plataformaAtual.nome==="Amazon"){
     url=plataformaAtual.base+encodeURIComponent(catNome);
   } else {
     let slug=catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
     url=plataformaAtual.base+slug;
-    if(plataformaAtual.nome===" Magalu") url=url+"/";
+    if(plataformaAtual.nome==="Magalu") url=url+"/";
   }
   window.open(url,'_blank');
 }
+function fecharCategorias(){document.getElementById('categoriasOverlay').style.display='none'}
+function voltarHome(){
   document.getElementById('categoriasOverlay').style.display='none';
   window.scrollTo({top:0, behavior:'smooth'});
   plataformaAtual=null;
