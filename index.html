@@ -105,18 +105,18 @@ function abrirPlataforma(id){
 }
 function abrirCategoria(catNome){
   if(!plataformaAtual) return;
-  let url = "";
-  if(plataformaAtual.nome==="Amazon"){
-    url = plataformaAtual.base + encodeURIComponent(catNome);
+  let url="";
+  if(plataformaAtual.nome==="Shopee" && plataformaAtual.afiliados && plataformaAtual.afiliados[catNome]){
+    url=plataformaAtual.afiliados[catNome];
+  } else if(plataformaAtual.nome===" Amazon"){
+    url=plataformaAtual.base+encodeURIComponent(catNome);
   } else {
-    let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
-    url = plataformaAtual.base + slug;
-    if(plataformaAtual.nome==="Magalu") url = url + "/";
+    let slug=catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
+    url=plataformaAtual.base+slug;
+    if(plataformaAtual.nome===" Magalu") url=url+"/";
   }
   window.open(url,'_blank');
 }
-function fecharCategorias(){document.getElementById('categoriasOverlay').style.display='none'}
-function voltarHome(){
   document.getElementById('categoriasOverlay').style.display='none';
   window.scrollTo({top:0, behavior:'smooth'});
   plataformaAtual=null;
