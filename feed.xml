@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
 <channel>
-<title>BDV Shopping Virtual</title>
+<title>BDV Shopping Virtual v6 - Sistema Integrado com Pinterest e TikTok</title>
 <link>https://bdv2026.github.io/marketplace-plataformas/</link>
-<description>Sistema de Shopping Virtual Integrado - BDV PI 10 20 30 40 50 60 70 80</description>
+<description>Sistema de Shopping Virtual Integrado com gestao unificada de estoque, pedidos e publicidade multiplataforma - BDV v6 - Integra Mercado Livre, Amazon, Magalu, Shopee, Pinterest e TikTok - Sincronizacao a cada 5 a 15 minutos via API REST - Webhook anti-overselling - Feed XML e painel unificado</description>
 <item>
-<g:id>BDV001</g:id>
-<g:title>BDV Smart Hub - Sistema de Gestao Unificada</g:title>
-<g:description>Sistema 10 com banco unificado 20 e modulo de integracao 30 para Mercado Livre 40 Amazon 50 Magalu 60. Sincronizacao 5 a 15 min via API REST com webhook anti-overselling. Feed XML 70 e painel 80.</g:description>
+<g:id>BDV-SISTEMA-V6-001</g:id>
+<g:title>BDV Smart Hub v6 - Sistema de Gestao Unificada com Pinterest e TikTok</g:title>
+<g:description>Sistema 10 com banco unificado 20 e modulo de integracao 30 para Mercado Livre 40 Amazon 50 Magalu 60 Shopee 70 Pinterest 80 TikTok 90. Sincronizacao automatica a cada 5 a 15 minutos via API REST com webhook para prevenir overselling. Gestao unificada de estoque, pedidos e campanhas de publicidade multiplataforma. Inclui feed XML 100 e painel administrativo 110 com controle total. Versao v6 atualizada com integracao Pinterest rodrigoarqbeltrao e TikTok.</g:description>
 <g:link>https://bdv2026.github.io/marketplace-plataformas/</g:link>
-<g:image_link>https://bdv2026.github.io/marketplace-plataformas/icon-512.png</g:image_link>
+<g:image_link>https://bdv2026.github.io/marketplace-plataformas/fachada.png?v=6</g:image_link>
 <g:availability>in_stock</g:availability>
 <g:price>99.90 BRL</g:price>
 <g:brand>BDV</g:brand>
 <g:condition>new</g:condition>
 <g:identifier_exists>no</g:identifier_exists>
+<g:google_product_category>Software &gt; Computer Software</g:google_product_category>
+<g:product_type>Software &gt; E-commerce &gt; Marketplace Integration</g:product_type>
+<g:custom_label_0>BDV_SISTEMA_V6</g:custom_label_0>
+<g:custom_label_1>Pinterest_TikTok_Integrado</g:custom_label_1>
 <g:shipping>
 <g:country>BR</g:country>
 <g:service>Standard</g:service>
