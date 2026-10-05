@@ -83,8 +83,8 @@ const plataformas = {
   magalu: { nome:"Magalu", logo:"logomarca-magalu.png?v=5", base:"https://www.magazineluiza.com.br/busca/", cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"] },
   amazon: { nome:"Amazon", logo:"logomarca-amazon.jpg?v=5", base:"https://www.amazon.com.br/s?k=", cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"] },
   shopee: { nome:"Shopee", logo:"logomarca-Shopee.jpg?v=5", base:"https://shopee.com.br/search?keyword=", cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"], afiliados:{"Ofertas Relâmpago":"https://s.shopee.com.br/3VkhCCPWek","Moda Feminina":"https://s.shopee.com.br/3LRGztQ9zj","Moda Masculina":"https://s.shopee.com.br/4VdEO2Licy","Celulares e Acessórios":"https://s.shopee.com.br/4LJoBjMLxx","Casa e Decoração":"https://s.shopee.com.br/4B0NzQMzIw","Beleza e Saúde":"https://s.shopee.com.br/5AsvNhOaLI","Bebês e Crianças":"https://s.shopee.com.br/50ZVBOPDgH","Esportes e Lazer":"https://s.shopee.com.br/4qG4z5Pr1G","Brinquedos e Hobbies":"https://s.shopee.com.br/4fwemmQUMF","Automotivo":"https://s.shopee.com.br/4VdEaTR7hE","Ferramentas e Casa":"https://s.shopee.com.br/AKb1YjEs06","Pet Shop":"https://s.shopee.com.br/AUuRl2EEf9","Supermercado":"https://s.shopee.com.br/BUFS2rZdA","Livros":"https://s.shopee.com.br/1ApFjsCy9"} },
-  shein: { nome:"Shein", logo:"logomarca-shein.png?v=5", base:"https://br.shein.com/search?search_text=", cats:["Novidades Femininas","Vestidos","Blusas","Calças Femininas","Saias","Moda Praia","Lingerie e Pijamas","Sapatos Femininos","Bolsas e Acessórios","Moda Masculina","Moda Infantil","Plus Size","Casa e Decoração","Beleza","Esporte"] },
-  jequiti: { nome:"Jequiti", logo:"logomarca-jequiti.png?v=5", base:"https://www.jequiti.com.br/busca?q=", cats:["Perfumaria Feminina","Perfumaria Masculina","Perfumaria Infantil","Maquiagem - Rosto","Maquiagem - Olhos","Maquiagem - Boca","Corpo e Banho","Cabelos","Hidratantes","Presentes","Kits","Ofertas"] }
+  pinterest: { nome:"Pinterest", logo:"logomarca-pinterest.png?v=5", base:"https://br.pinterest.com/rodrigoarqbeltrao/", cats:["BDV Multiplataformas","Moda Feminina","Decoração Casa","Ideias de Unhas","Cabelos e Penteados","Maquiagem","Receitas Fáceis","DIY Faça Você Mesmo","Tatuagens","Festa e Aniversário","Looks do Dia","Viagem e Turismo","Frases e Inspiração"], perfil:"https://br.pinterest.com/rodrigoarqbeltrao/" },
+  tiktok: { nome:"TikTok", logo:"logomarca-tiktok.png?v=5", base:"https://www.tiktok.com/search?q=", cats:["Trends Virais","Dancinhas do Momento","Receitas Virais","Moda Feminina","Beleza e Maquiagem","Vídeos de Humor","Futebol","Músicas Virais","Life Hacks","Decoração","Motivação","Pets Fofos"] }
 };
 let plataformaAtual=null;
 function abrirPlataforma(id){
@@ -105,15 +105,22 @@ function abrirPlataforma(id){
 }
 function abrirCategoria(catNome){
   if(!plataformaAtual) return;
-  let url="";
-  if(plataformaAtual.nome==="Shopee" && plataformaAtual.afiliados && plataformaAtual.afiliados[catNome]){
+  let url = "";
+  if(plataformaAtual.nome==="Pinterest"){
+    if(catNome==="BDV Multiplataformas"){
+      url="https://br.pinterest.com/rodrigoarqbeltrao/";
+    } else {
+      let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
+      url="https://br.pinterest.com/rodrigoarqbeltrao/"+slug+"/";
+    }
+  } else if(plataformaAtual.nome==="Shopee" && plataformaAtual.afiliados && plataformaAtual.afiliados[catNome]){
     url=plataformaAtual.afiliados[catNome];
   } else if(plataformaAtual.nome==="Amazon"){
-    url=plataformaAtual.base+encodeURIComponent(catNome);
+    url = plataformaAtual.base + encodeURIComponent(catNome);
   } else {
-    let slug=catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
-    url=plataformaAtual.base+slug;
-    if(plataformaAtual.nome==="Magalu") url=url+"/";
+    let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
+    url = plataformaAtual.base + slug;
+    if(plataformaAtual.nome==="Magalu") url = url + "/";
   }
   window.open(url,'_blank');
 }
@@ -173,8 +180,8 @@ EXPERIÊNCIA CYBERPUNK FUTURISTA
 <div class="botao-loja" onclick="abrirPlataforma('magalu')"><img src="logomarca-magalu.png?v=5"><span>Magalu</span></div>
 <div class="botao-loja" onclick="abrirPlataforma('amazon')"><img src="logomarca-amazon.jpg?v=5"><span>Amazon</span></div>
 <div class="botao-loja" onclick="abrirPlataforma('shopee')"><img src="logomarca-Shopee.jpg?v=5"><span>Shopee</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('shein')"><img src="logomarca-shein.png?v=5"><span>Shein</span></div>
-<div class="botao-loja" onclick="abrirPlataforma('jequiti')"><img src="logomarca-jequiti.png?v=5"><span>Jequiti</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('pinterest')"><img src="logomarca-pinterest.png?v=5"><span>Pinterest</span></div>
+<div class="botao-loja" onclick="abrirPlataforma('tiktok')"><img src="logomarca-tiktok.png?v=5"><span>TikTok</span></div>
 </div>
 </div>
 <div class="overlay" id="categoriasOverlay">
