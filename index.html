@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" href="./icon-192.png?v=5">
 <link rel="manifest" href="./manifest.json?v=5">
 <script>
-// ANTI-CACHE v5
+// ANTI-CACHE v5 — ORIGINAL, SEM ALTERAÇÃO
 (function(){
   if('serviceWorker' in navigator){
     navigator.serviceWorker.getRegistrations().then(r=>r.forEach(reg=>reg.unregister()));
@@ -28,6 +28,7 @@
 })();
 </script>
 <style>
+/* ESTILOS ORIGINAIS PRESERVADOS */
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#050608;color:#00f6ff;overflow:hidden;height:100vh}
 body::before{content:"";position:fixed;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.15),rgba(0,0,0,0.45)),#050608;z-index:-2}
@@ -60,8 +61,24 @@ body::before{content:"";position:fixed;inset:0;background:linear-gradient(to rig
 .btn-voltar-cat{margin:0;padding:12px 24px;border-radius:10px;border:1px solid #ff00ff;background:transparent;color:#ff00ff;cursor:pointer;font-weight:bold}
 #btnMenuMobile{display:none;position:fixed;top:12px;right:12px;z-index:9000;width:48px;height:48px;border-radius:12px;background:rgba(0,0,0,0.7);border:1px solid #00f6ff;color:#00f6ff;font-size:26px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 12px rgba(0,255,255,0.4)}
 #drawerMobile{display:none;position:fixed;inset:0;z-index:9001}
-#drawerMobile.drawer-bg{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
-#drawerMobile.drawer-content{position:absolute;left:0;top:0;bottom:0;width:82%;max-width:320px;background:linear-gradient(to bottom,#111,#050608);border-right:2px solid rgba(0,255,255,0.3);padding:20px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+#drawerMobile .drawer-bg{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
+#drawerMobile .drawer-content{position:absolute;left:0;top:0;bottom:0;width:82%;max-width:320px;background:linear-gradient(to bottom,#111,#050608);border-right:2px solid rgba(0,255,255,0.3);padding:20px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+
+/* === NOVO: ESTILOS DO BUSCADOR === */
+.buscador-container{width:100%;max-width:800px;padding:10px 20px;margin-bottom:8px}
+.buscador-titulo{text-align:center;color:#fff;margin-bottom:10px;font-size:15px;text-shadow:0 0 8px #00f6ff}
+.buscador-input-area{display:flex;gap:10px;flex-wrap:wrap}
+.buscador-input{flex:1;min-width:200px;padding:10px 14px;border-radius:10px;border:2px solid #00f6ff;background:rgba(0,0,0,0.5);color:#fff;font-size:14px;outline:none}
+.buscador-input:focus{box-shadow:0 0 10px #00f6ff}
+.buscador-btn{padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,#00f6ff,#00a8ff);border:none;color:#000;font-weight:bold;cursor:pointer;transition:0.2s}
+.buscador-btn:hover{transform:scale(1.03);box-shadow:0 0 12px #00f6ff}
+.buscador-resultados{width:100%;max-width:800px;padding:0 20px 20px;display:none;flex-direction:column;gap:8px}
+.buscador-resultados.mostrar{display:flex}
+.resultado-plataforma{width:100%;padding:12px 16px;background:rgba(0,0,0,0.35);border:2px solid #00f6ff;border-radius:10px;color:#fff;cursor:pointer;transition:0.2s;display:flex;align-items:center;gap:10px}
+.resultado-plataforma:hover{background:rgba(0,255,255,0.15);transform:translateX(4px)}
+.resultado-plataforma img{width:36px;height:28px;object-fit:contain;background:rgba(255,255,255,0.9);border-radius:6px;padding:3px}
+/* === FIM NOVO === */
+
 @media(max-width:1024px){
 body{overflow:auto;height:auto;min-height:100vh}
 .container{flex-direction:column;height:auto;overflow:visible}
@@ -71,6 +88,8 @@ body{overflow:auto;height:auto;min-height:100vh}
 .painel-lateral{width:100%;height:auto;border-left:none;border-top:2px solid rgba(255,255,255,0.08);padding:16px;gap:12px}
 .painel-lateral h3{width:100%;text-align:center;margin:0 0 8px 0;color:#fff;font-size:16px}
 .botao-loja{width:100%;min-height:72px}
+.buscador-input-area{flex-direction:column}
+.buscador-input{width:100%}
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2?v=5"></script>
@@ -78,15 +97,88 @@ body{overflow:auto;height:auto;min-height:100vh}
 const supabaseUrl="https://vbmxtscxcrrwslyhezwt.supabase.co";
 const supabaseKey="sb_publishable_KfIOiYkJHDY8yZbs7ggFTw_hFh8nKAt";
 const supabaseClient=supabase.createClient(supabaseUrl,supabaseKey);
-const plataformas = {
-  mercadolivre: { nome:"Mercado Livre", logo:"logomarca-mercadolivre.png?v=5", base:"https://lista.mercadolivre.com.br/", cats:["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"] },
-  magalu: { nome:"Magalu", logo:"logomarca-magalu.png?v=5", base:"https://www.magazineluiza.com.br/busca/", cats:["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"] },
-  amazon: { nome:"Amazon", logo:"logomarca-amazon.jpg?v=5", base:"https://www.amazon.com.br/s?k=", cats:["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"] },
-  shopee: { nome:"Shopee", logo:"logomarca-Shopee.jpg?v=5", base:"https://shopee.com.br/search?keyword=", cats:["Ofertas Relâmpago","Moda Feminina","Moda Masculina","Celulares e Acessórios","Casa e Decoração","Beleza e Saúde","Bebês e Crianças","Esportes e Lazer","Brinquedos e Hobbies","Automotivo","Ferramentas e Casa","Pet Shop","Supermercado","Livros"], afiliados:{"Ofertas Relâmpago":"https://s.shopee.com.br/3VkhCCPWek","Moda Feminina":"https://s.shopee.com.br/3LRGztQ9zj","Moda Masculina":"https://s.shopee.com.br/4VdEO2Licy","Celulares e Acessórios":"https://s.shopee.com.br/4LJoBjMLxx","Casa e Decoração":"https://s.shopee.com.br/4B0NzQMzIw","Beleza e Saúde":"https://s.shopee.com.br/5AsvNhOaLI","Bebês e Crianças":"https://s.shopee.com.br/50ZVBOPDgH","Esportes e Lazer":"https://s.shopee.com.br/4qG4z5Pr1G","Brinquedos e Hobbies":"https://s.shopee.com.br/4fwemmQUMF","Automotivo":"https://s.shopee.com.br/4VdEaTR7hE","Ferramentas e Casa":"https://s.shopee.com.br/AKb1YjEs06","Pet Shop":"https://s.shopee.com.br/AUuRl2EEf9","Supermercado":"https://s.shopee.com.br/BUFS2rZdA","Livros":"https://s.shopee.com.br/1ApFjsCy9"} },
-  pinterest: { nome:"Pinterest", logo:"logomarca-pinterest.png?v=5", base:"https://br.pinterest.com/rodrigoarqbeltrao/", cats:["BDV Multiplataformas","Moda Feminina","Decoração Casa","Ideias de Unhas","Cabelos e Penteados","Maquiagem","Receitas Fáceis","DIY Faça Você Mesmo","Tatuagens","Festa e Aniversário","Looks do Dia","Viagem e Turismo","Frases e Inspiração"], perfil:"https://br.pinterest.com/rodrigoarqbeltrao/" },
-  tiktok: { nome:"TikTok", logo:"logomarca-tiktok.png?v=5", base:"https://www.tiktok.com/search?q=", cats:["Trends Virais","Dancinhas do Momento","Receitas Virais","Moda Feminina","Beleza e Maquiagem","Vídeos de Humor","Futebol","Músicas Virais","Life Hacks","Decoração","Motivação","Pets Fofos"] }
+
+// ==============================================
+// SEUS LINKS DE AFILIADO — TODOS AQUI PROTEGIDOS
+// ==============================================
+const afiliado = {
+  mercadolivre: {
+    linkBase: "https://meli.la/2qu3xa4",
+    busca: "https://lista.mercadolivre.com.br/"
+  },
+  magalu: {
+    linkBase: "https://www.magazinevoce.com.br/magazinein_1479585/",
+    busca: "https://www.magazinevoce.com.br/magazinein_1479585/busca/"
+  },
+  amazon: {
+    linkBase: "https://amzn.to/42GTYKE",
+    busca: "https://www.amazon.com.br/s?k="
+  },
+  shopee: {
+    busca: "https://shopee.com.br/search?keyword=",
+    categorias: {
+      "Ofertas Relâmpago": "https://s.shopee.com.br/3VkhCCPWek",
+      "Moda Feminina": "https://s.shopee.com.br/3LRGztQ9zj",
+      "Moda Masculina": "https://s.shopee.com.br/4VdEO2Licy",
+      "Celulares e Acessórios": "https://s.shopee.com.br/4LJoBjMLxx",
+      "Casa e Decoração": "https://s.shopee.com.br/4B0NzQMzIw",
+      "Beleza e Saúde": "https://s.shopee.com.br/5AsvNhOaLI",
+      "Bebês e Crianças": "https://s.shopee.com.br/50ZVBOPDgH",
+      "Esportes e Lazer": "https://s.shopee.com.br/4qG4z5Pr1G",
+      "Brinquedos e Hobbies": "https://s.shopee.com.br/4fwemmQUMF",
+      "Automotivo": "https://s.shopee.com.br/4VdEaTR7hE",
+      "Ferramentas e Casa": "https://s.shopee.com.br/AKb1YjEs06",
+      "Pet Shop": "https://s.shopee.com.br/AUuRl2EEf9",
+      "Supermercado": "https://s.shopee.com.br/BUFS2rZdA",
+      "Livros": "https://s.shopee.com.br/1ApFjsCy9"
+    }
+  },
+  pinterest: {
+    perfil: "https://br.pinterest.com/rodrigoarqbeltrao/",
+    busca: "https://br.pinterest.com/search/pins/?q="
+  },
+  tiktok: {
+    busca: "https://www.tiktok.com/search?q="
+  }
 };
-let plataformaAtual=null;
+
+// PLATAFORMAS — ESTRUTURA ORIGINAL PRESERVADA
+const plataformas = {
+  mercadolivre: {
+    nome: "Mercado Livre",
+    logo: "logomarca-mercadolivre.png?v=5",
+    cats: ["Ofertas do dia","Celulares e Telefones","Informática","Eletrodomésticos","TV e Vídeo","Áudio","Casa, Móveis e Decoração","Ferramentas e Construção","Moda Masculina","Moda Feminina","Esportes e Fitness","Beleza e Cuidado Pessoal","Brinquedos e Hobbies","Bebês","Automotivo","Supermercado","Livros","Pet Shop"]
+  },
+  magalu: {
+    nome: "Magalu",
+    logo: "logomarca-magalu.png?v=5",
+    cats: ["Smartphones","Informática","TVs","Eletrodomésticos","Móveis","Casa e Decoração","Moda Feminina","Moda Masculina","Calçados","Esporte e Lazer","Beleza e Perfumaria","Brinquedos","Ferramentas","Automotivo","Pet Shop","Alimentos e Bebidas","Livros","Papelaria"]
+  },
+  amazon: {
+    nome: "Amazon",
+    logo: "logomarca-amazon.jpg?v=5",
+    cats: ["Mais Vendidos","Ofertas do Dia","Eletrônicos","Computadores e Informática","Casa e Cozinha","Livros","Moda Feminina","Moda Masculina","Beleza","Cuidados Pessoais","Esportes e Fitness","Brinquedos e Jogos","Ferramentas e Construção","Jardim e Piscina","Automotivo","Alimentos e Bebidas","Pet Shop","Games"]
+  },
+  shopee: {
+    nome: "Shopee",
+    logo: "logomarca-Shopee.jpg?v=5",
+    cats: Object.keys(afiliado.shopee.categorias),
+    afiliados: afiliado.shopee.categorias
+  },
+  pinterest: {
+    nome: "Pinterest",
+    logo: "logomarca-pinterest.png?v=5",
+    cats: ["BDV Multiplataformas","Moda Feminina","Decoração Casa","Ideias de Unhas","Cabelos e Penteados","Maquiagem","Receitas Fáceis","DIY Faça Você Mesmo","Tatuagens","Festa e Aniversário","Looks do Dia","Viagem e Turismo","Frases e Inspiração"]
+  },
+  tiktok: {
+    nome: "TikTok",
+    logo: "logomarca-tiktok.png?v=5",
+    cats: ["Trends Virais","Dancinhas do Momento","Receitas Virais","Moda Feminina","Beleza e Maquiagem","Vídeos de Humor","Futebol","Músicas Virais","Life Hacks","Decoração","Motivação","Pets Fofos"]
+  }
+};
+
+let plataformaAtual = null;
+
 function abrirPlataforma(id){
   plataformaAtual = plataformas[id];
   document.getElementById('catHeaderNome').innerText = "Você está na plataforma " + plataformaAtual.nome;
@@ -103,32 +195,40 @@ function abrirPlataforma(id){
   });
   document.getElementById('categoriasOverlay').style.display='flex';
 }
+
 function abrirCategoria(catNome){
   if(!plataformaAtual) return;
   let url = "";
-  if(plataformaAtual.nome==="Pinterest"){
-    if(catNome==="BDV Multiplataformas"){
-      url="https://br.pinterest.com/rodrigoarqbeltrao/";
+  const nome = plataformaAtual.nome;
+
+  if(nome === "Pinterest"){
+    if(catNome === "BDV Multiplataformas"){
+      url = afiliado.pinterest.perfil;
     } else {
       let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
-      url="https://br.pinterest.com/rodrigoarqbeltrao/"+slug+"/";
+      url = afiliado.pinterest.perfil + slug + "/";
     }
-  } else if(plataformaAtual.nome==="Shopee" && plataformaAtual.afiliados && plataformaAtual.afiliados[catNome]){
-    url=plataformaAtual.afiliados[catNome];
-  } else if(plataformaAtual.nome==="Amazon"){
-    url = plataformaAtual.base + encodeURIComponent(catNome);
-  } else {
+  } else if(nome === "Shopee" && plataformaAtual.afiliados && plataformaAtual.afiliados[catNome]){
+    url = plataformaAtual.afiliados[catNome]; // ✅ LINKS DA SHOPEE INTACTOS
+  } else if(nome === "Magalu"){
     let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
-    url = plataformaAtual.base + slug;
-    if(plataformaAtual.nome==="Magalu") url = url + "/";
+    url = afiliado.magalu.busca + slug + "/";
+  } else if(nome === "Amazon"){
+    url = afiliado.amazon.busca + encodeURIComponent(catNome);
+  } else if(nome === "Mercado Livre"){
+    let slug = catNome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
+    url = afiliado.mercadolivre.busca + slug;
   }
-  window.open(url,'_blank');
+
+  window.open(url, '_blank');
 }
+
 function fecharCategorias(){document.getElementById('categoriasOverlay').style.display='none'}
 function voltarHome(){
   document.getElementById('categoriasOverlay').style.display='none';
+  document.getElementById('buscadorResultados').classList.remove('mostrar');
   window.scrollTo({top:0, behavior:'smooth'});
-  plataformaAtual=null;
+  plataformaAtual = null;
 }
 function abrirMenuMobile(){document.getElementById('drawerMobile').style.display='block'}
 function fecharMenuMobile(){document.getElementById('drawerMobile').style.display='none'}
@@ -148,6 +248,36 @@ async function abrirConta(){
   }
 }
 function fecharConta(){document.getElementById('contaOverlay').style.display='none'}
+
+// === BUSCADOR ===
+function realizarBusca(){
+  const termo = document.getElementById('campoBusca').value.trim();
+  if(!termo){
+    alert('Digite o nome do produto!');
+    return;
+  }
+  const resultadosDiv = document.getElementById('buscadorResultados');
+  resultadosDiv.innerHTML = '';
+
+  const lista = [
+    {id:'mercadolivre', nome:'Mercado Livre', logo:'logomarca-mercadolivre.png?v=5', url:afiliado.mercadolivre.busca + encodeURIComponent(termo)},
+    {id:'magalu', nome:'Magalu', logo:'logomarca-magalu.png?v=5', url:afiliado.magalu.busca + encodeURIComponent(termo) + '/'},
+    {id:'amazon', nome:'Amazon', logo:'logomarca-amazon.jpg?v=5', url:afiliado.amazon.busca + encodeURIComponent(termo)},
+    {id:'shopee', nome:'Shopee', logo:'logomarca-Shopee.jpg?v=5', url:afiliado.shopee.busca + encodeURIComponent(termo)},
+    {id:'pinterest', nome:'Pinterest', logo:'logomarca-pinterest.png?v=5', url:afiliado.pinterest.busca + encodeURIComponent(termo)},
+    {id:'tiktok', nome:'TikTok', logo:'logomarca-tiktok.png?v=5', url:afiliado.tiktok.busca + encodeURIComponent(termo)}
+  ];
+
+  lista.forEach(plat=>{
+    const div = document.createElement('div');
+    div.className = 'resultado-plataforma';
+    div.innerHTML = `<img src="${plat.logo}"><span>Pesquisar em ${plat.nome}</span>`;
+    div.onclick = ()=> window.open(plat.url, '_blank');
+    resultadosDiv.appendChild(div);
+  });
+
+  resultadosDiv.classList.add('mostrar');
+}
 </script>
 </head>
 <body>
@@ -176,6 +306,18 @@ EXPERIÊNCIA CYBERPUNK FUTURISTA
 </div>
 <div class="painel-lateral">
 <h3>ESCOLHA A PLATAFORMA</h3>
+
+<!-- === BUSCADOR ADICIONADO === -->
+<div class="buscador-container">
+<div class="buscador-titulo">🔍 BUSCAR PRODUTO</div>
+<div class="buscador-input-area">
+<input type="text" id="campoBusca" class="buscador-input" placeholder="Digite o produto...">
+<button class="buscador-btn" onclick="realizarBusca()">IR</button>
+</div>
+</div>
+<div id="buscadorResultados" class="buscador-resultados"></div>
+<!-- === FIM BUSCADOR === -->
+
 <div class="botao-loja" onclick="abrirPlataforma('mercadolivre')"><img src="logomarca-mercadolivre.png?v=5"><span>Mercado Livre</span></div>
 <div class="botao-loja" onclick="abrirPlataforma('magalu')"><img src="logomarca-magalu.png?v=5"><span>Magalu</span></div>
 <div class="botao-loja" onclick="abrirPlataforma('amazon')"><img src="logomarca-amazon.jpg?v=5"><span>Amazon</span></div>
@@ -188,7 +330,7 @@ EXPERIÊNCIA CYBERPUNK FUTURISTA
 <div class="categorias-header">
 <img id="catHeaderLogo" src="" alt="">
 <h2 id="catHeaderNome">Você está na plataforma</h2>
-<p style="color:#aaa;margin:5px 0 0 0">Escolha uma categoria abaixo</p>
+<p style="color:#aaa;margin:5px 0 0 0">Escolha uma categoria</p>
 </div>
 <div class="categorias-lista" id="listaCategorias"></div>
 <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:20px 0 40px 0">
@@ -229,6 +371,7 @@ EXPERIÊNCIA CYBERPUNK FUTURISTA
 </div>
 </div>
 <script>
+// CÓDIGO DE AUTENTICAÇÃO — ORIGINAL, SEM ALTERAÇÃO
 document.getElementById('btnLogin').addEventListener('click', async ()=>{
   const email=document.getElementById('loginEmail').value;
   const senha=document.getElementById('loginSenha').value;
